@@ -1,0 +1,114 @@
+:root {
+    --main-yellow-color: #f6c126;
+    --main-red-color: #e51230;
+    --main-black-color: #000000;
+}
+
+.main__div__hp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.main__div__hp .upper__section__hp .andaal__logo {
+    width: 200px;
+}
+
+.lower__section__all__parts__hp {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lower__section__all__parts__hp .section {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    background-color: var(--main-yellow-color);
+    border-radius: 10px;
+    /* padding: 40px 10px; */
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+
+    color: black;
+    text-decoration: none;
+}
+
+.lower__section__all__parts__hp .section span {
+    float: right;
+    font-size: 32px;
+}
+
+.all__classes__section {
+    margin: 20px;
+}
+
+.class__section>ul>li {
+    list-style: none;
+}
+
+.class__section {
+    list-style: none;
+}
+
+.all__classes__section>li>ul {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.all__classes__section>li>ul>li {
+    cursor: pointer;
+    background-color: var(--main-yellow-color);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.all__classes__section>li {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.all__classes__section>li>ul:has(li) {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.all__classes__section {
+    width: 70%;
+}
+
+
+.all__classes__section>li:not(:has(> ul))::after {
+    content: 'Class Not Found!';
+    background-color: var(--main-red-color);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.all__classes__section>li {
+    margin: 50px 0;
+}
+
+.all__classes__section a {
+    color: var(--main-black-color);
+    text-decoration: none;
+}
+
+.all__classes__section>li>a {
+    pointer-events: none;
+
+}

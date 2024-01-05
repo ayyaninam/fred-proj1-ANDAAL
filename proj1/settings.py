@@ -1,6 +1,6 @@
 
 from pathlib import Path
-
+import os
 # django oscar
 
 from oscar.defaults import *
@@ -112,8 +112,8 @@ HAYSTACK_CONNECTIONS = {
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr',
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+        'URL': 'http://127.0.0.1:8000/solr/default',
         'INCLUDE_SPELLING': True,
     },
 }
@@ -121,7 +121,7 @@ HAYSTACK_CONNECTIONS = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,7 +144,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'ATOMIC_REQUESTS': True,
     }
+    
 }
 
 
@@ -183,8 +185,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=BASE_DIR / 'media'

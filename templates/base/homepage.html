@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}ANDAAL - Homepage{% endblock title %}
+{% block content %}
+<div class="main__div__hp">
+    <div class="upper__section__hp">
+        <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
+        <h6 class="cfd">Culture For Development</h6>
+        <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="Danger example"
+            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar bg-danger" style="width: 100%"></div>
+        </div>
+    </div>
+    <div class="lower__section__all__parts__hp">
+        <a class="section" href="{% url 'textbooks_schools_main_section' %}">
+            <h3>Textbooks Schools</h3>
+            <span class="material-symbols-outlined">
+                auto_stories
+            </span>
+        </a>
+        <div class="section">
+            <h3>Education</h3>
+            <span class="material-symbols-outlined">
+                school
+            </span>
+        </div>
+        <div class="section">
+            <h3>Culture</h3>
+            <span class="material-symbols-outlined">
+                palette
+            </span>
+        </div>
+        <div class="section">
+            <h3>Books</h3>
+            <span class="material-symbols-outlined">
+                library_books
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock content %}

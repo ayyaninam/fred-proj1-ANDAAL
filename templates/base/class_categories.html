@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load category_tags %}
+
+{% block title %}ANDAAL - Homepage{% endblock title %}
+{% block content %}
+<div class="main__div__hp">
+    <div class="upper__section__hp">
+        <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
+        <h6 class="cfd">Culture For Development</h6>
+        <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="Danger example"
+            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar bg-danger" style="width: 100%"></div>
+        </div>
+    </div>
+    {% if all_categories %}
+    <div class="all__classes__section">
+        {% for tree_category in all_categories %}
+        <li class="class__section mt-2"><a href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+            {% if tree_category.has_children %}<ul>{% else %}
+        </li>{% endif %}
+        {% for n in tree_category.num_to_close %}
+        </ul>
+        </li>
+        {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+
+
+
+
+
+
+    {% endblock content %}
