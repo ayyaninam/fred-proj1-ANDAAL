@@ -1,0 +1,33 @@
+:root {
+    --main-yellow-color: #f6c126;
+    --main-red-color: #e51230;
+    --main-black-color: #000000;
+}
+
+.andaal__logo__top__nav {
+    width: 100px;
+}
+
+.search__and__category__main__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: red;
+}
+
+.navbar__main__div {
+    border: 2px solid var(--main-yellow-color);
+    border-radius: 50px;
+    margin: 10px 0;
+    background-color: var(--main-yellow-color);
+
+}
+
+.navbar__main__div button,
+.navbar__main__div input {
+    border-radius: 50px;
+}
+
+.navbar__main__div button:hover {
+    border-radius: 50px;
+}

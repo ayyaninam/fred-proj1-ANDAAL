@@ -8,7 +8,7 @@ def homepage(request):
 
 def textbooks_schools_main_section(request):
     Category = get_model('catalogue', 'Category')
-    all_categories = [x for x in Category.objects.all() if not x.full_name.find(">") != -1]
+    all_categories = [x for x in Category.objects.all() if x.full_name.count(">") ==1]
 
     context = {
         "all_categories":all_categories,
@@ -17,7 +17,7 @@ def textbooks_schools_main_section(request):
 
 def class_categories(request, language):
     Category = get_model('catalogue', 'Category')
-    all_categories = [x for x in Category.objects.all() if x.full_name.find(language) != -1 and x.full_name.find(">") != -1]
+    all_categories = [x for x in Category.objects.all() if x.full_name.find(language) != -1 and x.full_name.count('>') > 1]
 
     context = {
         "all_categories":all_categories,
