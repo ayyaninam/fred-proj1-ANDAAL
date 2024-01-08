@@ -48,71 +48,21 @@
     font-size: 32px;
 }
 
-.all__classes__section {
-    margin: 20px;
-}
-
-.class__section>ul>li {
-    list-style: none;
-}
-
-.class__section {
-    list-style: none;
-}
-
-.all__classes__section>li>ul {
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-}
-
-.all__classes__section>li>ul>li {
-    cursor: pointer;
-    background-color: var(--main-yellow-color);
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-}
-
-.all__classes__section>li {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.all__classes__section>li>ul:has(li) {
-    font-size: 16px !important;
-    font-weight: bold;
-}
-
-.all__classes__section {
-    width: 70%;
-}
-
-
-.all__classes__section>li:not(:has(> ul))::after {
-    content: 'Class Not Found!';
-    background-color: var(--main-red-color);
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: normal;
-}
-
-.all__classes__section>li {
-    margin: 50px 0;
-}
-
-.all__classes__section a {
-    color: var(--main-black-color);
-    text-decoration: none;
-}
-
-.all__classes__section>li>a {
-    pointer-events: none;
-
-}
 
 .andaal__logo__top__nav {
     width: 100px;
+}
+
+.all__classes__section {
+    width: 80%;
+    margin: 20px 0;
+}
+
+.class__link__and__name {
+    text-decoration: none;
+}
+
+
+.all__classes__section .category__name__main__Div {
+    width: fit-content;
 }

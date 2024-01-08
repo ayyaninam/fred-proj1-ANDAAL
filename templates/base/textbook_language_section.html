@@ -13,9 +13,9 @@
         </div>
     </div>
     <div class="lower__section__all__parts__hp">
-        {% for category in all_categories %}
-        <a class="section" href="{% url 'class_categories' category.name %}">
-            <h3>{{category.name}}</h3>
+        {% for language in all_languages %}
+        <a class="section" href="{% url 'class_categories' language.name %}">
+            <h3>{{language.name}}</h3>
         </a>
         {% endfor %}
 

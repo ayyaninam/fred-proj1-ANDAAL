@@ -31,3 +31,8 @@
 .navbar__main__div button:hover {
     border-radius: 50px;
 }
+
+.url_no_link {
+    text-decoration: none;
+
+}

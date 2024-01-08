@@ -32,9 +32,21 @@
     {% block navbar_collapse %}
     <div class="collapse navbar-collapse search__and__category__main__nav">
 
-        <a href="{{category.get_absolute_url}}">
-            <button class="btn btn-dark">{{ category.name }}</button>
+        {% category_tree as tree_categories %}
+        {% if tree_categories %}
+        {% for tree_category in tree_categories %}
+        <a class="url_no_link" href="{{category.get_absolute_url}}">
+            {% if tree_category.show_on_search_menu %}
+            <button class="btn btn-dark">{{ tree_category.name }}</button>
+            {% endif %}
         </a>
+
+        {% endfor %}
+
+        {% endif %}
+
+
+
 
 
         {% block nav_extra %}

@@ -1,25 +1,26 @@
 from django.shortcuts import render
 
 from oscar.core.loading import get_model
+from base.models import *
 
 # Create your views here.
 def homepage(request):
     return render(request, "base/homepage.html")
 
-def textbooks_schools_main_section(request):
-    Category = get_model('catalogue', 'Category')
-    all_categories = [x for x in Category.objects.all() if x.full_name.count(">") ==1]
-
+def textbook_language_section(request):
+    all_languages = TextbookLanguages.objects.all()
     context = {
-        "all_categories":all_categories,
+        "all_languages":all_languages,
     }
-    return render(request, "base/textbooks_schools_main_section.html", context=context)
+    return render(request, "base/textbook_language_section.html", context=context)
 
 def class_categories(request, language):
-    Category = get_model('catalogue', 'Category')
-    all_categories = [x for x in Category.objects.all() if x.full_name.find(language) != -1 and x.full_name.count('>') > 1]
+    language = TextbookLanguages.objects.filter(name=language)[0]
+    all_categories = TextbooksCategories.objects.filter(language_associated=language)
+
 
     context = {
         "all_categories":all_categories,
     }
+
     return render(request, "base/class_categories.html", context=context)
