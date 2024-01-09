@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}ANDAAL - Education{% endblock title %}
+{% block content %}
+
+<div class="main__div__hp">
+    <a class="upper__section__hp" href="{% url 'homepage'%}">
+        <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
+    </a>
+</div>
+{% if all_categories %}
+<div class="top__nav__menu">
+    {% for category in all_categories %}
+    {% if category.id == active_category.id %}
+    <button class="btn btn-light">{{category.name}}</button>
+    {% else %}
+    <a href="{% url 'education' category.id %}">
+        <button class="btn btn-outline-light">{{category.name}}</button>
+    </a>
+    {% endif %}
+    {% endfor %}
+
+</div>
+{% endif %}
+
+{% include "base/back_button.html" %}
+
+{% if all_post %}
+{% for post in all_post %}
+<a class="card mb-3 w-25 m-auto mt-5 url_no_link" href="{% url 'education_post' post.id %}">
+    <img src="{{post.cover_image.url}}" class="card-img-top " alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{post.title|slice:"0:50"}}...</h5>
+        <p class="card-text">{{post.short_description|slice:"0:50"}}...</p>
+        <p class="card-text"><small class="text-body-secondary">{{post.date}}</small></p>
+    </div>
+</a>
+{% endfor %}
+{% endif %}
+{% endblock %}

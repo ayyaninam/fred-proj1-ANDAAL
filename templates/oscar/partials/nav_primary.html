@@ -31,15 +31,19 @@
 
     {% block navbar_collapse %}
     <div class="collapse navbar-collapse search__and__category__main__nav">
-
+        <a class="url_no_link" onClick="javascript:history.go(-1);">
+            <button class="btn btn-danger">
+                Back
+            </button>
+        </a>
         {% category_tree as tree_categories %}
         {% if tree_categories %}
         {% for tree_category in tree_categories %}
-        <a class="url_no_link" href="{{category.get_absolute_url}}">
-            {% if tree_category.show_on_search_menu %}
+        {% if tree_category.show_on_search_menu %}
+        <a class="url_no_link" href="{{tree_category.get_absolute_url}}">
             <button class="btn btn-dark">{{ tree_category.name }}</button>
-            {% endif %}
         </a>
+        {% endif %}
 
         {% endfor %}
 

@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}ANDAAL - Education{% endblock title %}
+{% block content %}
+
+<div class="main__div__hp">
+    <a class="upper__section__hp" href="{% url 'homepage'%}">
+        <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
+    </a>
+</div>
+<hr>
+
+<div class="post__main__div w-75 m-auto">
+    {% include "base/back_button.html" %}
+    <h3 class="my-2">{{post.title}}</h3>
+    <p class="my-4">{{post.short_description}}</p>
+    <img src="{{post.cover_image.url}}" class="img-fluid" alt="Responsive image">
+    <div class="small_icons_task_main my-5">
+        <div class="task">
+            <span class="material-symbols-outlined">
+                location_on
+            </span>
+            <span>{{post.location}}</span>
+        </div>
+        <div class="task">
+            <span class="material-symbols-outlined">
+                calendar_month
+            </span>
+            <span>{{post.date}}</span>
+        </div>
+        <div class="task">
+            <span class="material-symbols-outlined">
+                link
+            </span>
+            <a class="url_no_link text-danger" target="_blank" href="{{post.link_to_orignal}}">
+                <span>Click here</span>
+            </a>
+        </div>
+    </div>
+    <div class="description_post">
+        <p>{{post.description}}</p>
+    </div>
+</div>
+
+{% endblock %}

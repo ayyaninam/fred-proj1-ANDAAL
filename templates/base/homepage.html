@@ -3,7 +3,7 @@
 {% block title %}ANDAAL - Homepage{% endblock title %}
 {% block content %}
 <div class="main__div__hp">
-    <div class="upper__section__hp">
+    <div class="upper__section__hp url_no_link">
         <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
         <h6 class="cfd">Culture For Development</h6>
         <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="Danger example"
@@ -18,12 +18,12 @@
                 auto_stories
             </span>
         </a>
-        <div class="section">
+        <a class="section" href="{% url 'education' 0 %}">
             <h3>Education</h3>
             <span class="material-symbols-outlined">
                 school
             </span>
-        </div>
+        </a>
         <div class="section">
             <h3>Culture</h3>
             <span class="material-symbols-outlined">

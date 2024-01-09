@@ -66,3 +66,42 @@
 .all__classes__section .category__name__main__Div {
     width: fit-content;
 }
+
+.top__nav__menu {
+    background-color: var(--main-red-color);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.url_no_link {
+    text-decoration: none;
+
+}
+
+.post__main__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.small_icons_task_main {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.small_icons_task_main .task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: var(--main-red-color);
+    cursor: pointer;
+}

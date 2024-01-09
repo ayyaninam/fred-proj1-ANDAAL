@@ -24,3 +24,36 @@ def class_categories(request, language):
     }
 
     return render(request, "base/class_categories.html", context=context)
+
+
+def education(request, category_id):
+    active_category = ""
+    if category_id==0:
+        category = EducationCategory.objects.filter(default=True)
+    else:
+        category = EducationCategory.objects.filter(id=category_id)
+    
+    if category:
+        all_post = Education.objects.filter(category=category[0])
+        active_category = category[0]
+    else:
+        all_post = None
+
+    all_categories = EducationCategory.objects.all()
+
+    context = {
+        'all_post':all_post,
+        'active_category':active_category,
+        'all_categories':all_categories,
+    }
+    
+    return render(request, "base/education.html", context=context)
+
+def education_post(request, post_id):
+    post = Education.objects.get(id=post_id)
+
+    context = {
+        'post':post,
+    }
+
+    return render(request, 'base/education_post.html', context)

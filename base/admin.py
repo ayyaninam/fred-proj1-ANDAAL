@@ -4,3 +4,5 @@ from base.models import *
 admin.site.register(TextbookClasses)
 admin.site.register(TextbookLanguages)
 admin.site.register(TextbooksCategories)
+admin.site.register(EducationCategory)
+admin.site.register(Education)
