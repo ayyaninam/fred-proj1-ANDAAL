@@ -26,6 +26,10 @@ class TextbooksCategories(models.Model):
     
     def __str__(self):
         return self.name
+    
+# class BooksCategoryAssociated(models.Model):
+#     pass
+
 
 class EducationCategory(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
@@ -43,6 +47,26 @@ class Education(models.Model):
     location = models.CharField(max_length=255, null=True, blank=True)
     link_to_orignal = models.URLField(max_length = 1000) 
     category = models.ManyToManyField(EducationCategory)
+
+    def __str__(self):
+        return self.title[:50]
+
+class CultureCategory(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False, unique=True)
+    default = models.BooleanField( null=False, default=False, blank=False)
+
+    def __str__(self):
+        return self.name
+
+class Culture(models.Model):
+    title = models.CharField(max_length=250, null=False, blank=False)
+    short_description = models.TextField(null=False, blank=False)
+    cover_image = models.ImageField(upload_to="base/culture_cover/", null=True, blank=True)
+    description = models.TextField(null=False, blank=False)
+    date = models.DateField(auto_now=True, null=False, blank=False)
+    location = models.CharField(max_length=255, null=True, blank=True)
+    link_to_orignal = models.URLField(max_length = 1000) 
+    category = models.ManyToManyField(CultureCategory)
 
     def __str__(self):
         return self.title[:50]

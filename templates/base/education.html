@@ -1,6 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %}
-{% block title %}ANDAAL - Education{% endblock title %}
+
+{% block title %}
+{% if "education" in request.path %}
+ANDAAL - Education
+{% elif "culture" in request.path %}
+ANDAAL - Culture
+{% endif %}
+{% endblock title %}
 {% block content %}
 
 <div class="main__div__hp">
@@ -14,9 +21,15 @@
     {% if category.id == active_category.id %}
     <button class="btn btn-light">{{category.name}}</button>
     {% else %}
+    {% if "education" in request.path %}
     <a href="{% url 'education' category.id %}">
         <button class="btn btn-outline-light">{{category.name}}</button>
     </a>
+    {% elif "culture" in request.path %}
+    <a href="{% url 'culture' category.id %}">
+        <button class="btn btn-outline-light">{{category.name}}</button>
+    </a>
+    {% endif %}
     {% endif %}
     {% endfor %}
 
@@ -27,7 +40,9 @@
 
 {% if all_post %}
 {% for post in all_post %}
-<a class="card mb-3 w-25 m-auto mt-5 url_no_link" href="{% url 'education_post' post.id %}">
+<a class="card mb-3 w-25 m-auto mt-5 url_no_link" {% if "education" in request.path %}
+    href="{% url 'education_post' post.id %}" {% elif "culture" in request.path %}
+    href="{% url 'culture_post' post.id %}" {% endif %}>
     <img src="{{post.cover_image.url}}" class="card-img-top " alt="...">
     <div class="card-body">
         <h5 class="card-title">{{post.title|slice:"0:50"}}...</h5>

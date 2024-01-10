@@ -7,4 +7,6 @@ urlpatterns = [
     path('class-categories/<str:language>', views.class_categories, name="class_categories"),
     path('education/<int:category_id>', views.education, name="education"),
     path('education-post/<int:post_id>', views.education_post, name="education_post"),
+    path('culture/<int:category_id>', views.culture, name="culture"),
+    path('culture-post/<int:post_id>', views.culture_post, name="culture_post"),
 ]

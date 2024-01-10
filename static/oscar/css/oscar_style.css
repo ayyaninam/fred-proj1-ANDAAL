@@ -36,3 +36,12 @@
     text-decoration: none;
 
 }
+
+.product_pod {
+    height: 330px !important;
+    
+}
+
+.product_pod h3 a {
+    color: var(--main-black-color);
+}

@@ -4,5 +4,6 @@ from django.db import models
 
 class Category(AbstractCategory):
     show_on_search_menu = models.BooleanField(default=False, null=False)
+    main_book_category = models.BooleanField(default=False, null=False)
 
 from oscar.apps.catalogue.models import * 

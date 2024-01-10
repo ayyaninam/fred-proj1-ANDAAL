@@ -24,18 +24,21 @@
                 school
             </span>
         </a>
-        <div class="section">
+        <a class="section" href="{% url 'culture' 0 %}">
             <h3>Culture</h3>
             <span class="material-symbols-outlined">
                 palette
             </span>
-        </div>
-        <div class="section">
+        </a>
+        {% if book_category %}
+        <a class="section" href="{{ book_category.get_absolute_url }}">
             <h3>Books</h3>
             <span class="material-symbols-outlined">
                 library_books
             </span>
-        </div>
+        </a>
+        {% endif %}
+
     </div>
 </div>
 {% endblock content %}
