@@ -9,4 +9,6 @@ urlpatterns = [
     path('education-post/<int:post_id>', views.education_post, name="education_post"),
     path('culture/<int:category_id>', views.culture, name="culture"),
     path('culture-post/<int:post_id>', views.culture_post, name="culture_post"),
+    path('create-payment-intent', views.create_payment_intent, name="create_payment_intent"),
+    path('stripedot', views.stripedot, name="stripedot")
 ]

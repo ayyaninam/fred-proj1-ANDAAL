@@ -5,6 +5,8 @@ import os
 
 from oscar.defaults import *
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,9 +23,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
+    'oscar_stripe_sca',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +45,10 @@ INSTALLED_APPS = [
 
     'oscar.config.Shop',
     'oscar.apps.analytics.apps.AnalyticsConfig',
-    'oscar.apps.checkout.apps.CheckoutConfig',
+    # Start Changed
+    'apps.checkout.apps.CheckoutConfig',
+    # End Changed
+
     'oscar.apps.address.apps.AddressConfig',
     'oscar.apps.shipping.apps.ShippingConfig',
     'apps.catalogue.apps.CatalogueConfig',
@@ -76,6 +84,10 @@ INSTALLED_APPS = [
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
     'base.apps.BaseConfig',
+
+    # 'paypal',
+    # payment integrations
+
 ]
 
 SITE_ID = 1
@@ -198,3 +210,71 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR / 'media'
+
+
+
+
+# LOGGING
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+
+
+# Strip Inetgrations 
+# Screte Keys
+
+STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+STRIPE_PUBLISHABLE_KEY = "pk_test_TYooMQauvdEDq54NiTphI7jx"
+STRIPE_CURRENCY = "USD"
+
+
+# Paypal Integrations
+
+# PAYPAL_API_USERNAME = 'test_xxxx.gmail.com'
+# PAYPAL_API_PASSWORD = '123456789'
+# PAYPAL_API_SIGNATURE = '...'
+
+SHOP_NAME = 'ANDAAL'
+
+
+
+
+
+
+
+# OScar SCA STRIP 
+
+STRIPE_SEND_RECEIPT =  True
+STRIPE_CURRENCY= 'usd'
+STRIPE_PUBLISHABLE_KEY= "pk_test_TYooMQauvdEDq54NiTphI7jx"
+STRIPE_SECRET_KEY= "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+STRIPE_RETURN_URL_BASE= 'http://127.0.0.1:8000/andaal/checkout/preview/'
+STRIPE_PAYMENT_SUCCESS_URL = "http://127.0.0.1:8000/andaal/checkout/preview-stripe/{}"
+STRIPE_PAYMENT_CANCEL_URL = "http://localhost:8000/andaal/checkout/payment-cancel/{}"
+
+
+
+
+EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "**********"
+EMAIL_HOST_PASSWORD = "***************"

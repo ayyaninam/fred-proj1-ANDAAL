@@ -3,6 +3,11 @@ from django.urls import include, path
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+import logging
+
+logger = logging.getLogger(__name__)
+
+logger.debug('Debug message')    
 
 # New Code
 from django.shortcuts import redirect
@@ -12,7 +17,7 @@ urlpatterns = [
 
     # The Django admin is not officially supported; expect breakage.
     # Nonetheless, it's often useful for debugging.
-    path('', lambda request: redirect('andaal/', permanent=True)),
+    # path('^checkout/paypal/', include('paypal.express.urls')),
     path('admin/', admin.site.urls),
     path('andaal/', include('base.urls')),
     path('andaal/', include(apps.get_app_config('oscar').urls[0])),
