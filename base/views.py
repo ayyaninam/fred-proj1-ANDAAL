@@ -15,12 +15,15 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def homepage(request):
 
     book_category = Oscar_Category.objects.filter(main_book_category=True)
+    main_menus = MainMenu.objects.all()
+
     if book_category:
         book_category = book_category[0]
     else:
         book_category = None
     context = {
         'book_category':book_category,
+        'main_menus':main_menus,
     }
     return render(request, "base/homepage.html", context)
 

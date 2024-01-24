@@ -85,9 +85,8 @@ INSTALLED_APPS = [
     'django_tables2',
     'base.apps.BaseConfig',
 
-    # 'paypal',
     # payment integrations
-
+    'paypal',
 ]
 
 SITE_ID = 1
@@ -276,5 +275,19 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "**********"
-EMAIL_HOST_PASSWORD = "***************"
+EMAIL_HOST_USER = "************"
+EMAIL_HOST_PASSWORD = "************"
+
+
+
+
+# PAYPAL INTEGRATION 
+
+PAYPAL_API_USERNAME = 'sb-qyyzi29402195_api1.business.example.com'
+PAYPAL_API_PASSWORD = '9A77LPJLB868MG52'
+PAYPAL_API_SIGNATURE = 'Ajzmr6eFvj3JSg2kZotkvdqdQbl8A9js1kfXGFUd4clbiVXvyxi3hzFq'
+
+
+
+# OSCAR SETTING
+

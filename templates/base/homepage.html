@@ -12,32 +12,20 @@
         </div>
     </div>
     <div class="lower__section__all__parts__hp">
-        <a class="section" href="{% url 'textbook_language_section' %}">
-            <h3>Textbooks Schools</h3>
-            <span class="material-symbols-outlined">
-                auto_stories
-            </span>
-        </a>
-        <a class="section" href="{% url 'education' 0 %}">
-            <h3>Education</h3>
-            <span class="material-symbols-outlined">
-                school
-            </span>
-        </a>
-        <a class="section" href="{% url 'culture' 0 %}">
-            <h3>Culture</h3>
-            <span class="material-symbols-outlined">
-                palette
-            </span>
-        </a>
-        {% if book_category %}
-        <a class="section" href="{{ book_category.get_absolute_url }}">
-            <h3>Books</h3>
-            <span class="material-symbols-outlined">
-                library_books
-            </span>
-        </a>
+
+        {% for menu in main_menus %}
+        {% if menu.redirect_to_link %}
+        <a class="section" href="{{menu.redirect_to_link}}">
+          {% else %}
+        <a class="section" href="{{menu.category_attached.get_absolute_url}}">
+
         {% endif %}
+            <h3>{{menu.name}}</h3>
+            {% autoescape off %}
+            {{ menu.icons_link }}
+            {% endautoescape %}
+        </a>
+        {% endfor %}
 
     </div>
 </div>
