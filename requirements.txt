@@ -1,12 +1,15 @@
 asgiref==3.7.2
 Babel==2.14.0
 certifi==2023.11.17
+cffi==1.16.0
 charset-normalizer==3.3.2
+cryptography==42.0.0
 Django==4.1.4
 django-extra-views==0.14.0
 django-haystack==3.2.1
 django-localflavor==3.1
 django-oscar==3.2.2
+-e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@cec4050a2207e5f0313358786ecd01f1dea905b8#egg=django_oscar_paypal&subdirectory=django-oscar-paypal
 django-oscar-stripe-sca==0.3
 django-phonenumber-field==6.4.0
 django-tables2==2.3.4
@@ -16,9 +19,13 @@ factory-boy==3.2.1
 Faker==22.2.0
 idna==3.6
 numpy==1.26.3
+paypal-checkout-serversdk==1.0.3
+paypalhttp==1.0.1
 phonenumbers==8.13.27
 pillow==10.2.0
 purl==1.6
+pycparser==2.21
+pyOpenSSL==24.0.0
 python-dateutil==2.8.2
 python-stdnum==1.19
 pytz==2023.3.post1
