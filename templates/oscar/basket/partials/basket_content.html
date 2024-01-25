@@ -1,14 +1,16 @@
 {% extends 'oscar/basket/partials/basket_content.html' %}
 {% load i18n %}
-
+{% load static %}
 {% block formactions %}
 <div class="form-actions">
     {% if anon_checkout_allowed or request.user.is_authenticated %}
-    <a href="{% url 'paypal-redirect' %}"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"
-            align="left" style="margin-right:7px;"></a>
+    <h4>Checkout Option Available</h4>
+    <a class="btn btn-sm btn-warning rounded" href="{% url 'paypal-redirect' %}">
+        <img src="{% static 'payment/paypal_btn.svg' %}" style="margin-right:7px;">
+    </a>
     {% endif %}
-    <a href="{% url 'checkout:index' %}" class="pull-right btn btn-large btn-primary">
-        {% trans "Proceed to checkout" %}
+    <a href="{% url 'checkout:index' %}" class="pull-right btn btn-large btn-warning">
+        <img style="width: 65px;" src="{% static 'payment/stripe_btn.png' %}">
     </a>
 </div>
 {% endblock %}
