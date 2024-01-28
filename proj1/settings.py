@@ -87,6 +87,7 @@ INSTALLED_APPS = [
 
     # payment integrations
     'paypal',
+    'oscar_with_flutterwave',
 ]
 
 SITE_ID = 1
@@ -239,10 +240,6 @@ MEDIA_ROOT=BASE_DIR / 'media'
 # Strip Inetgrations 
 # Screte Keys
 
-STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-STRIPE_PUBLISHABLE_KEY = "pk_test_TYooMQauvdEDq54NiTphI7jx"
-STRIPE_CURRENCY = "USD"
-
 
 # Paypal Integrations
 
@@ -261,7 +258,7 @@ SHOP_NAME = 'ANDAAL'
 # OScar SCA STRIP 
 
 STRIPE_SEND_RECEIPT =  True
-STRIPE_CURRENCY= 'usd'
+STRIPE_CURRENCY= 'xaf'
 STRIPE_PUBLISHABLE_KEY= "pk_test_TYooMQauvdEDq54NiTphI7jx"
 STRIPE_SECRET_KEY= "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 STRIPE_RETURN_URL_BASE= 'http://127.0.0.1:8000/andaal/checkout/preview/'
@@ -275,11 +272,11 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "************"
-EMAIL_HOST_PASSWORD = "************"
+EMAIL_HOST_USER = "**************"
+EMAIL_HOST_PASSWORD = "**************"
 
 
-
+ARE_YOU_USING_ENV = False
 
 # PAYPAL INTEGRATION 
 
@@ -291,3 +288,12 @@ PAYPAL_API_SIGNATURE = 'Ajzmr6eFvj3JSg2kZotkvdqdQbl8A9js1kfXGFUd4clbiVXvyxi3hzFq
 
 # OSCAR SETTING
 PAYPAL_CALLBACK_HTTPS = False
+
+
+# FLUTTER WAVE DETAILS
+
+
+FLUTTER_WAVE_PUBLIC_KEY = 'FLWPUBK_TEST-7498a1d1740cc05bb7a058307f84eccf-X'
+FLUTTER_WAVE_SCRETE_KEY = 'FLWSECK_TEST-11edaca82157cdfe31791a7a663ad54c-X'
+FLUTTER_WAVE_ENCRYPTION_KEY = 'FLWSECK_TEST5908b115537e'
+FLUTTER_PAYMENT_URL = 'https://api.flutterwave.com/v3/charges?type=mobile_money_franco'

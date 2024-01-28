@@ -1,0 +1,18 @@
+{% extends 'oscar/checkout/payment_details.html' %}
+
+{% load i18n static %}
+{% load currency_filters %}
+{% block checkout_title %}{% trans "Enter Mobile Number:" %}{% endblock %}
+{% block payment_details_content %}
+<form action="{% url 'checkout:flutter_wave_payment_detail_view' basket.id %}" method="GET"  class="flutter_wave__part d-flex justify-content-center align-center flex-column w-50 mx-auto">
+    {% comment %}
+    {% csrf_token %}
+    {% endcomment %}
+
+    <div class="my-3 d-flex flex-column">
+    <label for="mobile_number_flutterflow">Enter Your Mobile Number: </label>
+    <input id="mobile_number_flutterflow" name="mobile_number_flutterflow" class="p-2 rounded-pill" placeholder="08000000000" type="text">
+</div>
+    <button type="submit" class="rounded-pill btn btn-warning text-upper text-bold">DONE</button>
+</form>
+{% endblock %}
