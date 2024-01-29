@@ -8,7 +8,7 @@ from django.http import JsonResponse
 import json
 import stripe
 from django.views.decorators.csrf import csrf_exempt
-
+from .all_currencies_avaialble import currencies as all_currencies_avaialble
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
@@ -16,14 +16,16 @@ def homepage(request):
 
     book_category = Oscar_Category.objects.filter(main_book_category=True)
     main_menus = MainMenu.objects.all()
-
     if book_category:
         book_category = book_category[0]
     else:
         book_category = None
+    
     context = {
         'book_category':book_category,
         'main_menus':main_menus,
+        'all_currencies_avaialble':all_currencies_avaialble,
+        'default_currency':settings.OSCAR_DEFAULT_CURRENCY,
     }
     return render(request, "base/homepage.html", context)
 

@@ -142,6 +142,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.checkout.context_processors.default_currency'
             ],
         },
     },
@@ -256,9 +257,10 @@ SHOP_NAME = 'ANDAAL'
 
 
 # OScar SCA STRIP 
+OSCAR_DEFAULT_CURRENCY = 'XAF'
+STRIPE_CURRENCY= 'xaf'
 
 STRIPE_SEND_RECEIPT =  True
-STRIPE_CURRENCY= 'xaf'
 STRIPE_PUBLISHABLE_KEY= "pk_test_TYooMQauvdEDq54NiTphI7jx"
 STRIPE_SECRET_KEY= "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 STRIPE_RETURN_URL_BASE= 'http://127.0.0.1:8000/andaal/checkout/preview/'

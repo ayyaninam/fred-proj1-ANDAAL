@@ -2,7 +2,9 @@
 {% load static %}
 {% block title %}ANDAAL - Homepage{% endblock title %}
 {% block content %}
-<div class="main__div__hp">
+
+{% include "base/currency_selector.html" %}
+<div class="main__div__hp ">
     <div class="upper__section__hp url_no_link">
         <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
         <h6 class="cfd">Culture For Development</h6>
@@ -16,17 +18,18 @@
         {% for menu in main_menus %}
         {% if menu.redirect_to_link %}
         <a class="section" href="{{menu.redirect_to_link}}">
-          {% else %}
-        <a class="section" href="{{menu.category_attached.get_absolute_url}}">
+            {% else %}
+            <a class="section" href="{{menu.category_attached.get_absolute_url}}">
 
-        {% endif %}
-            <h3>{{menu.name}}</h3>
-            {% autoescape off %}
-            {{ menu.icons_link }}
-            {% endautoescape %}
-        </a>
-        {% endfor %}
+                {% endif %}
+                <h3>{{menu.name}}</h3>
+                {% autoescape off %}
+                {{ menu.icons_link }}
+                {% endautoescape %}
+            </a>
+            {% endfor %}
 
     </div>
 </div>
+<script src='{% static "base/js/modal.js" %}'></script>
 {% endblock content %}
