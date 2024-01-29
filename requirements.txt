@@ -9,7 +9,7 @@ django-extra-views==0.14.0
 django-haystack==3.2.1
 django-localflavor==3.1
 django-oscar==3.2.2
--e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@cec4050a2207e5f0313358786ecd01f1dea905b8#egg=django_oscar_paypal&subdirectory=django-oscar-paypal
+-e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@c0b9e16e743964b3ae91f48ad839c60b45c3ee85#egg=django_oscar_paypal&subdirectory=django-oscar-paypal
 django-oscar-stripe-sca==0.3
 django-phonenumber-field==6.4.0
 django-tables2==2.3.4
@@ -25,10 +25,12 @@ phonenumbers==8.13.27
 pillow==10.2.0
 purl==1.6
 pycparser==2.21
+pycryptodome==3.20.0
 pyOpenSSL==24.0.0
 python-dateutil==2.8.2
 python-stdnum==1.19
 pytz==2023.3.post1
+rave-python==1.4.0
 requests==2.31.0
 six==1.16.0
 sorl-thumbnail==12.10.0
