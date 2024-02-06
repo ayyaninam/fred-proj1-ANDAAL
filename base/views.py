@@ -39,8 +39,7 @@ def textbook_language_section(request):
 def class_categories(request, language):
     language = TextbookLanguages.objects.filter(name=language)[0]
     all_categories = TextbooksCategories.objects.filter(language_associated=language)
-
-
+    
     context = {
         "all_categories":all_categories,
     }

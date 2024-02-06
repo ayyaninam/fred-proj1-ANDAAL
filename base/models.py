@@ -84,3 +84,22 @@ class Culture(models.Model):
 
     def __str__(self):
         return self.title[:50]
+    
+
+class ShippingMethod(models.Model):
+    child_of = models.ForeignKey('self', on_delete=models.CASCADE, help_text="If you choose this, then this will become a child (not a parent)", blank=True, null=True )
+    name = models.CharField(max_length=250, null=False, blank=False)
+    code = models.CharField(max_length=250, null=True, blank=True, help_text="Please don't give any space in this field")
+    charge_excl_tax = models.IntegerField(null=True, blank=True)
+    charge_incl_tax = models.IntegerField(null=True, blank=True)
+
+    def clean(self):
+        if self.code:
+            self.code = self.code.lower().strip().replace(" ", "")
+        if not self.child_of:
+            self.code = None
+            self.charge_excl_tax = None
+            self.charge_incl_tax = None
+
+    def __str__(self) -> str:
+        return self.name

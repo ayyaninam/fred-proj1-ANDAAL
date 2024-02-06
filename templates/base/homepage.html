@@ -6,12 +6,37 @@
 {% include "base/currency_selector.html" %}
 <div class="main__div__hp ">
     <div class="upper__section__hp url_no_link">
+
+
         <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
         <h6 class="cfd">Culture For Development</h6>
         <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="Danger example"
             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar bg-danger" style="width: 100%"></div>
         </div>
+
+        <div>
+            {% if request.user.is_authenticated %}
+            <h6 class="mt-3">
+                Welcome: 
+                <span class="fst-italic">{{user.get_full_name|default:request.user.email}}</span> 
+
+                <a class="nav-link btn btn-warning d-flex justify-content-center align-items-center" href="{% url 'customer:logout' %}">
+                    <span class="material-symbols-outlined">logout</span>
+                    Log out
+                </a>
+            </h6>
+            {% else %}
+            <small class="d-flex flex-column  align-items-center">
+                <span>You are not logged in: </span>
+                <span class="fw-bold text-decoration-none">
+                <a class="mx-4 text-decoration-none" href="{% url 'customer:login' %}">Login</a>
+                <a class="mx-4 text-decoration-none" href="{% url 'customer:login' %}">Register</a>
+            </span>
+            </small>
+            {% endif %}
+        </div>
+
     </div>
     <div class="lower__section__all__parts__hp">
 
