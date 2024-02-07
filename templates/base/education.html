@@ -39,11 +39,12 @@ ANDAAL - Culture
 {% include "base/back_button.html" %}
 
 {% if all_post %}
+<div class="d-flex justify-content-center align-items-stretch flex-wrap">
 {% for post in all_post %}
-<a class="card mb-3 w-25 m-auto mt-5 url_no_link" {% if "education" in request.path %}
+<a class="card my-2 w-25 m-auto mx-2 url_no_link" style="min-width: 250px;" {% if "education" in request.path %}
     href="{% url 'education_post' post.id %}" {% elif "culture" in request.path %}
     href="{% url 'culture_post' post.id %}" {% endif %}>
-    <img src="{{post.cover_image.url}}" class="card-img-top " alt="...">
+    <img src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" class="card-img-top " alt="...">
     <div class="card-body">
         <h5 class="card-title">{{post.title|slice:"0:50"}}...</h5>
         <p class="card-text">{{post.short_description|slice:"0:50"}}...</p>
@@ -51,5 +52,6 @@ ANDAAL - Culture
     </div>
 </a>
 {% endfor %}
+</div>
 {% endif %}
 {% endblock %}
