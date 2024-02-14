@@ -9,8 +9,15 @@ import json
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 from .all_currencies_avaialble import currencies as all_currencies_avaialble
+from django.contrib.auth import get_user_model
+from django.contrib.auth import login as auth_login
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+User = get_user_model()
+# Product = get_model('catalogue', 'Product')
 # Create your views here.
 def homepage(request):
 
@@ -171,3 +178,21 @@ def stripedot(request):
     #         return JsonResponse(error=str(e)), 403
 
 
+def after_registration(request):
+    return render(request, 'base/after_registration.html')
+
+def verify_my_email(request, email, username):
+    final_str = ''
+    # try:
+    user = User.objects.get(email=email, username=username)
+    user.is_active = True
+    user.save()
+    auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+    final_str = 'Congrats'
+    # except:
+    #     final_str = 'Sorry'
+
+    context = {
+        'final_str': final_str,
+    }
+    return render(request, 'base/verify_my_email.html', context)

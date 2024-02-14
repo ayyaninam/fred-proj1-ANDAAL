@@ -1,11 +1,21 @@
 from django.db import models
 from oscar.core.loading import get_model
 from apps.catalogue.models import Category as Oscar_Category
-
+from oscar.apps.customer.abstract_models import AbstractUser
+from phonenumber_field.modelfields import PhoneNumberField
+from django.utils.translation import gettext_lazy as _
 
 # Oscar_Category = get_model('catalogue', 'Category')
 
 # Create your models here.
+
+# class User(AbstractUser):
+#     # pass
+#     phone_number = PhoneNumberField(
+#         _("Phone number"),
+#         blank=True,
+#         # help_text=_("In case we need to call you about your order"),
+#     )
 
 class MainMenu(models.Model):
     name= models.CharField(max_length=200, null=False, blank=False)

@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     'oscar.apps.payment.apps.PaymentConfig',
     'oscar.apps.offer.apps.OfferConfig',
     'oscar.apps.order.apps.OrderConfig',
-    'oscar.apps.customer.apps.CustomerConfig',
+    # 'oscar.apps.customer.apps.CustomerConfig',
+    'apps.customer.apps.CustomerConfig',
     'oscar.apps.search.apps.SearchConfig',
     'oscar.apps.voucher.apps.VoucherConfig',
     'oscar.apps.wishlists.apps.WishlistsConfig',
@@ -88,9 +89,10 @@ INSTALLED_APPS = [
     # payment integrations
     'paypal',
     'oscar_with_flutterwave',
-]
+] 
 
 SITE_ID = 1
+
 
 
 MIDDLEWARE = [
@@ -142,7 +144,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'apps.checkout.context_processors.default_currency'
+                'apps.checkout.context_processors.default_currency',
+                'apps.checkout.context_processors.openinhttps'
             ],
         },
     },
@@ -274,8 +277,8 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "*************"
-EMAIL_HOST_PASSWORD = "*************"
+EMAIL_HOST_USER = "****************"
+EMAIL_HOST_PASSWORD = "****************"
 
 
 ARE_YOU_USING_ENV = False
@@ -301,3 +304,4 @@ FLUTTER_WAVE_ENCRYPTION_KEY = 'FLWSECK_TEST5908b115537e'
 FLUTTER_PAYMENT_URL = 'https://api.flutterwave.com/v3/charges?type=mobile_money_franco'
 
 LOGIN_URL = '/andaal/accounts/login/'
+LOGIN_REDIRECT_URL = '/andaal/after-registration'
