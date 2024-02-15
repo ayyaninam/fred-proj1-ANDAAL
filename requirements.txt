@@ -10,7 +10,7 @@ django-haystack==3.2.1
 django-localflavor==3.1
 django-oscar==3.2.2
 -e django-oscar-paypal
-django-oscar-stripe-sca==0.3
+-e django_oscar_stripe_sca
 django-phonenumber-field==6.4.0
 django-tables2==2.3.4
 django-treebeard==4.7

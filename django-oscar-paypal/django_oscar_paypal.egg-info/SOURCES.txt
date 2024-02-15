@@ -40,6 +40,7 @@ paypal/migrations/0001_initial.py
 paypal/migrations/0002_auto_20190412_0732.py
 paypal/migrations/0003_expresscheckouttransaction.py
 paypal/migrations/0004_increase_max_char_length_status.py
+paypal/migrations/0005_alter_expresscheckouttransaction_id_and_more.py
 paypal/migrations/__init__.py
 paypal/payflow/__init__.py
 paypal/payflow/admin.py
@@ -50,11 +51,3 @@ paypal/payflow/models.py
 paypal/payflow/dashboard/__init__.py
 paypal/payflow/dashboard/apps.py
 paypal/payflow/dashboard/views.py
-paypal/templates/paypal/express/preview.html
-paypal/templates/paypal/express/dashboard/transaction_detail.html
-paypal/templates/paypal/express/dashboard/transaction_list.html
-paypal/templates/paypal/express_checkout/preview.html
-paypal/templates/paypal/express_checkout/dashboard/transaction_detail.html
-paypal/templates/paypal/express_checkout/dashboard/transaction_list.html
-paypal/templates/paypal/payflow/dashboard/transaction_detail.html
-paypal/templates/paypal/payflow/dashboard/transaction_list.html

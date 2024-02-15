@@ -1,5 +1,6 @@
 from oscar.apps.checkout.views import ShippingMethodView as ParentShippingMethodView
 from base.models import ShippingMethod
+
 class ShippingMethodView(ParentShippingMethodView):    
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)

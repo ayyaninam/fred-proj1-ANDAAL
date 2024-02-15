@@ -7,7 +7,7 @@ class CheckoutConfig(apps.CheckoutConfig):
     name = 'apps.checkout'
 
     def ready(self):
-        from oscar_stripe_sca import views as stripe_sca_views
+        from django_oscar_stripe_sca.oscar_stripe_sca import views as stripe_sca_views
         from oscar_with_flutterwave import views as fluter_wave_view
         super().ready()
         self.stripe_payment_details_view = stripe_sca_views.StripeSCAPaymentDetailsView
@@ -22,6 +22,8 @@ class CheckoutConfig(apps.CheckoutConfig):
         urls = super(CheckoutConfig, self).get_urls()
         urls += [
             path("stripe-payment-detail-view/", self.stripe_payment_details_view.as_view(), name="stripe_payment_details_view"),
+            path("preview-stripe/<int:basket_id>/", self.stripe_preview.as_view(preview=True), name="stripe-preview"),
+            path('payment-cancel/<int:basket_id>/', self.stripe_cancel_preview.as_view(), name='stripe-cancel'),
             path("flutter-wave-payment-detail-input/", self.flutter_wave_payment_detail_input.as_view(), name="flutter_wave_payment_detail_input"),
             path("flutter-wave-payment-detail-view/<int:basket_id>/", self.flutter_wave_payment_detail_view.as_view(), name="flutter_wave_payment_detail_view"),
         ]
