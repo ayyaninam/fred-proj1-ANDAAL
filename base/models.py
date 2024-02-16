@@ -8,14 +8,21 @@ from django.utils.translation import gettext_lazy as _
 # Oscar_Category = get_model('catalogue', 'Category')
 
 # Create your models here.
+class User(AbstractUser):
+    phone_number = PhoneNumberField(
+        _("Phone number"),
+        blank=True,
+        unique=True,
+    )
+    email = models.EmailField(_("email address"), unique=False, blank=True, null=True)
 
-# class User(AbstractUser):
-#     # pass
-#     phone_number = PhoneNumberField(
-#         _("Phone number"),
-#         blank=True,
-#         # help_text=_("In case we need to call you about your order"),
-#     )
+    def __str__(self):
+        if self.email:
+            return self.email
+        else:
+            return self.first_name
+        
+
 
 class MainMenu(models.Model):
     name= models.CharField(max_length=200, null=False, blank=False)

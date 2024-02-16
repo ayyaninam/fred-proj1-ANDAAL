@@ -84,15 +84,17 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
-    'base.apps.BaseConfig',
 
     # payment integrations
     'paypal',
     'oscar_with_flutterwave',
-    'django_oscar_stripe_sca'
+    'django_oscar_stripe_sca',
+    'base.apps.BaseConfig',
+
 ] 
 
 SITE_ID = 1
+AUTH_USER_MODEL = "base.User"
 
 
 
@@ -278,8 +280,8 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "**"
-EMAIL_HOST_PASSWORD = "**"
+EMAIL_HOST_USER = "****"
+EMAIL_HOST_PASSWORD = "****"
 
 
 ARE_YOU_USING_ENV = False

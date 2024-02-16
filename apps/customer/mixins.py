@@ -28,7 +28,10 @@ class RegisterUserMixin(ParentRegisterUserMixin):
         user_registered.send_robust(sender=self, request=self.request, user=user)
 
         if getattr(settings, "OSCAR_SEND_REGISTRATION_EMAIL", True):
-            self.send_registration_email(user)
+            if user.email.find("dummy.skip") != -1:
+                logger.warning("WE WILL SEND YOU AN SMS")
+            else:
+                self.send_registration_email(user)
 
         # We have to authenticate before login
         try:
