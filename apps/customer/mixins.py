@@ -10,8 +10,8 @@ from oscar.core.loading import get_class, get_model
 from oscar.apps.customer.mixins import RegisterUserMixin as ParentRegisterUserMixin
 User = get_user_model()
 CommunicationEventType = get_model("communication", "CommunicationEventType")
-CustomerDispatcher = get_class("customer.utils", "CustomerDispatcher")
-
+from .utils import CustomerDispatcher
+from . import views
 logger = logging.getLogger("oscar.customer")
 
 
@@ -28,8 +28,10 @@ class RegisterUserMixin(ParentRegisterUserMixin):
         user_registered.send_robust(sender=self, request=self.request, user=user)
 
         if getattr(settings, "OSCAR_SEND_REGISTRATION_EMAIL", True):
+            
             if user.email.find("dummy.skip") != -1:
                 logger.warning("WE WILL SEND YOU AN SMS")
+                views.send_message(str(user.phone_number), self.get_registration_email(user)['body'], settings.SMS_AUTH_SCRETE_KEY, settings.SMS_SENDER_PHONE_NUMBER)
             else:
                 self.send_registration_email(user)
 
@@ -66,3 +68,10 @@ class RegisterUserMixin(ParentRegisterUserMixin):
     def send_registration_email(self, user):
         extra_context = {"user": user, "request": self.request}
         CustomerDispatcher().send_registration_email_for_user(user, extra_context)
+
+    def get_registration_email(self, user):
+
+        # {'subject': 'Verify your Email', 'body': '', 'html': '<p>Please verify your email from this link: http://127.0.0.1:8000/andaal/verify-my-email/weafghkdsuyj@gmail.com/kyR2bHC8WtnUlqr7EIff3lGtGitfSn</p>', 'sms': ''}
+
+        extra_context = {"user": user, "request": self.request}
+        return CustomerDispatcher().get_registration_email_for_user(user, extra_context)

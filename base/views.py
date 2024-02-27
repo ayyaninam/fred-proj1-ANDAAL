@@ -1,24 +1,42 @@
 from django.shortcuts import render
 
 from django.conf import settings
-from oscar.core.loading import get_model
 from base.models import *
 from apps.catalogue.models import Category as Oscar_Category
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 from .all_currencies_avaialble import currencies as all_currencies_avaialble
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login as auth_login
-
-
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+import requests
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 User = get_user_model()
 # Product = get_model('catalogue', 'Product')
 # Create your views here.
+
+
+
+def schedule_task(request):
+    interval, _ = IntervalSchedule.objects.get_or_create(
+        every=259200,
+        period=IntervalSchedule.SECONDS,
+    )
+
+    PeriodicTask.objects.create(
+        interval=interval,
+        name="my-schedule",
+        task="base.tasks.my_task",
+        #args=json.dumps(["Arg1", "Arg2"])
+        #one_off=True
+    )
+
+    return HttpResponse("Task scheduled!")
+
 def homepage(request):
 
     book_category = Oscar_Category.objects.filter(main_book_category=True)
@@ -196,3 +214,17 @@ def verify_my_email(request, email, username):
         'final_str': final_str,
     }
     return render(request, 'base/verify_my_email.html', context)
+
+def get_euro_rate(request):
+    resp = requests.get(f'http://api.exchangeratesapi.io/v1/latest?access_key={settings.EXCHANGE_RATE_API_KEY}')
+    all_rates = RateOfEuro.objects.all()
+    
+    if all_rates.count() > 9:
+        for i in all_rates[9:]:
+            i.delete()
+
+    if resp.status_code == 200:
+        print("RUN")
+        RateOfEuro.objects.create(base="EUR", xaf_to_euro=float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}'])))
+
+    return JsonResponse(resp.json())

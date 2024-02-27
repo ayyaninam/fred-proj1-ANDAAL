@@ -1,10 +1,9 @@
 from django.db import models
-from oscar.core.loading import get_model
 from apps.catalogue.models import Category as Oscar_Category
 from oscar.apps.customer.abstract_models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
-
+from oscar.apps.address.models import Country as AddressCountry
 # Oscar_Category = get_model('catalogue', 'Category')
 
 # Create your models here.
@@ -12,10 +11,11 @@ class User(AbstractUser):
     phone_number = PhoneNumberField(
         _("Phone number"),
         blank=True,
-        unique=True,
     )
-    email = models.EmailField(_("email address"), unique=False, blank=True, null=True)
-
+    email = models.EmailField(_("email address"), blank=True, null=True, unique=True)
+    username = models.CharField(max_length=1000, null=True, blank=True)
+    
+    
     def __str__(self):
         if self.email:
             return self.email
@@ -110,6 +110,9 @@ class ShippingMethod(models.Model):
     charge_excl_tax = models.IntegerField(null=True, blank=True)
     charge_incl_tax = models.IntegerField(null=True, blank=True)
 
+    countries = models.ManyToManyField(
+        "address.Country", blank=True, related_name="Countries")
+
     def clean(self):
         if self.code:
             self.code = self.code.lower().strip().replace(" ", "")
@@ -117,6 +120,21 @@ class ShippingMethod(models.Model):
             self.code = None
             self.charge_excl_tax = None
             self.charge_incl_tax = None
+            self.countries.clear()
 
     def __str__(self) -> str:
         return self.name
+
+import datetime
+
+class RateOfEuro(models.Model):
+    base = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateField(_("Date"), default=datetime.date.today)
+    xaf_to_euro = models.FloatField(null=False, blank=False)
+
+    class Meta:
+       ordering = ['-date']
+
+
+    def __str__(self):
+        return f"XAF TO EURO is: {self.xaf_to_euro}"

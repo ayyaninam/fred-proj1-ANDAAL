@@ -19,9 +19,14 @@ Classifier: Programming Language :: Python :: 3.7
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
 Classifier: Topic :: Other/Nonlisted Topic
-Provides-Extra: oscar
 License-File: LICENSE
 License-File: AUTHORS
+Requires-Dist: django<4.2,>=2.2
+Requires-Dist: paypal-checkout-serversdk>=1.0.1
+Requires-Dist: requests>=2.26.0
+Requires-Dist: django-localflavor
+Provides-Extra: oscar
+Requires-Dist: django-oscar<4.0,>=2.0; extra == "oscar"
 
 ===============================
 PayPal package for django-oscar

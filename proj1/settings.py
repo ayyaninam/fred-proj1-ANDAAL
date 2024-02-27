@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
     'oscar.apps.partner.apps.PartnerConfig',
-    'oscar.apps.basket.apps.BasketConfig',
+    'apps.basket.apps.BasketConfig',
     'oscar.apps.payment.apps.PaymentConfig',
     'oscar.apps.offer.apps.OfferConfig',
     'oscar.apps.order.apps.OrderConfig',
@@ -90,7 +90,8 @@ INSTALLED_APPS = [
     'oscar_with_flutterwave',
     'django_oscar_stripe_sca',
     'base.apps.BaseConfig',
-
+    'django_celery_beat',
+    'django_celery_results',
 ] 
 
 SITE_ID = 1
@@ -255,33 +256,46 @@ MEDIA_ROOT=BASE_DIR / 'media'
 # PAYPAL_API_SIGNATURE = '...'
 
 SHOP_NAME = 'ANDAAL'
-
-
-
-
-
 OSCAR_HOMEPAGE = "/andaal/"
+
+# CHECKOUT SETTINGS 
+
+
+OSCAR_REQUIRED_ADDRESS_FIELDS = (
+    "first_name",
+    # "last_name",
+    "line1",
+    "line4",
+    # "postcode",
+    "country",
+    "phone_number"
+)
+
+
 
 # OScar SCA STRIP 
 OSCAR_DEFAULT_CURRENCY = 'XAF'
 STRIPE_CURRENCY= 'xaf'
+PAYPAL_CURRENCY = 'EUR'
+
+EXCHANGE_RATE_API_KEY = '482ad3a3cd25e4859b55acec3b2d25d5'
+SMS_AUTH_SCRETE_KEY = 'OU54bWFBczdYNUVoVDZCdktBeTlrTWpmOW9tblZnc1U6TnA2V1pjODJLc0VGRkRJcw=='
+SMS_SENDER_PHONE_NUMBER = '2473568273'
 
 STRIPE_SEND_RECEIPT =  True
 STRIPE_PUBLISHABLE_KEY= "pk_test_TYooMQauvdEDq54NiTphI7jx"
 STRIPE_SECRET_KEY= "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 STRIPE_RETURN_URL_BASE= 'http://127.0.0.1:8000/andaal/checkout/preview/'
 STRIPE_PAYMENT_SUCCESS_URL = "http://127.0.0.1:8000/andaal/checkout/preview-stripe/{}"
-STRIPE_PAYMENT_CANCEL_URL = "http://localhost:8000/andaal/checkout/payment-cancel/{}"
-
-
+STRIPE_PAYMENT_CANCEL_URL = "http://127.0.0.1:8000/andaal/basket/"
 
 
 EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "****"
-EMAIL_HOST_PASSWORD = "****"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 
 ARE_YOU_USING_ENV = False
@@ -294,10 +308,8 @@ PAYPAL_API_SIGNATURE = 'Ajzmr6eFvj3JSg2kZotkvdqdQbl8A9js1kfXGFUd4clbiVXvyxi3hzFq
 
 
 
-# OSCAR SETTING
+# PAYPAL SETTING
 PAYPAL_CALLBACK_HTTPS = False
-
-
 # FLUTTER WAVE DETAILS
 
 
@@ -308,3 +320,13 @@ FLUTTER_PAYMENT_URL = 'https://api.flutterwave.com/v3/charges?type=mobile_money_
 
 LOGIN_URL = '/andaal/accounts/login/'
 LOGIN_REDIRECT_URL = '/andaal/after-registration'
+
+
+
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_TIMEZONE = 'Asia/Karachi'

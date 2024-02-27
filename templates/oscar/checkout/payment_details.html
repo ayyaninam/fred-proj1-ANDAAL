@@ -18,49 +18,22 @@
 
 {% block payment_details %}
     {% block payment_details_content %}
-    <div id="all_payment_method_listed" class="d-flex justify-content-center align-center flex-column"></div>
+    <div id="all_payment_method_listed" class="d-flex justify-content-center align-center flex-column">
 
-    <script>
-        let all_payment_method_listed_div = document.getElementById('all_payment_method_listed')
 
-        let stripe_payment_html = 
-        `
         <a href="{% url 'checkout:stripe_payment_details_view' %}" class="btn btn-sm btn-warning rounded-pill w-50 mt-3 mx-auto p-3">
             <img style="width: 65px;" src="{% static 'payment/stripe_btn.png' %}">
         </a>
 
-        `
-        let paypal_payment_html = 
-        `
+
         <a class="btn btn-sm btn-warning rounded-pill w-50 mt-3 mx-auto p-3" href="{% url 'paypal-redirect' %}">
             <img src="{% static 'payment/paypal_btn.svg' %}" style="margin-right:7px;">
         </a>
 
-        `
-        let flutterwave_payment_html = 
-        `
+
         <a class="btn btn-sm btn-warning rounded-pill w-50 mt-3 mx-auto p-3 text-primary text-uppercase font-weight-bold lead" href="{% url 'checkout:flutter_wave_payment_detail_input' %}">FlutterFlow</a>
 
-        `
-
-
-
-        let payment_method_add = (currency_rec) => {
-            all_payment_method_listed_div.innerHTML += stripe_payment_html
-            if (currency_rec === 'XAF'){
-                all_payment_method_listed_div.innerHTML += flutterwave_payment_html
-            }else{
-                all_payment_method_listed_div.innerHTML += paypal_payment_html
-            }
-        }
-        let def_cur_local = localStorage.getItem('def_cur') 
-        if (def_cur_local){
-            payment_method_add(def_cur_local)
-        }else{
-            payment_method_add(`{{ OSCAR_DEFAULT_CURRENCY }}`)
-        }
-
-    </script>
+    </div>
 
     {% endblock payment_details_content %}
 {% endblock payment_details %}

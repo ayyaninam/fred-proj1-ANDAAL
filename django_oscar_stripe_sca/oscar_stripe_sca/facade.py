@@ -70,7 +70,7 @@ class Facade(object):
 
             }
         ]
-        basket.freeze()
+        # basket.freeze()
         session = stripe.checkout.Session.create(
             customer_email=basket.owner.email,
             payment_method_types=['card'],

@@ -20,7 +20,7 @@ from paypal.express.exceptions import (
     EmptyBasketException, InvalidBasket, MissingShippingAddressException, MissingShippingMethodException)
 from paypal.express.facade import confirm_transaction, fetch_transaction_details, get_paypal_url
 from paypal.express.gateway import buyer_pays_on_paypal
-
+from base.models import RateOfEuro
 # Load views dynamically
 PaymentDetailsView = get_class('checkout.views', 'PaymentDetailsView')
 CheckoutSessionMixin = get_class('checkout.session', 'CheckoutSessionMixin')
@@ -82,7 +82,7 @@ class RedirectView(CheckoutSessionMixin, RedirectView):
             # Transaction successfully registered with PayPal.  Now freeze the
             # basket so it can't be edited while the customer is on the PayPal
             # site.
-            basket.freeze()
+            # basket.freeze()
 
             logger.info("Basket #%s - redirecting to %s", basket.id, url)
 
@@ -91,12 +91,18 @@ class RedirectView(CheckoutSessionMixin, RedirectView):
     def _get_redirect_url(self, basket, **kwargs):
         if basket.is_empty:
             raise EmptyBasketException()
+        try:
+            rate_of_xaf_to_eur = RateOfEuro.objects.all().first().xaf_to_euro
+        except Exception as e:
+            messages.warning(self.request, "Sorry, Paypal Payment is Unavailable right now.")
+            return reverse('checkout:shipping-method')
+        
 
         params = {
             'basket': basket,
             'shipping_methods': []          # setup a default empty list
         }                                   # to support no_shipping
-
+        params['rate_of_xaf_to_eur'] = D(rate_of_xaf_to_eur)
         user = self.request.user
         if self.as_payment_method:
             if basket.is_shipping_required():
@@ -211,7 +217,7 @@ class SuccessResponseView(PaymentDetailsView):
     def load_frozen_basket(self, basket_id):
         # Lookup the frozen basket that this txn corresponds to
         try:
-            basket = Basket.objects.get(id=basket_id, status=Basket.FROZEN)
+            basket = Basket.objects.get(id=basket_id)
         except Basket.DoesNotExist:
             return None
 

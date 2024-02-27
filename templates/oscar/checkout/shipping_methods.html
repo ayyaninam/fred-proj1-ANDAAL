@@ -36,7 +36,7 @@
 <div style="display: none;" class="all_parts" id='{{parent.name}}___{{parent.id}}''>
     {% for method in methods %}
     {% if method.name in checkpoint_node|dict_key:parent.id %}
-    
+    {{basket.owner.address}}
         <div class="basket-items">
             <div class="row">
                 <div class="col-sm-8">

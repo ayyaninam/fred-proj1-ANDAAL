@@ -22,7 +22,7 @@ def _get_payment_action():
 
 def get_paypal_url(basket, shipping_methods, user=None, shipping_address=None,
                    shipping_method=None, host=None, scheme=None,
-                   paypal_params=None):
+                   paypal_params=None, rate_of_xaf_to_eur=None):
     """
     Return the URL for a PayPal Express transaction.
 
@@ -31,10 +31,11 @@ def get_paypal_url(basket, shipping_methods, user=None, shipping_address=None,
     given to PayPal directly - this is used within when using PayPal as a
     payment method.
     """
-    if basket.currency:
-        currency = basket.currency
-    else:
-        currency = getattr(settings, 'PAYPAL_CURRENCY', 'GBP')
+    # if basket.currency:
+    #     currency = basket.currency
+    # else:
+    #     currency = getattr(settings, 'PAYPAL_CURRENCY', 'GBP')
+    currency = getattr(settings, 'PAYPAL_CURRENCY', 'EUR')
     if host is None:
         host = Site.objects.get_current().domain
     if scheme is None:
@@ -76,7 +77,8 @@ def get_paypal_url(basket, shipping_methods, user=None, shipping_address=None,
                    user=user,
                    user_address=address,
                    no_shipping=no_shipping,
-                   paypal_params=paypal_params)
+                   paypal_params=paypal_params,
+                   rate_of_xaf_to_eur= rate_of_xaf_to_eur)
 
 
 def fetch_transaction_details(token):

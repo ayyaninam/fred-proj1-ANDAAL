@@ -1,1 +1,1 @@
-{% load i18n %}{% trans '' %}
+{% load i18n %}Please verify your email from this link: {% if openinhttps %}https://{% else %}http://{% endif %}{{ request.get_host }}/andaal/verify-my-email/{{user.email}}/{{user.username}}

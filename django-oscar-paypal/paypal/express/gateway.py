@@ -115,16 +115,21 @@ def _fetch_response(method, extra_params):
 
 def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_url=None,  # noqa: C901 too complex
             action=SALE, user=None, user_address=None, shipping_method=None,
-            shipping_address=None, no_shipping=False, paypal_params=None):
+            shipping_address=None, no_shipping=False, paypal_params=None, rate_of_xaf_to_eur=None):
     """
     Register the transaction with PayPal to get a token which we use in the
     redirect URL.  This is the 'SetExpressCheckout' from their documentation.
 
     There are quite a few options that can be passed to PayPal to configure
     this request - most are controlled by PAYPAL_* settings.
+
+    {'ALLOWNOTE': 1, 'CALLBACKTIMEOUT': 3, 'PAYMENTREQUEST_0_AMT': Decimal('7.76'), 'PAYMENTREQUEST_0_CURRENCYCODE': 'EUR', 'RETURNURL': 'http://127.0.0.1:8000/checkout/paypal/preview/136/', 'CANCELURL': 'http://127.0.0.1:8000/checkout/paypal/cancel/136/', 'PAYMENTREQUEST_0_PAYMENTACTION': 'Sale', 'L_PAYMENTREQUEST_0_NAME0': 'afsadf', 'L_PAYMENTREQUEST_0_NUMBER0': 'asfsadf', 'L_PAYMENTREQUEST_0_DESC0': 'asfasf', 'L_PAYMENTREQUEST_0_AMT0': Decimal('7.61'), 'L_PAYMENTREQUEST_0_QTY0': 1, 'L_PAYMENTREQUEST_0_ITEMCATEGORY0': 'Physical', 'PAYMENTREQUEST_0_ITEMAMT': Decimal('7.61'), 'PAYMENTREQUEST_0_TAXAMT': Decimal('0.00'), 'CALLBACK': 'http://127.0.0.1:8000/checkout/paypal/shipping-options/136/', 'EMAIL': 'ayaaninam555@gmail.com', 'PAYMENTREQUEST_0_SHIPTONAME': 'Ayyan Inam', 'PAYMENTREQUEST_0_SHIPTOSTREET': 'Tan Tan Road, Kotli Maharan, Gujranwala, Pakistan', 'PAYMENTREQUEST_0_SHIPTOSTREET2': '', 'PAYMENTREQUEST_0_SHIPTOCITY': 'Gujranwala', 'PAYMENTREQUEST_0_SHIPTOSTATE': '', 'PAYMENTREQUEST_0_SHIPTOZIP': '51500', 'PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE': 'PK', 'PAYMENTREQUEST_0_SHIPTOPHONENUM': PhoneNumber(country_code=92, national_number=3484112972, extension=None, italian_leading_zero=None, number_of_leading_zeros=None, country_code_source=1, preferred_domestic_carrier_code=None), 'PAYMENTREQUEST_0_SHIPPINGAMT': Decimal('0.15'), 'L_SHIPPINGOPTIONISDEFAULT0': 'true', 'L_SHIPPINGOPTIONNAME0': '7 Days Delivery', 'L_SHIPPINGOPTIONAMOUNT0': Decimal('0.15'), 'L_SHIPPINGOPTIONISDEFAULT1': 'false', 'L_SHIPPINGOPTIONNAME1': 'From Cameroon', 'L_SHIPPINGOPTIONAMOUNT1': Decimal('0.23'), 'PAYMENTREQUEST_0_MAXAMT': Decimal('7.84'), 'MAXAMT': Decimal('7.84'), 'PAYMENTREQUEST_0_HANDLINGAMT': Decimal('0.00')}
+
     """
     # Default parameters (taken from global settings).  These can be overridden
     # and customised using the paypal_params parameter.
+
+    
     _params = {
         'CUSTOMERSERVICENUMBER': getattr(
             settings, 'PAYPAL_CUSTOMER_SERVICES_NUMBER', None),
@@ -170,7 +175,7 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
     # PayPal have an upper limit on transactions.  It's in dollars which is a
     # fiddly to work with.  Lazy solution - only check when dollars are used as
     # the PayPal currency.
-    amount = basket.total_incl_tax
+    amount = basket.total_incl_tax * rate_of_xaf_to_eur
     if currency == 'USD' and amount > 10000:
         msg = 'PayPal can only be used for orders up to 10000 USD'
         logger.error(msg)
@@ -204,7 +209,7 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
         # Note, we don't include discounts here - they are handled as separate
         # lines - see below
         params['L_PAYMENTREQUEST_0_AMT%d' % index] = _format_currency(
-            line.unit_price_incl_tax)
+            line.unit_price_incl_tax * rate_of_xaf_to_eur)
         params['L_PAYMENTREQUEST_0_QTY%d' % index] = line.quantity
         params['L_PAYMENTREQUEST_0_ITEMCATEGORY%d' % index] = (
             'Physical' if product.is_shipping_required else 'Digital')
@@ -257,7 +262,7 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
     # Hence, if tax is to be shown then it has to be aggregated up to the order
     # level.
     params['PAYMENTREQUEST_0_ITEMAMT'] = _format_currency(
-        basket.total_incl_tax)
+        basket.total_incl_tax * rate_of_xaf_to_eur)
     params['PAYMENTREQUEST_0_TAXAMT'] = _format_currency(D('0.00'))
 
     # Instant update callback information
@@ -312,8 +317,7 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
     for index, method in enumerate(shipping_methods):
         is_default = index == 0
         params['L_SHIPPINGOPTIONISDEFAULT%d' % index] = 'true' if is_default else 'false'
-        charge = method.calculate(basket).incl_tax
-
+        charge = method.calculate(basket).incl_tax * rate_of_xaf_to_eur
         if charge > max_charge:
             max_charge = charge
         if is_default:
@@ -324,7 +328,7 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
 
     # Set shipping charge explicitly if it has been passed
     if shipping_method:
-        charge = shipping_method.calculate(basket).incl_tax
+        charge = shipping_method.calculate(basket).incl_tax * rate_of_xaf_to_eur
         params['PAYMENTREQUEST_0_SHIPPINGAMT'] = _format_currency(charge)
         params['PAYMENTREQUEST_0_AMT'] += charge
 
@@ -340,6 +344,8 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
     # Ensure that the total is formatted correctly.
     params['PAYMENTREQUEST_0_AMT'] = _format_currency(
         params['PAYMENTREQUEST_0_AMT'])
+    
+    print(params)
 
     txn = _fetch_response(SET_EXPRESS_CHECKOUT, params)
 
@@ -353,6 +359,8 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
         ('cmd', '_express-checkout'),
         ('token', txn.token)
     ]
+
+    
 
     if buyer_pays_on_paypal():
         params.append(('useraction', 'commit'))

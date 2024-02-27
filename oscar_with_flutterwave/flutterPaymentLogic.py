@@ -51,7 +51,7 @@ class Facade(object):
         site = Site.objects.get_current()
         line_items_summary = ", ".join(["{0}x{1}".format(l.quantity, l.product.title) for l in basket.lines.all()])
 
-        basket.freeze()
+        # basket.freeze()
         
         payload = {
             "tx_ref":str(uuid.uuid4()),

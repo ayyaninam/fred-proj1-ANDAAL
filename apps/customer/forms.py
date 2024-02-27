@@ -23,20 +23,8 @@ class EmailUserCreationForm(ParentEmailUserCreationForm):
         model = User
         fields = ('email', 'first_name', 'last_name', 'phone_number')
 
-    def clean_email(self):
-        """
-        Checks for existing users with the supplied email address.
-        """
-        email = normalise_email(self.cleaned_data["email"])
 
-        if email:
-            if User._default_manager.filter(email__iexact=email).exists():
-                raise forms.ValidationError(
-                    _("A user with that email address already exists")
-                )
-        return email
-
-    def clean_phone_number(self):
+    def clean(self):
         phone_number = self.cleaned_data.get("phone_number", "")
         email = self.cleaned_data.get("email", '')
         
@@ -48,21 +36,36 @@ class EmailUserCreationForm(ParentEmailUserCreationForm):
         if not (str(phone_number).startswith('+237')):
             if (email == ""):
                 self.add_error("email", "Please Provide us an Email, if you aren't use Cameroon +237 Phone Number")
-        
-        
+      
         if User._default_manager.filter(phone_number__iexact=phone_number).exists(): 
             raise forms.ValidationError(
                 _("A user with same Phone Number already exists")
             )
-        return phone_number
+        
+        if not email:
+            email = normalise_email(f"{self.cleaned_data.get('phone_number')}@dummy.skip")
+
+
+        self.cleaned_data.update({'email':email})
+
+    def clean_email(self):
+        """
+        Checks for existing users with the supplied email address.
+        """
+        email = normalise_email(self.cleaned_data["email"])
+
+        if (email!=""):
+            if User._default_manager.filter(email__iexact=email).exists():
+                raise forms.ValidationError(
+                    _("A user with that email address already exists")
+                )
+
+        return email
     
 
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
-
-        if not user.email:
-            user.email = normalise_email(f"{self.cleaned_data.get('phone_number')}@dummy.skip")
 
         if "username" in [f.name for f in User._meta.fields]:
             user.username = generate_username()
