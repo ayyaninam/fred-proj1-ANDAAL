@@ -5,7 +5,6 @@ urlpatterns = [
     path("schedule", views.schedule_task, name="schedule"), 
     path("get-euro-rate", views.get_euro_rate, name="get_euro_rate"), 
 
-    
     path('', views.homepage, name="homepage"),
     path('after-registration', views.after_registration, name="after_registration"),
     path('verify-my-email/<str:email>/<str:username>', views.verify_my_email, name="verify_my_email"),
@@ -16,5 +15,10 @@ urlpatterns = [
     path('culture/<int:category_id>', views.culture, name="culture"),
     path('culture-post/<int:post_id>', views.culture_post, name="culture_post"),
     path('create-payment-intent', views.create_payment_intent, name="create_payment_intent"),
-    path('stripedot', views.stripedot, name="stripedot")
+    path('stripedot', views.stripedot, name="stripedot"),
+
+
+
+    path('staging-homepage', views.stagehomepage, name="stagehomepage"),
+
 ]

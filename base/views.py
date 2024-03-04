@@ -39,19 +39,25 @@ def schedule_task(request):
 
 def homepage(request):
 
-    book_category = Oscar_Category.objects.filter(main_book_category=True)
     main_menus = MainMenu.objects.all()
-    if book_category:
-        book_category = book_category[0]
-    else:
-        book_category = None
-    
+    # own logic custom class name
+    class_names = []
+    current_working_class_name = "pink__to__bottom__gradient"
+    for index, i in enumerate(main_menus):
+        if index%2:
+            if current_working_class_name == "yellow__to__bottom__gradient":
+                current_working_class_name = "pink__to__bottom__gradient"
+            else:
+                current_working_class_name = "yellow__to__bottom__gradient"
+        class_names.append(current_working_class_name)
+
+    main_menus_wc = zip(main_menus, class_names)
+    # end own logic
     context = {
-        'book_category':book_category,
-        'main_menus':main_menus,
-        'all_currencies_avaialble':all_currencies_avaialble,
-        'default_currency':settings.OSCAR_DEFAULT_CURRENCY,
+        'main_menus_wc':main_menus_wc,
     }
+
+
     return render(request, "base/homepage.html", context)
 
 def textbook_language_section(request):
@@ -228,3 +234,7 @@ def get_euro_rate(request):
         RateOfEuro.objects.create(base="EUR", xaf_to_euro=float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}'])))
 
     return JsonResponse(resp.json())
+
+def stagehomepage(request):
+
+    return render(request, 'base/stagehomepage.html')

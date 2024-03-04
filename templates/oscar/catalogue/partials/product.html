@@ -5,7 +5,22 @@
 
 
 {% block product %}
-<article class="product_pod shadow-sm rounded">
+<article class="my-3 cursor-pointer product__card__article py-3 d-flex justify-content-center align-items-center flex-column">
+    {% with image=product.primary_image %}
+    {% oscar_thumbnail image.original "x155" upscale=False as thumb %}
+    <a class="cursor-pointer" >
+        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="prod__img rounded w-auto mx-auto my-2">
+    </a>
+    {% endwith %}
+
+    <a class="prod__headline text-dark cursor-pointer h3" href="{{ product.get_absolute_url }}"><span> {{ product.get_title|truncatewords:4 }}</span></a>
+    {% include "oscar/catalogue/partials/stock_record.html" %}
+</article>
+
+
+{% comment %}
+
+<article class="product_pod shadow-sm rounded ">
     {% block product_image %}
     <div class="image_container w-100">
         {% with image=product.primary_image %}
@@ -18,7 +33,7 @@
     {% endblock %}
 
 
-
+  
     {% block product_title %}
     <h3 class="mt-3">
         <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">
@@ -35,5 +50,10 @@
         {% endif %}
     </div>
     {% endblock %}
+
+
 </article>
+{% endcomment %}
+
+
 {% endblock %}

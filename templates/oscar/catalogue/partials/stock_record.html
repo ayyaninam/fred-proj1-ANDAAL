@@ -1,0 +1,48 @@
+{% load currency_filters %}
+{% load basket_tags %}
+
+{% load i18n %}
+{% load purchase_info_tags %}
+
+{% purchase_info_for_product request product as session %}
+
+
+{% if session.price.exists %}
+<p class="{{ session.availability.code }} availability">
+    {% if session.availability.is_available_to_buy %}
+        <i class="fas fa-check-circle"></i>
+    {% else %}
+        <i class="fas fa-ban text-danger"></i>
+    {% endif %}
+</p>
+{% else %}
+    <i class="fas fa-ban text-danger"></i>
+{% endif %}
+
+{% if session.price.exists %}
+    {% if session.price.excl_tax == 0 %}
+        <p class="price_color">{% trans "Free" %}</p>
+    {% elif session.price.is_tax_known %}
+        <p class="price_color">{{ session.price.incl_tax|currency:session.price.currency }}</p>
+    {% else %}
+        <p class="price_color">{{ session.price.excl_tax|currency:session.price.currency }}</p>
+    {% endif %}
+{% else %}
+    <p class="price_color">&nbsp;</p>
+{% endif %}
+{% if not showaddCart %}
+{% if not session.is_parent and not session.has_options %}
+<div class="add_to_cart__btn__under__prod">
+{% if session.availability.is_available_to_buy and session.price.exists %}
+    {% basket_form request product 'single' as basket_form %}
+    <form action="{% url 'basket:add' pk=product.pk %}" method="post">
+        {% csrf_token %}
+        {{ basket_form.as_p }}
+        <button type="submit" class="btn yellow__to__top__gradient rounded-pill border-0 btn-block" data-loading-text="{% trans 'Adding...' %}">{% trans "Add to basket" %}</button>
+    </form>
+{% else %}
+    <span class="btn yellow__to__top__gradient rounded-pill border-0 btn-block disabled">{% trans "Add to basket" %}</span>
+{% endif %}
+</div>
+{% endif %}
+{% endif %}

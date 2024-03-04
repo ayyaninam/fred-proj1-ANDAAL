@@ -1,0 +1,37 @@
+{% extends "oscar/layout.html" %}
+
+{% load history_tags %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "All reviews" %} | {{ product.title }} | {{ block.super }}
+{% endblock %}
+
+{% block headertext %}
+    {% trans "Customer reviews" %}
+{% endblock  %}
+
+{% block content %}
+
+    <section>
+        {% include 'oscar/catalogue/reviews/review_product.html' %}
+
+        {% if reviews %}
+            <form method="get" class="form-inline">
+                {% include "oscar/partials/form_fields_inline.html" with form=form %}
+                <button type="submit" class="btn btn-secondary">{% trans "Go" %}</button>
+            </form>
+
+            <hr>
+
+            {% for review in reviews %}
+                {% include 'oscar/catalogue/partials/review.html' %}
+            {% endfor %}
+            {% include 'oscar/partials/pagination.html' %}
+
+        {% else %}
+            <p>{% trans "This product does not have any reviews yet." %}</p>
+        {% endif %}
+
+    </section>
+{% endblock %}

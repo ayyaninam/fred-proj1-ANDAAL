@@ -8,10 +8,12 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    
     {% endblock %}
 
     {% block navbar_basket %}
-    <a class="btn btn-secondary float-right btn-cart ml-auto d-inline-block d-md-none"
+    <a class="btn pink__to__bottom__gradient border-0 rounded-pill float-right btn-cart ml-auto d-inline-block d-md-none"
         href="{% url 'basket:summary' %}">
         <i class="fas fa-shopping-cart"></i>
         {% trans "Basket" %}
@@ -28,21 +30,31 @@
         {% endif %}
     </a>
     {% endblock %}
-
+    
+  
     {% block navbar_collapse %}
     <div class="collapse navbar-collapse search__and__category__main__nav">
+        {% comment %}
+          
         <a class="url_no_link" onClick="javascript:history.go(-1);">
             <button class="btn btn-danger">
                 Back
             </button>
         </a>
+        {% endcomment %}
+
         {% category_tree as tree_categories %}
         {% if tree_categories %}
         {% for tree_category in tree_categories %}
         {% if tree_category.show_on_search_menu %}
+        {% comment %}
+          
         <a class="url_no_link" href="{{tree_category.get_absolute_url}}">
             <button class="btn btn-dark">{{ tree_category.name }}</button>
         </a>
+
+        {% endcomment %}
+
         {% endif %}
 
         {% endfor %}
@@ -51,13 +63,16 @@
 
 
 
-
+{% comment %}
+  
 
         {% block nav_extra %}
 
         {% include "oscar/partials/search.html" %}
 
         {% endblock %}
+        {% endcomment %}
+
     </div>
     {% endblock %}
 </nav>

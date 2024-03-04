@@ -4,7 +4,7 @@
 {% block title %}ANDAAL - Homepage{% endblock title %}
 {% block content %}
 <div class="main__div__hp">
-    <div class="upper__section__hp">
+    <!-- <div class="upper__section__hp">
         <a class="url_no_link" href="{% url 'homepage'%}">
             <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
         </a>
@@ -13,13 +13,16 @@
             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar bg-danger" style="width: 100%"></div>
         </div>
-    </div>
-    {% include "base/back_button.html" %}
-    <div class="lower__section__all__parts__hp">
+    </div> -->
+    {% comment %}{% include "base/back_button.html" %}{% endcomment %}
+
+    <div class="all__block__middle__main__menu lower__section__all__parts__hp d-flex justify-content-center align-items-center flex-wrap list-unstyled ">
         {% for language in all_languages %}
-        <a class="section" href="{% url 'class_categories' language.name %}">
-            <h3>{{language.name}}</h3>
-        </a>
+        {% if forloop.counter0|divisibleby:2 %}
+        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center pink__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{{language.name}}</a>
+        {% else %}
+        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center yellow__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{{language.name}}</a>
+        {% endif %}
         {% endfor %}
 
     </div>

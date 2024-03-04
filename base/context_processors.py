@@ -1,0 +1,33 @@
+from base.models import *
+
+def main_menus(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    main_menus = MainMenu.objects.all()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'main_menus': main_menus}
+
+def textBookcategories(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    textBookcategories = TextbooksCategories.objects.all()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'textBookcategories': textBookcategories}
+
+def educationCategories(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    educationCategories = EducationCategory.objects.all()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'educationCategories': educationCategories}
+
+def cultureCategories(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    cultureCategories = CultureCategory.objects.all()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'cultureCategories': cultureCategories}

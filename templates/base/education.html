@@ -10,24 +10,19 @@ ANDAAL - Culture
 {% endblock title %}
 {% block content %}
 
-<div class="main__div__hp">
-    <a class="upper__section__hp" href="{% url 'homepage'%}">
-        <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
-    </a>
-</div>
 {% if all_categories %}
-<div class="top__nav__menu">
+<div class="d-flex justify-content-center align-items-center my-5">
     {% for category in all_categories %}
     {% if category.id == active_category.id %}
-    <button class="btn btn-light">{{category.name}}</button>
+    <button class="pink__btn mx-2">{{category.name}}</button>
     {% else %}
     {% if "education" in request.path %}
     <a href="{% url 'education' category.id %}">
-        <button class="btn btn-outline-light">{{category.name}}</button>
+        <button class="yellow__btn mx-2">{{category.name}}</button>
     </a>
     {% elif "culture" in request.path %}
     <a href="{% url 'culture' category.id %}">
-        <button class="btn btn-outline-light">{{category.name}}</button>
+        <button class="yellow__btn mx-2">{{category.name}}</button>
     </a>
     {% endif %}
     {% endif %}
@@ -36,22 +31,24 @@ ANDAAL - Culture
 </div>
 {% endif %}
 
-{% include "base/back_button.html" %}
+{% comment %}{% include "base/back_button.html" %}{% endcomment %}
 
-{% if all_post %}
 <div class="d-flex justify-content-center align-items-stretch flex-wrap">
-{% for post in all_post %}
-<a class="card my-2 w-25 m-auto mx-2 url_no_link" style="min-width: 250px;" {% if "education" in request.path %}
+{% if all_post %}
+
+    {% for post in all_post %}
+    <a {% if "education" in request.path %}
     href="{% url 'education_post' post.id %}" {% elif "culture" in request.path %}
-    href="{% url 'culture_post' post.id %}" {% endif %}>
-    <img src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" class="card-img-top " alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{post.title|slice:"0:50"}}...</h5>
-        <p class="card-text">{{post.short_description|slice:"0:50"}}...</p>
-        <p class="card-text"><small class="text-body-secondary">{{post.date}}</small></p>
-    </div>
-</a>
+    href="{% url 'culture_post' post.id %}" {% endif %} class="cursor-pointer mx-2 no_underline card__edu_clu__main__single align-items-center text-center w-25 my-5" href="">
+        <img class="w-75 rounded my-4" src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
+        <h5 class="text-dark">{{post.title|slice:"0:25"}}...</h5>
+        <p class="text-dark text-muted">{{post.short_description|slice:"0:50"}}...</p>
+        <button href class="pink__btn my-2">Read more</button>
+    </a>
+
 {% endfor %}
 </div>
+{% else %}
+<h5 class="d-flex justify-content-center align-items-center main__menu__middle__btns pink__to__top__gradient text-dark">NO POST FOUND!</h5>
 {% endif %}
 {% endblock %}

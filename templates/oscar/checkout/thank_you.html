@@ -183,7 +183,7 @@
                 <h2>{% trans "Tracking your order" %}</h2>
             </div>
             <p>{% trans "You can track the status of your order" %}
-                <a class="btn btn-primary" href="{% url 'customer:anon-order' order_number=order.number hash=order.verification_hash %}">{% trans "View order status" %}</a>.</p>
+                <a class="btn yellow__to__bottom__gradient rounded-pill border-0" href="{% url 'customer:anon-order' order_number=order.number hash=order.verification_hash %}">{% trans "View order status" %}</a>.</p>
         {% endif %}
     {% endblock %}
 
@@ -192,10 +192,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-4">
-                    <p><a onclick="window.print()" href="#" class="btn btn-primary btn-block btn-lg">{% trans "Print this page" %}</a></p>
+                    <p><a onclick="window.print()" href="#" class="btn yellow__to__bottom__gradient rounded-pill border-0 btn-block btn-lg">{% trans "Print this page" %}</a></p>
                 </div>
                 <div class="col-sm-4 offset-sm-4">
-                    <p><a href="{% url 'homepage' %}" class="btn btn-primary btn-block btn-lg">{% trans "Continue shopping" %}</a></p>
+                    <p><a href="{% url 'homepage' %}" class="btn pink__to__bottom__gradient rounded-pill border-0 btn-block font-bold font-italic btn-lg">{% trans "Continue shopping" %}</a></p>
                 </div>
             </div>
         </div>

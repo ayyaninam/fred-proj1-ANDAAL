@@ -1,0 +1,109 @@
+
+
+:root {
+    --main-yellow-color: #f6c126;
+    --main-red-color: #e51230;
+    --main-black-color: #000000;
+}
+
+.main__div__hp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.main__div__hp .upper__section__hp .andaal__logo {
+    width: 200px;
+}
+
+.lower__section__all__parts__hp {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lower__section__all__parts__hp .section {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    background-color: var(--main-yellow-color);
+    border-radius: 10px;
+    /* padding: 40px 10px; */
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+
+    color: black;
+    text-decoration: none;
+}
+
+.lower__section__all__parts__hp .section span {
+    float: right;
+    font-size: 32px;
+}
+
+
+.andaal__logo__top__nav {
+    width: 100px;
+}
+
+.all__classes__section {
+    width: 80%;
+    margin: 20px 0;
+}
+
+.class__link__and__name {
+    text-decoration: none;
+}
+
+
+.all__classes__section .category__name__main__Div {
+    width: fit-content;
+}
+
+.top__nav__menu {
+    background-color: var(--main-red-color);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.url_no_link {
+    text-decoration: none;
+
+}
+
+.post__main__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.small_icons_task_main {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.small_icons_task_main .task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: var(--main-red-color);
+    cursor: pointer;
+}

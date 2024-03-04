@@ -29,17 +29,32 @@
 
 {% for parent in parents_node %}
 
-   <button class="w-50 p-2 btn-secondary rounded-pill mx-auto d-flex align-items-center justify-content-center my-3" onclick="shipment_toggler(`{{parent.name}}___{{parent.id}}`)">{{parent.name}}</button>
+{% if forloop.counter0|divisibleby:2%}
+<button class="shipping__parent__btns p-2 yellow__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3" data-toggle="modal" data-target="#modalof{{parent.name}}">{{parent.name}}</button>
+{% else %}
+<button class="shipping__parent__btns p-2 yellow__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3" data-toggle="modal" data-target="#modalof{{parent.name}}">{{parent.name}}</button>
 
+{% endif %}
 
-
-<div style="display: none;" class="all_parts" id='{{parent.name}}___{{parent.id}}''>
+<div class="modal fade" id="modalof{{parent.name}}" tabindex="-1" role="dialog"
+    aria-labelledby="modalof{{parent.name}}Title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-100 w-50" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{parent.name}}</h5>
+                <button class="btn shadow rounded-pill" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+<!-- <div style="display: none;" class="all_parts" id='{{parent.name}}___{{parent.id}}''> -->
+    <div class="modal-body p-5">
+    {% if methods %}
     {% for method in methods %}
     {% if method.name in checkpoint_node|dict_key:parent.id %}
     {{basket.owner.address}}
-        <div class="basket-items">
-            <div class="row">
-                <div class="col-sm-8">
+        <div class="basket-items basket-items0">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="">
                     <h4>{{ method.name }}</h4>
                     {% if method.description %}
                         <p>{{ method.description|safe }}</p>
@@ -54,7 +69,7 @@
                         </small>
                     {% endif %}
                 </div>
-                <div class="col-sm-1">
+                <div class="">
                     {% shipping_charge method basket as charge %}
                     {% if charge.is_tax_known %}
                         {{ charge.incl_tax|currency:basket.currency }}
@@ -62,20 +77,46 @@
                         {{ charge.excl_tax|currency:basket.currency }}
                     {% endif %}
                 </div>
-                <div class="col-sm-3">
+                <div class="">
                     <form method="post" action="{% url 'checkout:shipping-method' %}">
                         {% csrf_token %}
                         <input type="hidden" name="method_code" value="{{ method.code }}" />
-                        <button type="submit" class="btn btn-lg btn-primary float-right" data-loading-text="{% trans 'Submitting...' %}">{% trans "Select option" %}</button>
+                        <button type="submit" class="btn btn-lg pink__to__top__gradient rounded-pill border-0 float-right" data-loading-text="{% trans 'Submitting...' %}">{% trans "Select option" %}</button>
                     </form>
                 </div>
             </div>
         </div>
     {% endif %}
     {% endfor %}
-</div>
 
+
+    <div class="basket-items1 d-none">
+        <div class="row d-flex justify-content-between align-items-center">
+            <button class="font-italic font-bold py-2 px-5 pink__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3">Not Available</button>
+        </div>
+    </div>
+
+
+    {% endif %}
+
+
+    </div>
+<!-- </div> -->
+</div>
+</div>
+</div>
 <script>
+    window.addEventListener('load', function () {
+
+        if (document.getElementsByClassName('basket-items').length === 0){
+        console.log("first")
+        document.getElementsByClassName('basket-items1')[0].classList.remove('d-none')
+        document.getElementsByClassName('basket-items1')[0].classList.add('d-block')
+    }
+    })
+
+</script>
+<!-- <script>
     function shipment_toggler(e) {
         var part = document.getElementById(e);
         var all_parts = document.getElementsByClassName('all_parts')
@@ -88,7 +129,7 @@
             part.style.display = 'none'
         };
     }
-</script>
+</script> -->
 
 {% endfor %}
 

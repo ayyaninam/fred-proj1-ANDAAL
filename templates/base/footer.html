@@ -1,0 +1,26 @@
+{% load static %}
+<footer class="pink__to__top__gradient mt-5 px-5 footer___tag__main">
+    <div class="main__footer__on__baseline__main__menu">
+        <div class="left__side__footer__main w-25">
+            <img class="w-50" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nesciunt aperiam quae repellendus
+                expedita, labore asperiores distinctio ducimus. Ipsa consequatur blanditiis et iure.</p>
+        </div>
+        <div class="right__side__footer__main w-25">
+            <ul class="list-unstyled d-flex justify-content-around flex-column align-items-left w-75 my-0 mt-4">
+                
+                {% for main_menu in main_menus %}
+                {% if main_menu.redirect_to_link %}
+                <a href="{{main_menu.redirect_to_link}}" class="my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}} →</a>
+                {% else %}
+                <a href="{{main_menu.category_attached.get_absolute_url}}" class="my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}} →</a>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <ul class="base__line__details__footer list-unstyled d-flex justify-content-around align-items-center m-0 p-0 mt-5 ">
+        <li>+92 348 4112 972</li>
+        <li>abc@gmail.com</li>
+    </ul>
+</footer>

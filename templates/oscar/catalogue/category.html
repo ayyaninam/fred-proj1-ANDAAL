@@ -14,9 +14,9 @@
 <div class="page-header">
     {% if user.is_staff %}
     <a class="float-right d-none d-md-block" href="{% url 'dashboard:catalogue-category-update' pk=category.id %}">
-        <small><i class="fas fa-pencil-alt"></i> {% trans "Edit this category" %}</small></a>
+        <small class="yellow__btn text-dark"><i class="fas fa-pencil-alt"></i> {% trans "Edit this category" %}</small></a>
     {% endif %}
-    <h1>{% block headertext %}{{ category.name }}{% endblock %}</h1>
+    <h1 class="font-bold font-italic">{% block headertext %}{{ category.name }}{% endblock %}</h1>
 </div>
 {% endblock %}
 

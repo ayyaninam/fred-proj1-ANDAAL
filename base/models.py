@@ -4,6 +4,8 @@ from oscar.apps.customer.abstract_models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 from oscar.apps.address.models import Country as AddressCountry
+import datetime
+
 # Oscar_Category = get_model('catalogue', 'Category')
 
 # Create your models here.
@@ -11,10 +13,10 @@ class User(AbstractUser):
     phone_number = PhoneNumberField(
         _("Phone number"),
         blank=True,
+        null=True,
     )
     email = models.EmailField(_("email address"), blank=True, null=True, unique=True)
     username = models.CharField(max_length=1000, null=True, blank=True)
-    
     
     def __str__(self):
         if self.email:
@@ -27,8 +29,7 @@ class User(AbstractUser):
 class MainMenu(models.Model):
     name= models.CharField(max_length=200, null=False, blank=False)
     icons_link = models.TextField(max_length=200, null=True, blank=True, help_text='Please go to the link: fonts.google.com/icons and attach the code which is under the "Inserting the icon" menu after slecting the icon.')
-
-
+    
     redirect_to_link = models.CharField(max_length=1000, null=True, blank=True, help_text='Please write the url like /abc/abc/1, do not include any domain or IP address before the URL. This url will redirect users to this LINK. Please keep it blank if you want to attached any category to the main menu and select the category in below field(name "Category Attached")')
 
     category_attached = models.ForeignKey(Oscar_Category, null=True, blank=True, on_delete=models.CASCADE, help_text="Please choose the Category if you don't attach any redirect link, if you will attach the both, priority will be for Category field.")
@@ -109,9 +110,7 @@ class ShippingMethod(models.Model):
     code = models.CharField(max_length=250, null=True, blank=True, help_text="Please don't give any space in this field")
     charge_excl_tax = models.IntegerField(null=True, blank=True)
     charge_incl_tax = models.IntegerField(null=True, blank=True)
-
-    countries = models.ManyToManyField(
-        "address.Country", blank=True, related_name="Countries")
+    countries = models.ManyToManyField("address.Country", blank=True, related_name="Countries")
 
     def clean(self):
         if self.code:
@@ -122,10 +121,9 @@ class ShippingMethod(models.Model):
             self.charge_incl_tax = None
             self.countries.clear()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
-import datetime
 
 class RateOfEuro(models.Model):
     base = models.CharField(max_length=200, null=True, blank=True)
@@ -134,7 +132,6 @@ class RateOfEuro(models.Model):
 
     class Meta:
        ordering = ['-date']
-
 
     def __str__(self):
         return f"XAF TO EURO is: {self.xaf_to_euro}"

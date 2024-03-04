@@ -1,0 +1,18 @@
+{% extends "oscar/layout.html" %}
+{% load i18n %}
+
+{% block title %}
+    {{ review.title }} | {% trans "Reviews" %} | {{ product.title }} | {{ block.super }}
+{% endblock %}
+
+
+{% block headertext %}
+    {% trans "Customer reviews" %}
+{% endblock  %}
+
+{% block content %}
+    <section>
+        {% include 'oscar/catalogue/reviews/review_product.html' %}
+        {% include 'oscar/catalogue/partials/review.html' %}
+    </section>
+{% endblock %}

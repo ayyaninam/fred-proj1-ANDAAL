@@ -98,7 +98,6 @@ SITE_ID = 1
 AUTH_USER_MODEL = "base.User"
 
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -149,7 +148,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.checkout.context_processors.default_currency',
-                'apps.checkout.context_processors.openinhttps'
+                'apps.checkout.context_processors.openinhttps',
+                'base.context_processors.main_menus',
+                'base.context_processors.textBookcategories',
+                'base.context_processors.educationCategories',
+                'base.context_processors.cultureCategories',
             ],
         },
     },
@@ -208,7 +211,7 @@ USE_TZ = True
 STATIC_URL = 'andaal/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    os.path.join(BASE_DIR, 'static')
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -294,8 +297,8 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_USER = "***"
+EMAIL_HOST_PASSWORD = "***"
 
 
 ARE_YOU_USING_ENV = False

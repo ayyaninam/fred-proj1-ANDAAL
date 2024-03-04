@@ -1,0 +1,123 @@
+{% load static %}
+{% load newfilters %}
+
+
+<nav class="main__base__navbar p-5 d-flex justify-content-between align-items-center w-100 mb-3">
+    <a href="{% url 'homepage' %}">
+    <img  style="width: 100px;" src="{% static 'base/images/Logo_ANDAAL Background Removed.png' %}"
+        class="cursor-pointer" alt="">
+    </a> 
+    <ul class="all_main__menu__upper__display list-unstyled d-flex justify-content-around align-items-center w-75 my-0">
+
+        {% for main_menu in main_menus %}
+        <div>
+                {% if main_menu.redirect_to_link %}
+                <a value="main__menu__dropdown__main{{forloop.counter0}}" class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}} ↓</a>
+                {% else %}
+                <a href="{{main_menu.category_attached.get_absolute_url}}" value="main__menu__dropdown__main{{forloop.counter0}}"
+                class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}</a>
+
+
+                {% endif %}
+
+                {% if 'textbook' in main_menu.name|cut:" "|lower %}
+                <ul class="main__dropdown__ul{{forloop.counter0}}">
+                    {% for category in textBookcategories %}
+
+                    {% with previousLang=textBookcategories|previous:forloop.counter0 %}
+                        {% if forloop.first or category.language_associated != previousLang.language_associated %}
+                            <li class="pink__to__top__gradient">{{ category.language_associated.name }}</li>
+                        {% endif %}
+                    {% endwith %}
+                        
+                        <ul>
+                            <li>{{ category.name }}</li>
+                            <ul>
+                                {% for child_class in category.child_classes.all %}
+                                    <a href="{{child_class.products_category.get_absolute_url}}" class="text-dark no_underline d-block">{{ child_class.name }}</a>
+                                    <!-- Display child classes -->
+                                {% endfor %}
+                            </ul>
+                        </ul>
+                    {% endfor %}
+                </ul>
+
+                {% elif 'education' in main_menu.name|cut:" "|lower %}
+                <ul class="main__dropdown__ul{{forloop.counter0}}">
+                    {% for category in educationCategories %}
+                    <a class="text-dark no_underline d-block" href="{% url 'education' category.id %}">{{category.name}}</a>
+                    {% endfor %}
+                </ul>
+                {% elif 'culture' in main_menu.name|cut:" "|lower %}
+                <ul class="main__dropdown__ul{{forloop.counter0}}">
+                    {% for category in cultureCategories %}
+                    <a class="text-dark no_underline d-block" href="{% url 'culture' category.id %}">{{category.name}}</a>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+                {% endfor %}
+
+    </ul>
+    {% if request.user.is_authenticated %}
+    <div  class="account__holder d-flex justify-content-between align-items-center text-wrap text-dark m-0 p-2 cursor-pointer sign_in__btn rounded-pill">
+        <a class="no_underline text-dark text-wrap badge" href="{% url 'customer:summary' %}">
+        {{user.get_full_name|default:request.user.email}}
+    </a>
+{% if num_unread_notifications > 0 %}
+<a href="{% url 'customer:notifications-inbox' %}" class="d-flex sided_icon_with__account mt-2 mt-lg-0 ">
+<i class="far text-dark fa-user"></i>
+<span class="badge badge-warning text-danger">{{ num_unread_notifications }}</span>
+</a>
+{% else %}
+<a href="{% url 'customer:summary' %}" class="sided_icon_with__account mt-2 mt-lg-0">
+<i class="far text-dark fa-user"></i>
+</a>
+{% endif %}
+
+{% if user.is_staff or perms.partner.dashboard_access %}
+<a href="{% url 'dashboard:index' %}" class="sided_icon_with__account mt-2 mt-lg-0">
+    <i class="fas text-dark fa-list-ul"></i>
+</a>
+{% endif %}
+
+<a id="logout_link" href="{% url 'customer:logout' %}" class="sided_icon_with__account mt-2 mt-lg-0">
+<i class="fas text-dark fa-sign-out-alt"></i>
+</a>
+
+
+
+    
+    </div>
+
+
+    {% else %}
+    <a href="{% url 'customer:login' %}" class="font-bold font-italic btn bg-light m-0 p-2 cursor-pointer sign_in__btn">Sign in</a>
+    {% endif %}
+</nav>
+
+<script>
+    let main__menu__dropdown__main = document.getElementsByClassName('main__menu__dropdown__main')
+    for (let i of main__menu__dropdown__main) {
+        i.addEventListener('mouseover', (e) => {
+            try{i.innerHTML = i.innerHTML.replace('↓', '↑');}catch(e){};
+            try{
+            document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'block';
+        }catch(e){}
+        });
+        i.addEventListener('mouseout', (e) => {
+            i.innerHTML = i.innerHTML.replace('↑', '↓');
+            try{
+            document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'none';
+        }
+        catch(e){}
+        
+        });
+
+    };
+    let main__dropdown__ul = document.querySelectorAll('[class^=main__dropdown__ul]')
+    for (let i of main__dropdown__ul) {
+        i.addEventListener('mouseover', (e) => {i.style.display = 'block'})
+        i.addEventListener('mouseout', (e) => {i.style.display = 'none'})
+    };
+</script>

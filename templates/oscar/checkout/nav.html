@@ -1,7 +1,7 @@
 {% load i18n %}
 
-<nav class="navbar navbar-static-top nav-checkout navbar-expand-md navbar-dark bg-dark">
-    <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-static-top navbar__of__checkout__process nav-checkout navbar-expand-md  pink__to__bottom__gradient rounded-top">
+    <ul class="navbar-nav mr-auto ">
     {% spaceless %}
 
 
@@ -10,8 +10,8 @@
     <li class="nav-item stepback">
 <a href="{% url 'basket:summary' %}">
 
-        <span class="navbar-text btn btn-sm btn-warning rounded-pill text-dark">
-            {% trans "Back to Basket" %}
+        <span class="navbar-text btn btn-sm font-bold yellow__to__bottom__gradient border-0 rounded-pill text-dark">
+            ← <i class="fa fa-shopping-basket"></i>
         </span>
     </a>
     </li>
