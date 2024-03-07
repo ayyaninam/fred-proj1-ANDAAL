@@ -16,6 +16,8 @@
 }
 
 
+
+
 .pink__to__bottom__gradient {
     background-image: linear-gradient(to bottom, var(--pink-color), var(--white-color));
 }
@@ -159,16 +161,22 @@
     backdrop-filter: blur(6.8px);
     -webkit-backdrop-filter: blur(6.8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 20rem;
 }
 
 
 .card__edu_clu__main__single img{
-    transition: width 0.6s linear; /* Removed semicolon */
+    transition: transform 0.6s linear; /* Removed semicolon */
   }
 
 .card__edu_clu__main__single:hover img{
-width: 80% !important;
+    transform: scale(1.1);
   }
+
+  .main__edu__section{
+    padding: 3rem;
+  }
+
 
 .sided_icon_with__account{
     background-color: rgb(255, 255, 255);
@@ -311,6 +319,7 @@ color: rgb(0, 0, 0);
 
 }
 
+
 @media only screen and (max-width: 1000px){
   .main__base__navbar{
     padding: 3rem 1rem !important;
@@ -337,6 +346,9 @@ color: rgb(0, 0, 0);
     }
     .modal .modal-dialog{
         width: 100% !important;
+    }
+    .main__edu__section{
+        padding: 1rem;
     }
 
 }
@@ -438,5 +450,26 @@ color: rgb(0, 0, 0);
     .container .page_inner{
         padding: 5px;
     }
+    .card__edu_clu__main__single{
+        width: 90%;
+    }
+    .card__edu_clu__main__single img{
+        width: 100%;
+    }
+    .main__edu__section{
+        padding: 0;
+    }
+
+
+}
+@media only screen and (min-width: 1920px){
+    body{
+        max-width: 1920px;
+        margin: 0 auto !important;
+    }
+    footer{
+        max-width: 1920px;
+    }
+
 
 }

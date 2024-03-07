@@ -11,10 +11,10 @@ ANDAAL - Culture
 {% block content %}
 
 {% if all_categories %}
-<div class="d-flex justify-content-center align-items-center my-5">
+<div class="d-flex justify-content-center align-items-center my-5 flex-wrap px-5">
     {% for category in all_categories %}
     {% if category.id == active_category.id %}
-    <button class="pink__btn mx-2">{{category.name}}</button>
+    <button class="text-wrap text-break pink__btn mx-2">{{category.name}}</button>
     {% else %}
     {% if "education" in request.path %}
     <a href="{% url 'education' category.id %}">
@@ -22,7 +22,7 @@ ANDAAL - Culture
     </a>
     {% elif "culture" in request.path %}
     <a href="{% url 'culture' category.id %}">
-        <button class="yellow__btn mx-2">{{category.name}}</button>
+        <button class="text-wrap text-break yellow__btn mx-2">{{category.name}}</button>
     </a>
     {% endif %}
     {% endif %}
@@ -33,13 +33,13 @@ ANDAAL - Culture
 
 {% comment %}{% include "base/back_button.html" %}{% endcomment %}
 
-<div class="d-flex justify-content-center align-items-stretch flex-wrap">
+<div class="d-flex justify-content-center align-items-stretch flex-wrap main__edu__section">
 {% if all_post %}
 
     {% for post in all_post %}
     <a {% if "education" in request.path %}
     href="{% url 'education_post' post.id %}" {% elif "culture" in request.path %}
-    href="{% url 'culture_post' post.id %}" {% endif %} class="cursor-pointer mx-2 no_underline card__edu_clu__main__single align-items-center text-center w-25 my-5" href="">
+    href="{% url 'culture_post' post.id %}" {% endif %} class="cursor-pointer mx-2 no_underline card__edu_clu__main__single align-items-center text-center my-3" href="">
         <img class="w-75 rounded my-4" src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
         <h5 class="text-dark">{{post.title|slice:"0:25"}}...</h5>
         <p class="text-dark text-muted">{{post.short_description|slice:"0:50"}}...</p>
