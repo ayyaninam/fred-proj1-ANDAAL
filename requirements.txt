@@ -19,8 +19,8 @@ django-extra-views==0.14.0
 django-haystack==3.2.1
 django-localflavor==3.1
 django-oscar==3.2.2
--e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@b311672d14a8d723631b26972295fdf615e902ad#egg=django_oscar_paypal&subdirectory=django-oscar-paypal
--e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@b311672d14a8d723631b26972295fdf615e902ad#egg=django_oscar_stripe_sca&subdirectory=django_oscar_stripe_sca
+-e django-oscar-paypal
+-e django_oscar_stripe_sca
 django-phonenumber-field==6.4.0
 django-tables2==2.3.4
 django-timezone-field==6.1.0
