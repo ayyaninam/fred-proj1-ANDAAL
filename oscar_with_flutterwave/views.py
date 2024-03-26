@@ -35,6 +35,7 @@ class FlutterWavePaymentDetail(CorePaymentDetailsView):
 
     def get_context_data(self, **kwargs):
         ctx = super(FlutterWavePaymentDetail, self).get_context_data(**kwargs)
+        print(self.request.user)
         # print(ctx)
         flutter_payload = Facade().begin(
             ctx["basket"],

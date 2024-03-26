@@ -11,22 +11,42 @@
         {% if final_str == 'Congrats' %}
         <button class="mb-3 btn btn-success d-flex justify-content-center align-items-center m-auto">{{final_str}}</button>
         {% else %}
+
         <button class="mb-3 btn btn-danger d-flex justify-content-center align-items-center m-auto">{{final_str}}</button>
         {% endif %}
         
+        {% if final_str == 'Congrats' %}
         <h4 class="text-center mb-5">
-            {% if final_str == 'Congrats' %}
             Your Email has been Verified.
-            {% else %}
-            We can't verify your Email.
-            {% endif %}
         </h4>
+
+            {% else %}
+        <h4 class="text-center mb-5 text-muted">
+
+            We can't verify your Email.
+            </h4>
+            {% endif %}
+        <small class="text-center mb-5 mx-auto d-flex justify-content-center align-items-center">
+            {% if final_str == 'Congrats' %}
+            Redirecting...
+            {% endif %}
+        </small>
+        {% if final_str != 'Congrats' %}
+
+
         <div class="mt-5 d-flex justify-content-around align-items-center">
-            <a href="{% url 'homepage' %}" class="btn btn-danger">Home</a>
-            <a href="{% url 'customer:login' %}" class="btn btn-warning">Login</a>
-            <a href="{% url 'customer:login' %}" class="btn btn-dark">Register</a>
+            <a href="{% url 'homepage' %}" class="pink__btn text-dark no_underline">OK</a>
         </div>
+        {% endif %}
     </div>
 
 </div>
+<script>
+    
+    setTimeout(() => {
+        var redirect_url = '{{return_url}}'
+        window.location.replace(redirect_url);
+    }, 3000);
+    
+</script>
 {% endblock %}

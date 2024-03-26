@@ -1,6 +1,14 @@
 {% load i18n %}
 
 <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search:search' %}">
+    {% if not show %}
     <input class="rounded-pill form-control mr-sm-2" name="q" placeholder="{% trans 'Search' %}" aria-label="{% trans 'Search' %}">
-    <button class="rounded-pill pink__btn my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+
+    <button class="rounded-pill pink__btn my-2 my-sm-0 mx-2" type="submit">{% trans "Search" %}</button>
+    {% else %}
+    <input class="rounded-pill form-control mr-sm-2 " name="q" placeholder="{% trans 'Search' %}" aria-label="{% trans 'Search' %}">
+    <button class="rounded-pill pink__btn my-2 my-sm-0 mx-2" type="submit">
+        <i class="fa fa-search"></i>
+    </button>
+    {% endif %}
 </form>

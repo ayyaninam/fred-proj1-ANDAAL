@@ -62,7 +62,7 @@
             {% endif %}
         </li>
 
-        <li class="nav-item step4 {% if step == 4 %}active{% else %}disabled{% endif %} ">
+        <li class="nav-item step4 {% if step == 3 %}active{% else %}{% if step == 4 %}previous{% else %}{% if step > 3 %}visited{% else %}disabled{% endif %}{% endif %}{% endif %} ">
             <span class="navbar-text">
                 {% trans "4. Preview" %}
             </span>

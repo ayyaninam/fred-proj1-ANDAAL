@@ -1,123 +1,238 @@
 {% load static %}
 {% load newfilters %}
 
-
-<nav class="main__base__navbar p-5 d-flex justify-content-between align-items-center w-100 mb-3">
-    <a href="{% url 'homepage' %}">
-    <img  style="width: 100px;" src="{% static 'base/images/Logo_ANDAAL Background Removed.png' %}"
-        class="cursor-pointer" alt="">
-    </a> 
-    <ul class="all_main__menu__upper__display list-unstyled d-flex justify-content-around align-items-center w-75 my-0">
-
-        {% for main_menu in main_menus %}
-        <div>
+<nav class="main__base__navbar d-flex w-100 mb-3">
+    <a class="desktop__element__nav" href="{% url 'homepage' %}">
+        <img title="Home Page" style="width: 60px;" src="{% static 'base/images/Logo_ANDAAL Background Removed.png' %}"
+            class="cursor-pointer" alt="" >
+    </a>
+    <ul
+        class=" desktop__element__nav_f all_main__menu__upper__display list-unstyled  align-items-center w-75 my-0 flex-column">
+        <div class="all_main_m__upper__form">{% include "oscar/partials/search.html" with show=1 %}</div>
+        <div class="w-100 d-flex justify-content-around align-items-center second_under_all_main_menu">
+            {% for main_menu in main_menus %}
+            <div>
                 {% if main_menu.redirect_to_link %}
-                <a value="main__menu__dropdown__main{{forloop.counter0}}" class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}} ↓</a>
+                <a value="main__menu__dropdown__main{{forloop.counter0}}"
+                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}
+                    ↓</a>
                 {% else %}
-                <a href="{{main_menu.category_attached.get_absolute_url}}" value="main__menu__dropdown__main{{forloop.counter0}}"
-                class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}</a>
+                <a href="{{main_menu.category_attached.get_absolute_url}}"
+                    value="main__menu__dropdown__main{{forloop.counter0}}"
+                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}</a>
 
 
                 {% endif %}
-
                 {% if 'textbook' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in textBookcategories %}
-
                     {% with previousLang=textBookcategories|previous:forloop.counter0 %}
-                        {% if forloop.first or category.language_associated != previousLang.language_associated %}
-                            <li class="pink__to__top__gradient">{{ category.language_associated.name }}</li>
+                    {% if forloop.first or category.language_associated != previousLang.language_associated %}
+                    <ul>
+                        <li class="pink__to__top__gradient caret">{{ category.language_associated.name }}</li>
                         {% endif %}
-                    {% endwith %}
-                        
-                        <ul>
-                            <li>{{ category.name }}</li>
-                            <ul>
+                        {% endwith %}
+
+                        <ul class="nested__tree__list">
+                            <li class="caret">{{ category.name }}</li>
+                            <ul class="nested__tree__list">
                                 {% for child_class in category.child_classes.all %}
-                                    <a href="{{child_class.products_category.get_absolute_url}}" class="text-dark no_underline d-block">{{ child_class.name }}</a>
-                                    <!-- Display child classes -->
+                                <a href="{{child_class.products_category.get_absolute_url}}"
+                                    class="text-dark no_underline d-block">{{ child_class.name }}</a>
+                                <!-- Display child classes -->
                                 {% endfor %}
                             </ul>
                         </ul>
+                        {% with nextLang=textBookcategories|next:forloop.counter0 %}
+                        {% if category.language_associated != nextLang.language_associated %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
                     {% endfor %}
                 </ul>
 
                 {% elif 'education' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in educationCategories %}
-                    <a class="text-dark no_underline d-block" href="{% url 'education' category.id %}">{{category.name}}</a>
+                    <a class="text-dark no_underline d-block"
+                        href="{% url 'education' category.id %}">{{category.name}}</a>
                     {% endfor %}
                 </ul>
                 {% elif 'culture' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in cultureCategories %}
-                    <a class="text-dark no_underline d-block" href="{% url 'culture' category.id %}">{{category.name}}</a>
+                    <a class="text-dark no_underline d-block"
+                        href="{% url 'culture' category.id %}">{{category.name}}</a>
                     {% endfor %}
                 </ul>
                 {% endif %}
             </div>
-                {% endfor %}
-
+            {% endfor %}
+        </div>
     </ul>
     {% if request.user.is_authenticated %}
-    <div  class="account__holder d-flex justify-content-between align-items-center text-wrap text-dark m-0 p-2 cursor-pointer sign_in__btn rounded-pill">
-        <a class="no_underline text-dark text-wrap badge" href="{% url 'customer:summary' %}">
-        {{user.get_full_name|default:request.user.email}}
-    </a>
-{% if num_unread_notifications > 0 %}
-<a href="{% url 'customer:notifications-inbox' %}" class="d-flex sided_icon_with__account mt-2 mt-lg-0 ">
-<i class="far text-dark fa-user"></i>
-<span class="badge badge-warning text-danger">{{ num_unread_notifications }}</span>
-</a>
-{% else %}
-<a href="{% url 'customer:summary' %}" class="sided_icon_with__account mt-2 mt-lg-0">
-<i class="far text-dark fa-user"></i>
-</a>
-{% endif %}
+    <div
+        class=" desktop__element__nav_f account__holder justify-content-between align-items-center text-wrap text-dark m-0 px-2 py-2 cursor-pointer sign_in__btn rounded-pill flex-column ">
 
-{% if user.is_staff or perms.partner.dashboard_access %}
-<a href="{% url 'dashboard:index' %}" class="sided_icon_with__account mt-2 mt-lg-0">
-    <i class="fas text-dark fa-list-ul"></i>
-</a>
-{% endif %}
+        <a title="Profile" class="no_underline text-dark text-wrap badge mb-2" href="{% url 'customer:summary' %}">
+            {{user.get_full_name|default:request.user.email}}
+        </a>
+        <div>
+            {% if num_unread_notifications > 0 %}
+            <a href="{% url 'customer:notifications-inbox' %}"
+                class="d-flex sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0 ">
+                <i class="far text-dark fa-user" title="Notfications"></i>
+                <span class="badge badge-warning text-danger">{{ num_unread_notifications }}</span>
+            </a>
+            {% else %}
+            <a href="{% url 'customer:summary' %}"
+                class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
+                <i class="far text-dark fa-user" title="Profile"></i>
+            </a>
+            {% endif %}
 
-<a id="logout_link" href="{% url 'customer:logout' %}" class="sided_icon_with__account mt-2 mt-lg-0">
-<i class="fas text-dark fa-sign-out-alt"></i>
-</a>
+            {% if user.is_staff or perms.partner.dashboard_access %}
+            <a href="{% url 'dashboard:index' %}"
+                class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
+                <i class="fas text-dark fa-list-ul" title="Dashboard"></i>
+            </a>
+            {% endif %}
 
-
-
-    
+            <a id="logout_link" href="{% url 'customer:logout' %}"
+                class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
+                <i class="fas text-dark fa-sign-out-alt" title="Sign Out"></i>
+            </a>
+        </div>
     </div>
 
 
     {% else %}
-    <a href="{% url 'customer:login' %}" class="font-bold font-italic btn bg-light m-0 p-2 cursor-pointer sign_in__btn">Sign in</a>
+    <a href="{% url 'customer:login' %}"
+        class="desktop__element__nav font-bold font-italic btn bg-light m-0 px-3 py-2 cursor-pointer sign_in__btn">Sign
+        in</a>
     {% endif %}
+
+
+    <span class="mobile__hemburger">
+        <i class="fa fa-bars h1"></i>
+    </span>
+
+
 </nav>
 
 <script>
+
     let main__menu__dropdown__main = document.getElementsByClassName('main__menu__dropdown__main')
     for (let i of main__menu__dropdown__main) {
         i.addEventListener('mouseover', (e) => {
-            try{i.innerHTML = i.innerHTML.replace('↓', '↑');}catch(e){};
-            try{
-            document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'block';
-        }catch(e){}
+            try { i.innerHTML = i.innerHTML.replace('↓', '↑'); } catch (e) { };
+            try {
+                document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'block';
+            } catch (e) { }
         });
         i.addEventListener('mouseout', (e) => {
             i.innerHTML = i.innerHTML.replace('↑', '↓');
-            try{
-            document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'none';
-        }
-        catch(e){}
-        
+            try {
+                document.getElementsByClassName(`main__dropdown__ul${e.target.getAttribute('value').split('main__menu__dropdown__main')[1]}`)[0].style.display = 'none';
+            }
+            catch (e) { }
+
         });
 
     };
+
     let main__dropdown__ul = document.querySelectorAll('[class^=main__dropdown__ul]')
     for (let i of main__dropdown__ul) {
-        i.addEventListener('mouseover', (e) => {i.style.display = 'block'})
-        i.addEventListener('mouseout', (e) => {i.style.display = 'none'})
+        i.addEventListener('mouseover', (e) => { i.style.display = 'block' })
+        i.addEventListener('mouseout', (e) => { i.style.display = 'none' })
     };
+
+    let desktop__element__nav = document.querySelectorAll("[class*=desktop__element__nav]")
+
+    let mobile__hemburger = document.getElementsByClassName('mobile__hemburger')[0]
+    mobile__hemburger.addEventListener('click', function () {
+        for (let i of desktop__element__nav) {
+            if (i.classList.contains("desktop__element__nav_f")) {
+                if (i.classList.contains("d-flex")) {
+                    i.classList.add('d-none')
+                    i.classList.remove('d-flex')
+                } else {
+                    i.classList.add('d-flex')
+                    i.classList.remove('d-none')
+                }
+
+            } else {
+                if (i.classList.contains("d-block")) {
+                    i.classList.add('d-none')
+                    i.classList.remove('d-block')
+                } else {
+                    i.classList.add('d-block')
+                    i.classList.remove('d-none')
+                }
+            };
+        };
+    });
+
+    var toggler = document.getElementsByClassName("caret");
+
+    for (let i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function () {
+            let all_ul_under = this.parentElement.querySelectorAll(":scope > .nested__tree__list")
+            if (all_ul_under) {
+                for (let j of all_ul_under) {
+                    j.classList.toggle("active__tree_list");
+                };
+            };
+            this.classList.toggle("caret-down");
+        });
+    }
+
+
+
+
+    // add hide and seek btn
+
+
+    // Function to create and append the password toggle button
+    function createPasswordToggleButton(inputField) {
+        var toggleButton = document.createElement('button');
+        toggleButton.type = "button";
+        toggleButton.style.float = 'right'
+        toggleButton.style.position = 'relative'
+        toggleButton.style.top = '-2rem'
+
+        toggleButton.classList.add('password-toggle', 'rounded-circle', 'border-0', 'bg-transparent', 'h-100', 'mr-2');
+
+        var icon = document.createElement('i');
+        icon.classList.add('fa', 'fa-eye',); // Font Awesome icon class
+
+        toggleButton.appendChild(icon);
+
+        // Add click event listener to toggle password visibility
+        toggleButton.addEventListener('click', function () {
+            togglePasswordVisibility(inputField);
+        });
+
+        // Insert the toggle button after the password input field
+        inputField.parentNode.insertBefore(toggleButton, inputField.nextSibling);
+    }
+
+    // Function to toggle password visibility
+    function togglePasswordVisibility(inputField) {
+        if (inputField.type === "password") {
+            inputField.type = "text";
+        } else {
+            inputField.type = "password";
+        }
+    }
+
+    // Get all password input fields
+    // Add password toggle button for each password input field
+    window.onload = function () {
+        var passwordFields = document.querySelectorAll('input[type="password"]');
+        passwordFields.forEach(function (field) {
+            createPasswordToggleButton(field);
+        });
+    }
+
 </script>

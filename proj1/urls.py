@@ -20,7 +20,7 @@ urlpatterns = [
     # path('^checkout/paypal/', include('paypal.express.urls')),
     path('checkout/paypal/', include('paypal.express.urls')),
     path('andaal/admin/', admin.site.urls),
-    path('andaal/', include('base.urls')),
+    path('andaal/', include('base.urls'), name='base'),
     path('andaal/', include(apps.get_app_config('oscar').urls[0])),
 ]
 

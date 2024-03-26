@@ -19,6 +19,7 @@ class ShippingMethodView(ParentShippingMethodView):
 
         kwargs['checkpoint_node'] = checkpoint_node
         kwargs['parents_node'] = parents_node
+        print(parents_node)
         return kwargs
     
     def get_form_kwargs(self):

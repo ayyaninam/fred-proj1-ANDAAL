@@ -26,7 +26,7 @@
     </div>
 </div>
 
-
+{% if parents_node %}
 {% for parent in parents_node %}
 
 {% if forloop.counter0|divisibleby:2%}
@@ -48,9 +48,12 @@
             </div>
 <!-- <div style="display: none;" class="all_parts" id='{{parent.name}}___{{parent.id}}''> -->
     <div class="modal-body p-5">
+
+
     {% if methods %}
     {% for method in methods %}
     {% if method.name in checkpoint_node|dict_key:parent.id %}
+
     {{basket.owner.address}}
         <div class="basket-items basket-items0">
             <div class="row d-flex justify-content-between align-items-center">
@@ -90,15 +93,10 @@
     {% endfor %}
 
 
-    <div class="basket-items1 d-none">
-        <div class="row d-flex justify-content-between align-items-center">
-            <button class="font-italic font-bold py-2 px-5 pink__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3">Not Available</button>
-        </div>
-    </div>
+
 
 
     {% endif %}
-
 
     </div>
 <!-- </div> -->
@@ -116,21 +114,23 @@
     })
 
 </script>
-<!-- <script>
-    function shipment_toggler(e) {
-        var part = document.getElementById(e);
-        var all_parts = document.getElementsByClassName('all_parts')
-        for (let i of all_parts){
-            i.style.display = 'none'
-        }
-        if (part.style.display === 'none'){
-            part.style.display = 'block'
-        }else{
-            part.style.display = 'none'
-        };
-    }
-</script> -->
+
 
 {% endfor %}
+
+{% else %}
+
+<div class="basket-items1">
+    <p class="text-center text-danger my-3">Sorry! The Shipping isn't available for your country.</p>
+    <div class="row d-flex justify-content-between align-items-center">
+        <button onclick="window.history.back();" class="not_available__shipping font-italic font-bold py-2 px-5 yellow__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3">
+            ← <span class="under__text font-italic font-bold mx-2">Not Available</span>
+            <span class="under__text2 font-italic font-bold mx-2">Back</span>
+        </button>
+    </a>
+    </div>
+</div>
+
+{% endif %}
 
 {% endblock shipping_method %}

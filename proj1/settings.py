@@ -47,13 +47,13 @@ INSTALLED_APPS = [
     'oscar.apps.analytics.apps.AnalyticsConfig',
     # Start Changed
     'apps.checkout.apps.CheckoutConfig',
+    'apps.communication.apps.CommunicationConfig',
     # End Changed
 
     'oscar.apps.address.apps.AddressConfig',
     'apps.shipping.apps.ShippingConfig',
     'apps.catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
-    'oscar.apps.communication.apps.CommunicationConfig',
     'oscar.apps.partner.apps.PartnerConfig',
     'apps.basket.apps.BasketConfig',
     'oscar.apps.payment.apps.PaymentConfig',
@@ -153,6 +153,8 @@ TEMPLATES = [
                 'base.context_processors.textBookcategories',
                 'base.context_processors.educationCategories',
                 'base.context_processors.cultureCategories',
+                'base.context_processors.footerdetails',
+                'base.context_processors.homepage_url',
             ],
         },
     },
@@ -259,7 +261,9 @@ MEDIA_ROOT=BASE_DIR / 'media'
 # PAYPAL_API_SIGNATURE = '...'
 
 SHOP_NAME = 'ANDAAL'
-OSCAR_HOMEPAGE = "/andaal/"
+OSCAR_HOMEPAGE = '/andaal/'
+OSCAR_SHOP_NAME = 'ANDAAL'
+OSCAR_SHOP_TAGLINE = 'La culture pour le developpement.'
 
 # CHECKOUT SETTINGS 
 
@@ -297,8 +301,8 @@ EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "ayaaninam555@gmail.com"
-EMAIL_HOST_PASSWORD = "dnqt uzes xapa ntow"
+EMAIL_HOST_USER = "ayyaninammahar@gmail.com"
+EMAIL_HOST_PASSWORD = "gnof nfbt kitq fdqh"
 
 
 ARE_YOU_USING_ENV = False
@@ -325,11 +329,20 @@ LOGIN_URL = '/andaal/accounts/login/'
 LOGIN_REDIRECT_URL = '/andaal/after-registration'
 
 
-
-
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_TIMEZONE = 'Asia/Karachi'
+# OSCAR_CURRENCY_FORMAT = {
+#     'ZAR': {
+#         'format': u'R #,##',
+#     }
+# }
+OSCAR_CURRENCY_FORMAT = {
+    'XAF': {
+        'format': u'FCFA #,###',
+    },
+    # Add other currency formats if needed
+}

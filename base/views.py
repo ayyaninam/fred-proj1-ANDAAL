@@ -205,19 +205,25 @@ def stripedot(request):
 def after_registration(request):
     return render(request, 'base/after_registration.html')
 
-def verify_my_email(request, email, username):
+def verify_my_email(request, user_id, username_code_only):
+    
     final_str = ''
-    # try:
-    user = User.objects.get(email=email, username=username)
-    user.is_active = True
-    user.save()
-    auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-    final_str = 'Congrats'
-    # except:
-    #     final_str = 'Sorry'
+    return_url = ''
+    user = User.objects.filter(id=user_id, username__startswith=username_code_only)
+    if user:
+        user = user.first()
+        user.is_active = True
+        user.save()
+        auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        final_str = 'Congrats'
+        return_url = user.username.split('--')[1] if user.get_username() else settings.OSCAR_HOMEPAGE
+        return_url = settings.OSCAR_HOMEPAGE if 'after-registration' in return_url else return_url
+    else:
+        final_str = 'Sorry'
 
     context = {
         'final_str': final_str,
+        'return_url':return_url,
     }
     return render(request, 'base/verify_my_email.html', context)
 

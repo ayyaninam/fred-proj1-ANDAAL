@@ -10,8 +10,7 @@ from oscar.core.loading import get_class, get_model
 from oscar.apps.customer.mixins import RegisterUserMixin as ParentRegisterUserMixin
 User = get_user_model()
 CommunicationEventType = get_model("communication", "CommunicationEventType")
-from .utils import CustomerDispatcher
-from . import views
+from .utils import CustomerDispatcher, send_message
 logger = logging.getLogger("oscar.customer")
 
 
@@ -31,7 +30,7 @@ class RegisterUserMixin(ParentRegisterUserMixin):
             
             if user.email.find("dummy.skip") != -1:
                 logger.warning("WE WILL SEND YOU AN SMS")
-                views.send_message(str(user.phone_number), self.get_registration_email(user)['body'], settings.SMS_AUTH_SCRETE_KEY, settings.SMS_SENDER_PHONE_NUMBER)
+                send_message(str(user.phone_number), self.get_registration_email(user)['body'], settings.SMS_AUTH_SCRETE_KEY, settings.SMS_SENDER_PHONE_NUMBER)
             else:
                 self.send_registration_email(user)
 

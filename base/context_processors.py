@@ -1,5 +1,5 @@
 from base.models import *
-
+from django.conf import settings
 def main_menus(request):
     # Query data from your models or wherever you need
     # For example, get the latest blog posts or user information
@@ -31,3 +31,20 @@ def cultureCategories(request):
     # own logic custom class name
     # Return a dictionary with the data you want to pass to templates
     return {'cultureCategories': cultureCategories}
+
+def footerdetails(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    footerdetails = FooterDetail.objects.all()
+    if footerdetails:
+        footerdetails = footerdetails.first()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'footerdetails': footerdetails}
+
+def homepage_url(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    homepage_url = settings.OSCAR_HOMEPAGE
+
+    return {'homepage_url': homepage_url}

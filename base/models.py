@@ -5,19 +5,18 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 from oscar.apps.address.models import Country as AddressCountry
 import datetime
-
 # Oscar_Category = get_model('catalogue', 'Category')
 
 # Create your models here.
 class User(AbstractUser):
     phone_number = PhoneNumberField(
         _("Phone number"),
-        blank=True,
         null=True,
+        blank=True,
     )
-    email = models.EmailField(_("email address"), blank=True, null=True, unique=True)
+    # email = models.EmailField(_("email address"), null=True, blank=False, unique=True)
     username = models.CharField(max_length=1000, null=True, blank=True)
-    
+
     def __str__(self):
         if self.email:
             return self.email
@@ -71,6 +70,7 @@ class EducationCategory(models.Model):
         return self.name
 
 class Education(models.Model):
+    owner_or_institution_name = models.CharField(max_length=250, null=False, blank=False, default='admin')
     title = models.CharField(max_length=250, null=False, blank=False)
     short_description = models.TextField(null=False, blank=False)
     cover_image = models.ImageField(upload_to="base/education_cover/", null=True, blank=True)
@@ -83,6 +83,10 @@ class Education(models.Model):
     def __str__(self):
         return self.title[:50]
 
+    class Meta:
+        ordering = ('-date',)
+
+
 class CultureCategory(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)
     default = models.BooleanField( null=False, default=False, blank=False)
@@ -91,6 +95,7 @@ class CultureCategory(models.Model):
         return self.name
 
 class Culture(models.Model):
+    owner_or_institution_name = models.CharField(max_length=250, null=False, blank=False, default='admin')
     title = models.CharField(max_length=250, null=False, blank=False)
     short_description = models.TextField(null=False, blank=False)
     cover_image = models.ImageField(upload_to="base/culture_cover/", null=True, blank=True)
@@ -102,6 +107,9 @@ class Culture(models.Model):
 
     def __str__(self):
         return self.title[:50]
+
+    class Meta:
+        ordering = ('-date',)
     
 
 class ShippingMethod(models.Model):
@@ -135,3 +143,13 @@ class RateOfEuro(models.Model):
 
     def __str__(self):
         return f"XAF TO EURO is: {self.xaf_to_euro}"
+    
+
+class FooterDetail(models.Model):
+    email = models.EmailField(null=True, blank=True)
+    phone_number = models.CharField(max_length=200, null=True, blank=True)
+    short_description = models.TextField(null=True, blank=True)
+
+
+    def __str__(self) -> str:
+        return f"{self.email} - {self.phone_number}"

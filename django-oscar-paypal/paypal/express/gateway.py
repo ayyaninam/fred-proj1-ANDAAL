@@ -345,7 +345,6 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
     params['PAYMENTREQUEST_0_AMT'] = _format_currency(
         params['PAYMENTREQUEST_0_AMT'])
     
-    print(params)
 
     txn = _fetch_response(SET_EXPRESS_CHECKOUT, params)
 
@@ -359,8 +358,6 @@ def set_txn(basket, shipping_methods, currency, return_url, cancel_url, update_u
         ('cmd', '_express-checkout'),
         ('token', txn.token)
     ]
-
-    
 
     if buyer_pays_on_paypal():
         params.append(('useraction', 'commit'))
