@@ -1,4 +1,36 @@
 
+# Andaal Readme
+
+La culture pour le developpement.
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+Use `.env_prod` for production and `.env_dev` for local
+
+#### If your website have ssl (https):
+
+`PAYPAL_CALLBACK_HTTPS` = `True`\
+
+`CELERY_BROKER_URL` = `True`\
+
+`EXCHANGE_RATE_API_KEY` = `YOUR-API-KEY` for fetching XAF rate with respect to EURO. \
+
+`SMS_AUTH_SCRETE_KEY` = `YOUR-API-KEY` for sending SMS \
+
+`SMS_SENDER_PHONE_NUMBER` = `YOUR-Mobile-Phone-Number` for sending SMS \
+
+`EMAIL_HOST` = `Your Email host: smtp.gmail.com ` if you are using Gmail \
+
+`EMAIL_USE_TLS` = `True` all modern day email support EMAIL_USE_TLS \
+
+`EMAIL_PORT` Your Email PORT
+
+`EMAIL_HOST_USER` Your Email address
+
+`EMAIL_HOST_PASSWORD` Your Email App Pass 
+
 ## Run Locally
 
 Clone the project
