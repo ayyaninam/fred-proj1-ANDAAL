@@ -1,30 +1,30 @@
 
 from pathlib import Path
 import os
-# django oscar
-
+from dotenv import load_dotenv
 from oscar.defaults import *
 
-
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qo(wyxti=gh@owlvjfg90kelac!(nb(xc$hpn7l9y$i+^l6hc*'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
+if DEBUG:
+    dotenv_path = '.env_dev'
+else:
+    dotenv_path = '.env_prod'
+
+load_dotenv(dotenv_path)
+
+def getenv(name):
+    return os.environ.get(name)
+
+SECRET_KEY = getenv('SECRET_KEY')
+
 
 ALLOWED_HOSTS = []
 
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'oscar_stripe_sca',
@@ -139,7 +139,7 @@ HAYSTACK_CONNECTIONS = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, getenv('TEMPLATE_FOLDER'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,16 +168,13 @@ WSGI_APPLICATION = 'proj1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        'ATOMIC_REQUESTS': True,
+        'ENGINE': getenv('DB_ENGINE'),
+        'NAME': BASE_DIR / getenv('DB_NAME'),
+        'ATOMIC_REQUESTS': getenv('DB_ATOMIC_REQUESTS') == 'True',
     }
     
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -195,9 +192,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -207,22 +201,17 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = 'andaal/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = getenv('STATIC_URL')
+STATIC_ROOT = os.path.join(BASE_DIR, getenv('STATIC_ROOT'))
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-MEDIA_URL='/andaal/media/'
-MEDIA_ROOT=BASE_DIR / 'media'
+MEDIA_URL=getenv('MEDIA_URL')
+MEDIA_ROOT=BASE_DIR / getenv('MEDIA_ROOT')
 
 
 
@@ -260,81 +249,73 @@ MEDIA_ROOT=BASE_DIR / 'media'
 # PAYPAL_API_PASSWORD = '123456789'
 # PAYPAL_API_SIGNATURE = '...'
 
-SHOP_NAME = 'ANDAAL'
-OSCAR_HOMEPAGE = '/andaal/'
-OSCAR_SHOP_NAME = 'ANDAAL'
-OSCAR_SHOP_TAGLINE = 'La culture pour le developpement.'
+SHOP_NAME = getenv('SHOP_NAME')
+OSCAR_HOMEPAGE = getenv('OSCAR_HOMEPAGE')
+OSCAR_SHOP_NAME = getenv('OSCAR_SHOP_NAME')
+OSCAR_SHOP_TAGLINE = getenv('OSCAR_SHOP_TAGLINE')
 
 # CHECKOUT SETTINGS 
 
 
-OSCAR_REQUIRED_ADDRESS_FIELDS = (
-    "first_name",
-    # "last_name",
-    "line1",
-    "line4",
-    # "postcode",
-    "country",
-    "phone_number"
-)
+OSCAR_REQUIRED_ADDRESS_FIELDS = tuple(getenv('OSCAR_REQUIRED_ADDRESS_FIELDS').split(','))
 
 
 
 # OScar SCA STRIP 
-OSCAR_DEFAULT_CURRENCY = 'XAF'
-STRIPE_CURRENCY= 'xaf'
-PAYPAL_CURRENCY = 'EUR'
+OSCAR_DEFAULT_CURRENCY = getenv('OSCAR_DEFAULT_CURRENCY')
+STRIPE_CURRENCY= getenv('STRIPE_CURRENCY')
+PAYPAL_CURRENCY = getenv('PAYPAL_CURRENCY')
 
-EXCHANGE_RATE_API_KEY = '482ad3a3cd25e4859b55acec3b2d25d5'
-SMS_AUTH_SCRETE_KEY = 'OU54bWFBczdYNUVoVDZCdktBeTlrTWpmOW9tblZnc1U6TnA2V1pjODJLc0VGRkRJcw=='
-SMS_SENDER_PHONE_NUMBER = '2473568273'
+EXCHANGE_RATE_API_KEY = getenv('EXCHANGE_RATE_API_KEY')
+SMS_AUTH_SCRETE_KEY = getenv('SMS_AUTH_SCRETE_KEY')
+SMS_SENDER_PHONE_NUMBER = getenv('SMS_SENDER_PHONE_NUMBER')
 
-STRIPE_SEND_RECEIPT =  True
-STRIPE_PUBLISHABLE_KEY= "pk_test_TYooMQauvdEDq54NiTphI7jx"
-STRIPE_SECRET_KEY= "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-STRIPE_RETURN_URL_BASE= 'http://127.0.0.1:8000/andaal/checkout/preview/'
-STRIPE_PAYMENT_SUCCESS_URL = "http://127.0.0.1:8000/andaal/checkout/preview-stripe/{}"
-STRIPE_PAYMENT_CANCEL_URL = "http://127.0.0.1:8000/andaal/basket/"
-
-
-EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "ayyaninammahar@gmail.com"
-EMAIL_HOST_PASSWORD = "gnof nfbt kitq fdqh"
+STRIPE_SEND_RECEIPT =  getenv('STRIPE_SEND_RECEIPT') == True
+STRIPE_PUBLISHABLE_KEY= getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY= getenv('STRIPE_SECRET_KEY')
+STRIPE_RETURN_URL_BASE= getenv('STRIPE_RETURN_URL_BASE')
+STRIPE_PAYMENT_SUCCESS_URL = getenv('STRIPE_PAYMENT_SUCCESS_URL')
+STRIPE_PAYMENT_CANCEL_URL = getenv('STRIPE_PAYMENT_CANCEL_URL')
 
 
-ARE_YOU_USING_ENV = False
+EMAIL_BACKEND =getenv('EMAIL_BACKEND')
+EMAIL_HOST = getenv('EMAIL_HOST')
+EMAIL_USE_TLS = getenv('EMAIL_USE_TLS') == 'True'
+EMAIL_PORT = int(getenv('EMAIL_PORT'))
+EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
+
+
+ARE_YOU_USING_ENV = getenv('ARE_YOU_USING_ENV') == 'True'
 
 # PAYPAL INTEGRATION 
 
-PAYPAL_API_USERNAME = 'sb-qyyzi29402195_api1.business.example.com'
-PAYPAL_API_PASSWORD = '9A77LPJLB868MG52'
-PAYPAL_API_SIGNATURE = 'Ajzmr6eFvj3JSg2kZotkvdqdQbl8A9js1kfXGFUd4clbiVXvyxi3hzFq'
+PAYPAL_API_USERNAME = getenv('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD = getenv('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE = getenv('PAYPAL_API_SIGNATURE')
 
 
 
 # PAYPAL SETTING
-PAYPAL_CALLBACK_HTTPS = False
+PAYPAL_CALLBACK_HTTPS = getenv('PAYPAL_CALLBACK_HTTPS') == 'True'
 # FLUTTER WAVE DETAILS
 
 
-FLUTTER_WAVE_PUBLIC_KEY = 'FLWPUBK_TEST-7498a1d1740cc05bb7a058307f84eccf-X'
-FLUTTER_WAVE_SCRETE_KEY = 'FLWSECK_TEST-11edaca82157cdfe31791a7a663ad54c-X'
-FLUTTER_WAVE_ENCRYPTION_KEY = 'FLWSECK_TEST5908b115537e'
-FLUTTER_PAYMENT_URL = 'https://api.flutterwave.com/v3/charges?type=mobile_money_franco'
+FLUTTER_WAVE_PUBLIC_KEY = getenv('FLUTTER_WAVE_PUBLIC_KEY')
+FLUTTER_WAVE_SCRETE_KEY = getenv('FLUTTER_WAVE_SCRETE_KEY')
+FLUTTER_WAVE_ENCRYPTION_KEY = getenv('FLUTTER_WAVE_ENCRYPTION_KEY')
+FLUTTER_PAYMENT_URL = getenv('FLUTTER_PAYMENT_URL')
 
-LOGIN_URL = '/andaal/accounts/login/'
-LOGIN_REDIRECT_URL = '/andaal/after-registration'
+LOGIN_URL = getenv('LOGIN_URL')
+LOGIN_REDIRECT_URL = getenv('LOGIN_REDIRECT_URL')
 
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_TIMEZONE = 'Asia/Karachi'
+CELERY_BROKER_URL = getenv('CELERY_BROKER_URL')
+CELERY_ACCEPT_CONTENT = [getenv('CELERY_ACCEPT_CONTENT')]
+CELERY_RESULT_SERIALIZER = getenv('CELERY_RESULT_SERIALIZER')
+CELERY_TASK_SERIALIZER = getenv('CELERY_TASK_SERIALIZER')
+CELERY_RESULT_BACKEND = getenv('CELERY_RESULT_BACKEND')
+CELERY_TIMEZONE = getenv('CELERY_TIMEZONE')
 # OSCAR_CURRENCY_FORMAT = {
 #     'ZAR': {
 #         'format': u'R #,##',
