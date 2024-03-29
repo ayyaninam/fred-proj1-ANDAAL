@@ -2,9 +2,6 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path("schedule", views.schedule_task, name="schedule"), 
-    path("get-euro-rate", views.get_euro_rate, name="get_euro_rate"), 
-
     path('', views.homepage, name="homepage"),
     path('after-registration', views.after_registration, name="after_registration"),
     path('verify-my-email/<int:user_id>/<str:username_code_only>', views.verify_my_email, name="verify_my_email"),

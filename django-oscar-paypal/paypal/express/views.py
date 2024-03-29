@@ -20,7 +20,7 @@ from paypal.express.exceptions import (
     EmptyBasketException, InvalidBasket, MissingShippingAddressException, MissingShippingMethodException)
 from paypal.express.facade import confirm_transaction, fetch_transaction_details, get_paypal_url
 from paypal.express.gateway import buyer_pays_on_paypal
-from base.models import RateOfEuro
+from base.views import get_cached_euro_rate
 # Load views dynamically
 PaymentDetailsView = get_class('checkout.views', 'PaymentDetailsView')
 CheckoutSessionMixin = get_class('checkout.session', 'CheckoutSessionMixin')
@@ -92,7 +92,7 @@ class RedirectView(CheckoutSessionMixin, RedirectView):
         if basket.is_empty:
             raise EmptyBasketException()
         try:
-            rate_of_xaf_to_eur = RateOfEuro.objects.all().first().xaf_to_euro
+            rate_of_xaf_to_eur = get_cached_euro_rate()
         except Exception as e:
             messages.warning(self.request, "Sorry, Paypal Payment is Unavailable right now.")
             return reverse('checkout:shipping-method')

@@ -13,8 +13,6 @@ Use `.env_prod` for production and `.env_dev` for local
 
 `PAYPAL_CALLBACK_HTTPS` = `True`\
 
-`CELERY_BROKER_URL` = `True`\
-
 `EXCHANGE_RATE_API_KEY` = `YOUR-API-KEY` for fetching XAF rate with respect to EURO. \
 
 `SMS_AUTH_SCRETE_KEY` = `YOUR-API-KEY` for sending SMS \
@@ -95,16 +93,4 @@ Base Migrate
 
 ```bash
   python3 manage.py migrate base
-```
-
-Run Redis Services
-
-```bash
-  redis-server
-```
-
-Run Celery Services
-
-```bash
-  celery -A proj1 worker -l info
 ```

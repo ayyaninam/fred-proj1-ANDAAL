@@ -2,7 +2,6 @@ amqp==5.2.0
 asgiref==3.7.2
 Babel==2.14.0
 billiard==4.2.0
-celery==5.3.6
 certifi==2023.11.17
 cffi==1.16.0
 charset-normalizer==3.3.2
@@ -13,8 +12,6 @@ click-repl==0.3.0
 cron-descriptor==1.4.3
 cryptography==42.0.0
 Django==4.1.4
-django-celery-beat==2.5.0
-django-celery-results==2.5.1
 django-extra-views==0.14.0
 django-haystack==3.2.1
 django-localflavor==3.1

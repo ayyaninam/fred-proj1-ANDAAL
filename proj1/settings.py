@@ -90,8 +90,6 @@ INSTALLED_APPS = [
     'oscar_with_flutterwave',
     'django_oscar_stripe_sca',
     'base.apps.BaseConfig',
-    'django_celery_beat',
-    'django_celery_results',
 ] 
 
 SITE_ID = 1
@@ -309,21 +307,23 @@ FLUTTER_PAYMENT_URL = getenv('FLUTTER_PAYMENT_URL')
 LOGIN_URL = getenv('LOGIN_URL')
 LOGIN_REDIRECT_URL = getenv('LOGIN_REDIRECT_URL')
 
-
-CELERY_BROKER_URL = getenv('CELERY_BROKER_URL')
-CELERY_ACCEPT_CONTENT = [getenv('CELERY_ACCEPT_CONTENT')]
-CELERY_RESULT_SERIALIZER = getenv('CELERY_RESULT_SERIALIZER')
-CELERY_TASK_SERIALIZER = getenv('CELERY_TASK_SERIALIZER')
-CELERY_RESULT_BACKEND = getenv('CELERY_RESULT_BACKEND')
-CELERY_TIMEZONE = getenv('CELERY_TIMEZONE')
 # OSCAR_CURRENCY_FORMAT = {
 #     'ZAR': {
 #         'format': u'R #,##',
 #     }
 # }
+REFRESH_XAF_RATE_AFTER_SEC = int(getenv('REFRESH_XAF_RATE_AFTER_SEC'))
+
 OSCAR_CURRENCY_FORMAT = {
     'XAF': {
         'format': u'FCFA #,###',
     },
     # Add other currency formats if needed
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, 'cache'),
+    }
 }

@@ -7,35 +7,23 @@ from django.http import JsonResponse, HttpResponse
 import json
 import stripe
 from django.views.decorators.csrf import csrf_exempt
-from .all_currencies_avaialble import currencies as all_currencies_avaialble
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login as auth_login
-from django_celery_beat.models import PeriodicTask, IntervalSchedule
 import requests
+
+from django.core.cache import cache
+
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 User = get_user_model()
+
 # Product = get_model('catalogue', 'Product')
 # Create your views here.
 
 
 
-def schedule_task(request):
-    interval, _ = IntervalSchedule.objects.get_or_create(
-        every=259200,
-        period=IntervalSchedule.SECONDS,
-    )
-
-    PeriodicTask.objects.create(
-        interval=interval,
-        name="my-schedule",
-        task="base.tasks.my_task",
-        #args=json.dumps(["Arg1", "Arg2"])
-        #one_off=True
-    )
-
-    return HttpResponse("Task scheduled!")
 
 def homepage(request):
 
@@ -227,6 +215,22 @@ def verify_my_email(request, user_id, username_code_only):
     }
     return render(request, 'base/verify_my_email.html', context)
 
+
+
+
+def get_cached_euro_rate():
+    xaf_to_euro = cache.get('xaf_to_euro')
+    if not xaf_to_euro:
+        resp = requests.get(f'http://api.exchangeratesapi.io/v1/latest?access_key={settings.EXCHANGE_RATE_API_KEY}')
+        xaf_to_euro = float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}']))
+        cache.set('xaf_to_euro', xaf_to_euro, timeout=settings.REFRESH_XAF_RATE_AFTER_SEC)  
+    return xaf_to_euro
+
+
+def stagehomepage(request):
+
+    return render(request, 'base/stagehomepage.html')
+
 def get_euro_rate(request):
     resp = requests.get(f'http://api.exchangeratesapi.io/v1/latest?access_key={settings.EXCHANGE_RATE_API_KEY}')
     all_rates = RateOfEuro.objects.all()
@@ -237,10 +241,8 @@ def get_euro_rate(request):
 
     if resp.status_code == 200:
         print("RUN")
-        RateOfEuro.objects.create(base="EUR", xaf_to_euro=float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}'])))
-
+        xaf_to_euro = float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}']))
+        RateOfEuro.objects.create(base="EUR", xaf_to_euro=xaf_to_euro)
+        return xaf_to_euro
+    
     return JsonResponse(resp.json())
-
-def stagehomepage(request):
-
-    return render(request, 'base/stagehomepage.html')
