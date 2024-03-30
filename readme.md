@@ -15,6 +15,8 @@ Use `.env_prod` for production and `.env_dev` for local
 
 `EXCHANGE_RATE_API_KEY` = `YOUR-API-KEY` for fetching XAF rate with respect to EURO. \
 
+`REFRESH_XAF_RATE_AFTER_SEC` = `Time Gap` in seconds for fetching the XAF rate with respect to EURO. \
+
 `SMS_AUTH_SCRETE_KEY` = `YOUR-API-KEY` for sending SMS \
 
 `SMS_SENDER_PHONE_NUMBER` = `YOUR-Mobile-Phone-Number` for sending SMS \
