@@ -564,6 +564,7 @@ input[type="password"] {
         align-items: center;
     }
     .post__encloser .sidebar {
+        order: -1;
         position: static !important;
     }
 
