@@ -113,8 +113,13 @@ def culture(request, category_id):
 
     all_categories = CultureCategory.objects.all()
 
+    recommended_post = Culture.objects.filter(recommended=True).order_by('date')
+    upcomming_post = Culture.objects.filter(date__gt=datetime.datetime.now()).order_by('date')
+
     context = {
         'all_post':all_post,
+        'recommended_post':recommended_post,
+        'upcomming_post':upcomming_post,
         'active_category':active_category,
         'all_categories':all_categories,
     }
@@ -246,3 +251,12 @@ def get_euro_rate(request):
         return xaf_to_euro
     
     return JsonResponse(resp.json())
+
+
+def imp_link(request, id):
+
+    obj = FooterImportantLinks.objects.get(id=id)
+    context = {
+        'obj':obj
+    }
+    return render(request, 'base/imp_link.html', context)

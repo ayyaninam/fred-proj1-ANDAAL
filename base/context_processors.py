@@ -48,3 +48,10 @@ def homepage_url(request):
     homepage_url = settings.OSCAR_HOMEPAGE
 
     return {'homepage_url': homepage_url}
+
+def important_links(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    important_links = FooterImportantLinks.objects.all()
+
+    return {'important_links': important_links}

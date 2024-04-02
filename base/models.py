@@ -28,7 +28,6 @@ class User(AbstractUser):
 class MainMenu(models.Model):
     name= models.CharField(max_length=200, null=False, blank=False)
     icons_link = models.TextField(max_length=200, null=True, blank=True, help_text='Please go to the link: fonts.google.com/icons and attach the code which is under the "Inserting the icon" menu after slecting the icon.')
-    
     redirect_to_link = models.CharField(max_length=1000, null=True, blank=True, help_text='Please write the url like /abc/abc/1, do not include any domain or IP address before the URL. This url will redirect users to this LINK. Please keep it blank if you want to attached any category to the main menu and select the category in below field(name "Category Attached")')
 
     category_attached = models.ForeignKey(Oscar_Category, null=True, blank=True, on_delete=models.CASCADE, help_text="Please choose the Category if you don't attach any redirect link, if you will attach the both, priority will be for Category field.")
@@ -100,10 +99,11 @@ class Culture(models.Model):
     short_description = models.TextField(null=False, blank=False)
     cover_image = models.ImageField(upload_to="base/culture_cover/", null=True, blank=True)
     description = models.TextField(null=False, blank=False)
-    date = models.DateField(auto_now=True, null=False, blank=False)
+    date = models.DateField(null=False, blank=False)
     location = models.CharField(max_length=255, null=True, blank=True)
     link_to_orignal = models.URLField(max_length = 1000) 
     category = models.ManyToManyField(CultureCategory)
+    recommended = models.BooleanField(null=False, default=False)
 
     def __str__(self):
         return self.title[:50]
@@ -153,3 +153,11 @@ class FooterDetail(models.Model):
 
     def __str__(self) -> str:
         return f"{self.email} - {self.phone_number}"
+    
+
+class FooterImportantLinks(models.Model):
+    name = models.CharField(max_length=255, null=False, blank=False)
+    detail = models.TextField(null=False, blank=False)
+
+    def __str__(self) -> str:
+        return f"{self.name}"

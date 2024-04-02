@@ -32,6 +32,31 @@ ANDAAL - Culture
 {% endif %}
 
 {% comment %}{% include "base/back_button.html" %}{% endcomment %}
+{% if "culture" in request.path %}
+<div class="grid text-center post__encloser">
+{% endif %}
+
+{% if upcomming_post %}
+<div class="left_sidebar sidebar my-5">
+    {% if "culture" in request.path %}
+    <h5 class="fw-bold text-wrap">Upcoming Events</h5>
+    <hr>
+    {% for post in upcomming_post %}
+    <a class="text-dark no_underline" href="{% url 'culture_post' post.id %}">
+    <div class="text-left single__sidebar__elem">
+    <small>{{post.date}}</small>
+    <h6>{{post.title|truncatechars:50}}</h6>
+    </div>
+    <hr class="w-25 mx-auto">
+</a>
+    {% endfor %}
+    {% endif %}
+    
+    </div>
+    {% endif %}
+    
+
+
 
 <div class="d-flex justify-content-center align-items-stretch flex-wrap main__edu__section">
 {% if all_post %}
@@ -69,5 +94,30 @@ ANDAAL - Culture
 <h5 class="d-flex justify-content-center align-items-center main__menu__middle__btns pink__to__top__gradient text-dark">NO POST FOUND!</h5>
 {% endif %}
 </div>
+
+
+{% if recommended_post %}
+<div class="rigth_sidebar sidebar my-5">
+    {% if "culture" in request.path %}
+    <h5 class="fw-bold text-wrap">Recommended Events</h5>
+    <hr>
+    {% for post in recommended_post %}
+    <a class="text-dark no_underline" href="{% url 'culture_post' post.id %}">
+    <div class="text-left single__sidebar__elem">
+    <small>{{post.date}}</small>
+    <h6>{{post.title|truncatechars:50}}</h6>
+    </div>
+    <hr class="w-25 mx-auto">
+</a>
+    {% endfor %}
+    {% endif %}
+    
+    </div>
+    {% endif %}
+    
+{% if "culture" in request.path %}
+
+</div>
+{% endif %}
 
 {% endblock %}

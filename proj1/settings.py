@@ -153,6 +153,7 @@ TEMPLATES = [
                 'base.context_processors.cultureCategories',
                 'base.context_processors.footerdetails',
                 'base.context_processors.homepage_url',
+                'base.context_processors.important_links',
             ],
         },
     },

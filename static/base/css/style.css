@@ -47,7 +47,7 @@
     /* Removed semicolon */
 }
 
-.main__menu__middle__btns>span{
+.main__menu__middle__btns>span {
     font-size: 3rem;
 }
 
@@ -80,11 +80,11 @@
     background-image: linear-gradient(to top, var(--white-color), var(--pink-color));
 }
 
-.model{
+.model {
     z-index: 9999999;
 }
 
-.model-header{
+.model-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -96,7 +96,7 @@
 .main__footer__on__baseline__main__menu {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
 }
 
 .base__line__details__footer li {
@@ -122,9 +122,10 @@
 
 
 
-.caret{
+.caret {
     margin: 0.75rem 0;
-    user-select: none; /* Prevent text selection */
+    user-select: none;
+    /* Prevent text selection */
 }
 
 /* Create the caret/arrow with a unicode, and style it */
@@ -133,8 +134,8 @@
     color: rgb(0, 0, 0);
     display: inline-block;
     margin-right: 6px;
-  }
-  
+}
+
 /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
 .caret-down::before {
     transform: rotate(90deg);
@@ -154,6 +155,7 @@
     max-height: 25rem;
     border: 1px solid rgb(236, 236, 236);
 }
+
 [class^=main__dropdown__ul]::-webkit-scrollbar {
     display: none;
 }
@@ -208,7 +210,7 @@
 
 }
 
-.card__edu_clu__main__single{
+.card__edu_clu__main__single {
     background: rgba(255, 255, 255, 0.18);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -387,70 +389,125 @@
 .desktop__element__nav_f {
     display: flex;
 }
-.all_main_m__upper__form form{
+
+.all_main_m__upper__form form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     margin-bottom: 1rem !important;
 }
+
 nav {
     position: sticky;
     top: 0;
 }
 
-.nested__tree__list{
+.nested__tree__list {
     display: none;
 }
 
-.active__tree_list{
+.active__tree_list {
     display: block;
 }
 
 input[type="password"] {
-    font:small-caption;
-    font-size:1rem;
+    font: small-caption;
+    font-size: 1rem;
 
 }
 
-.password-toggle:hover{
+.password-toggle:hover {
     background-color: rgb(239, 239, 239) !important;
 }
 
-.not_available__shipping{
+.not_available__shipping {
     transition: transform 1s linear, width 1s linear, height 1s linear;
 }
 
-.not_available__shipping:hover{
+.not_available__shipping:hover {
     transform: scale(1.2);
 }
-.not_available__shipping:hover .under__text{
+
+.not_available__shipping:hover .under__text {
     opacity: 0;
     width: 0;
     height: 0;
 }
-.not_available__shipping .under__text2{
+
+.not_available__shipping .under__text2 {
     opacity: 0;
     display: none;
 }
-.not_available__shipping:hover .under__text2{
+
+.not_available__shipping:hover .under__text2 {
     display: block;
     opacity: 1;
 }
 
-.all_main__menu__upper__display .second_under_all_main_menu{
+.all_main__menu__upper__display .second_under_all_main_menu {
     flex-direction: row;
 }
-.all_main__menu__upper__display .second_under_all_main_menu>*{
+
+.all_main__menu__upper__display .second_under_all_main_menu>* {
     padding: 0.5rem 0;
 }
+
+.modal-content {
+    text-align: center;
+}
+
+.modal-header {
+    justify-content: space-around;
+}
+
+.modal {
+    z-index: 9999999 !important;
+}
+
+.post__encloser {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.single__sidebar__elem {
+    border-radius: 0.756rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+.single__sidebar__elem:hover {
+    background-color: var(--yellow-color);
+}
+
+.post__encloser .sidebar {
+    position: sticky;
+    top: 15rem;
+    height: 50vh;
+    width: inherit;
+    overflow-y: auto;
+}
+
 
 
 
 @media only screen and (max-width: 1000px) {
-    .card__edu_clu__main__single{
+
+    .post__encloser .main__edu__section {
+        width: 20rem !important;
+    }
+
+    .card__edu_clu__main__single {
         width: 29vw;
     }
+
+    .post__encloser .sidebar {
+        top: 25rem;
+    }
+
     .main__base__navbar {
         padding: 1rem 1rem !important;
         flex-direction: column;
@@ -467,7 +524,7 @@ input[type="password"] {
         height: 20rem;
     }
 
-    .main__menu__middle__btns>span{
+    .main__menu__middle__btns>span {
         font-size: 2rem;
     }
 
@@ -494,6 +551,21 @@ input[type="password"] {
 }
 
 @media only screen and (max-width: 770px) {
+
+    .post__encloser .main__edu__section {
+        width: 100% !important;
+
+    }
+
+    .post__encloser {
+        flex-direction: column;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .post__encloser .sidebar {
+        position: static !important;
+    }
 
     .main__base__navbar {
         flex-direction: column-reverse;
@@ -566,14 +638,23 @@ input[type="password"] {
 
 
 @media only screen and (max-width: 600px) {
-    .card__edu_clu__main__single{
+
+
+
+    
+    .post__encloser .main__edu__section a {
+        width: 100%;
+    }
+
+    .card__edu_clu__main__single {
         width: 40vw;
     }
 
-    
-    .all_main__menu__upper__display .second_under_all_main_menu{
+
+    .all_main__menu__upper__display .second_under_all_main_menu {
         flex-direction: column;
     }
+
     .footer___tag__main {
         padding: 0.5rem;
 
@@ -595,13 +676,14 @@ input[type="password"] {
         width: 7rem;
         height: 7rem;
     }
+
     .all__block__middle__main__menu .main__menu__middle__btns {
         font-size: 1.50rem;
         width: 10rem;
         height: 10rem;
     }
 
-    .main__menu__middle__btns>span{
+    .main__menu__middle__btns>span {
         font-size: 1.50rem;
     }
 
@@ -612,12 +694,14 @@ input[type="password"] {
 
 
 @media only screen and (max-width: 350px) {
-    .card__edu_clu__main__single{
+    .card__edu_clu__main__single {
         width: 90vw;
     }
-    .all_main__menu__upper__display form{
+
+    .all_main__menu__upper__display form {
         flex-direction: column;
     }
+
     .main__base__navbar .account__holder {
         display: flex;
         flex-wrap: wrap;
