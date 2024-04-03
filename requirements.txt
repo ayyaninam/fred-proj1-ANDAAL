@@ -1,5 +1,6 @@
 amqp==5.2.0
 asgiref==3.7.2
+async-timeout==4.0.3
 Babel==2.14.0
 billiard==4.2.0
 certifi==2023.11.17
@@ -9,15 +10,17 @@ click==8.1.7
 click-didyoumean==0.3.0
 click-plugins==1.1.1
 click-repl==0.3.0
+coverage==7.4.4
 cron-descriptor==1.4.3
 cryptography==42.0.0
 Django==4.1.4
+django-coverage==1.2.4
 django-extra-views==0.14.0
 django-haystack==3.2.1
 django-localflavor==3.1
 django-oscar==3.2.2
--e django-oscar-paypal
--e django_oscar_stripe_sca
+-e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@fe8d2c1d0e0008e428218cd94bf41f3d3e1d7e13#egg=django_oscar_paypal&subdirectory=django-oscar-paypal
+-e git+https://github.com/ayyaninam/fred-proj1-ANDAAL.git@fe8d2c1d0e0008e428218cd94bf41f3d3e1d7e13#egg=django_oscar_stripe_sca&subdirectory=django_oscar_stripe_sca
 django-phonenumber-field==6.4.0
 django-tables2==2.3.4
 django-timezone-field==6.1.0
@@ -33,6 +36,7 @@ paypalhttp==1.0.1
 phonenumbers==8.13.27
 pillow==10.2.0
 prompt-toolkit==3.0.43
+psycopg2-binary==2.9.9
 purl==1.6
 pycparser==2.21
 pycryptodome==3.20.0

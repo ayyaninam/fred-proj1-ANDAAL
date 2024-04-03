@@ -96,3 +96,63 @@ Base Migrate
 ```bash
   python3 manage.py migrate base
 ```
+
+
+
+# Migrate from SQLITE to PSQL
+
+Breif description on how to migrate the data from sqlite to PSQL
+
+## Prefer for only Production
+
+Step 1: Install the PSQL \
+Step 2: Install the requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+Step 3: Dump all the Data \
+Or you can grab the data.json file from the proj directory. \
+I already created that.\
+Please Run this command in project directory to create data.json file.
+
+```bash
+python3 manage.py dumpdata --all > data.json
+```
+
+Step 4: Create DB Schema.
+
+```bash
+python3 manage.py sqlflush > schema.sql
+```
+
+Step 5: Launch the PSQL
+
+Step 6: Create the DB (with your prefer pass and name) \
+
+Step 7: Run this command to load the Schema in your database.
+
+```bash
+\i PATH_TO_schema.sql
+```
+
+Step 8: Go to the ``.env_prod`` or ```.env_dev``` and change the DB extensions accordingly. 
+
+```bash
+pip install -r requirements.txt
+```
+
+
+## Note:
+```bash
+\i PATH_TO_schema.sql
+```
+If this command make some problem.\
+Then Go to the project ```.env``` and change the DB extension to connect to PSQL.\
+After that, run:
+```bash
+python3 manage.py migrate
+```
+Then Repeat the Step 7 and Step 8.
+
+

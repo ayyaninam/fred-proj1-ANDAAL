@@ -21,7 +21,7 @@ def getenv(name):
 SECRET_KEY = getenv('SECRET_KEY')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -162,18 +162,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'proj1.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': getenv('DB_ENGINE'),
-        'NAME': BASE_DIR / getenv('DB_NAME'),
-        'ATOMIC_REQUESTS': getenv('DB_ATOMIC_REQUESTS') == 'True',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': getenv('DB_ENGINE'),
+            'NAME': os.path.join(BASE_DIR , getenv('DB_NAME')),
+            'ATOMIC_REQUESTS': getenv('DB_ATOMIC_REQUESTS') == 'True',
+        }
+        
     }
-    
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': getenv('DB_ENGINE'),
+            'NAME': getenv('DB_NAME'),
+            'USER': getenv('DB_USER'),
+            'PASSWORD': getenv('DB_PASSWORD'),
+            'HOST': getenv('DB_HOST'),
+            'PORT': getenv('DB_PORT'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
