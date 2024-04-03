@@ -66,8 +66,9 @@ ANDAAL - Culture
     href="{% url 'education_post' post.id %}" {% elif "culture" in request.path %}
     href="{% url 'culture_post' post.id %}" {% endif %} class="cursor-pointer mx-2 no_underline card__edu_clu__main__single align-items-center text-center my-3" href="">
         
-    
-    <img class="w-75 rounded my-4" src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
+    {% if post.cover_image %}
+        <img class="w-75 rounded my-4" src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
+    {% endif %}
 
         <h5 class="text-dark">{{post.title|slice:"0:25"}}...</h5>
         <p class="text-dark text-muted">{{post.short_description|slice:"0:50"}}...</p>

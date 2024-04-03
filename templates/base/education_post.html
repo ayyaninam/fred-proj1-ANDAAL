@@ -8,7 +8,9 @@
 
     <h3 class="my-2 font-bold">{{post.title}}</h3>
     <p class="my-4">{{post.short_description}}</p>
+    {% if post.cover_image %}
     <img class="w-100 rounded shadow-lg" style="aspect-ratio: 16/9; object-fit: cover;"  src="{{post.cover_image.url}}" class="img-fluid" alt="Responsive image">
+    {% endif %}
     <div class=" small_icons_task_main my-5 d-flex justify-content-around align-items-center ">
         <button class="task yellow__btn p-2 rounded d-flex justify-content-center align-items-center">
             <span class="material-symbols-outlined">

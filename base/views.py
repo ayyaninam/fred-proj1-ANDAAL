@@ -162,38 +162,6 @@ def create_payment_intent(request):
             return JsonResponse(error=str(e)), 403
 
 
-@csrf_exempt
-def stripedot(request):
-    print(request)
-
-    # check_payment_intent = stripe.PaymentIntent.retrieve(request.GET.get('payment_intent'))
-    # print(check_payment_intent.amount_received)
-
-    # print(sd)
-    return JsonResponse("true")
-    # if request.method == 'POST':
-    #     try:
-    #         data = json.loads(request.body)
-    #         # Create a PaymentIntent with the order amount and currency
-    #         intent = stripe.PaymentIntent.create(
-    #             # {'amount': '2342300', 'stripe_publishable_key': 'pk_test_TYooMQauvdEDq54NiTphI7jx', 'description': '1 items (£23,423.00)', 'shop_name': 'ANDAAL'}
-    #             amount=data['amount'],
-    #             # stripe_publishable_key=data['stripe_publishable_key'],
-    #             # description=data['description'],
-    #             # shop_name=data['shop_name'],
-    #             currency='usd',
-    #             # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    #             automatic_payment_methods={
-    #                 'enabled': True,
-    #             },
-    #         )
-    #         return JsonResponse({
-    #             'clientSecret': intent['client_secret']
-    #         })
-
-    #     except Exception as e:
-    #         return JsonResponse(error=str(e)), 403
-
 
 def after_registration(request):
     return render(request, 'base/after_registration.html')
@@ -209,7 +177,11 @@ def verify_my_email(request, user_id, username_code_only):
         user.save()
         auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         final_str = 'Congrats'
-        return_url = user.username.split('--')[1] if user.get_username() else settings.OSCAR_HOMEPAGE
+        try:
+            return_url = user.username.split('--')[1] if user.get_username() else settings.OSCAR_HOMEPAGE
+        except:
+            return_url = settings.OSCAR_HOMEPAGE
+            
         return_url = settings.OSCAR_HOMEPAGE if 'after-registration' in return_url else return_url
     else:
         final_str = 'Sorry'

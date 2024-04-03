@@ -5,7 +5,6 @@ from django.conf import settings
 
 class ViewsTestCase(TestCase):
     def setUp(self):
-        # Create sample data for testing
         self.main_menu = MainMenu.objects.create(name="Main Menu")
         self.textbook_lan = TextbookLanguages.objects.create(name="Urdu")
         self.textbook_category = TextbooksCategories.objects.create(name="Textbook Category", language_associated=self.textbook_lan)
