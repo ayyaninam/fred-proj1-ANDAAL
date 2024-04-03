@@ -118,7 +118,7 @@ class ShippingMethod(models.Model):
     code = models.CharField(max_length=250, null=True, blank=True, help_text="Please don't give any space in this field")
     charge_excl_tax = models.IntegerField(null=True, blank=True)
     charge_incl_tax = models.IntegerField(null=True, blank=True)
-    countries = models.ManyToManyField("address.Country", blank=True, related_name="Countries")
+    countries = models.ManyToManyField(AddressCountry, blank=True, related_name="Countries")
 
     def clean(self):
         if self.code:
