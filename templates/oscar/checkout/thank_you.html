@@ -2,6 +2,7 @@
 {% load currency_filters %}
 {% load i18n %}
 {% load image_tags %}
+{% load static %}
 
 {% block title %}
     {% blocktrans with number=order.number %}
@@ -14,12 +15,27 @@
 {% endblock %}
 
 {% block checkout_title %}
+<div class="d-flex flex-column justify-content-center align-items-center">
+
+    <a class="desktop__element__nav " href="{% url 'homepage' %}">
+        <img title="Home Page" style="width: 15rem;" src="{% static 'base/images/Logo_ANDAAL_final.png' %}"
+            class="d-flex mx-auto cursor-pointer my-2" alt="" >
+    </a>
+
+
+    <div>
     {% blocktrans with number=order.number %}
-        Order {{ number }}: confirmation
+        Order {{ number }}: confirmation 
+
     {% endblocktrans %}
+</div>
+
+</div>
 {% endblock %}
 
 {% block content %}
+
+
     <p class="lead">
         {% blocktrans with number=order.number %}
         Your order has been placed and a confirmation email has been sent - your order number is
