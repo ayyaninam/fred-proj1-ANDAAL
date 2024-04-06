@@ -166,4 +166,14 @@ python3 manage.py collectstatic
 ```
 
 This will push all your Static files in new Folder.\
-Then ```whitenoise``` will take care of all the Static Files.
+Then ```whitenoise``` will take care of all the Static Files.\
+Delete or Comment this line:
+```bash 
+whitenoise.runserver_nostatic
+```
+and this line:
+```bash
+whitenoise.middleware.WhiteNoiseMiddleware
+```
+Currently at: line no: 30 and 102 in settings.py\
+If you want NGINX to take care of Static files.
