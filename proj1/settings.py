@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from oscar.defaults import *
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = True
+DEBUG = False
 
 
 if DEBUG:
@@ -27,6 +27,7 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'oscar_stripe_sca',
 
     'django.contrib.admin',
@@ -98,6 +99,7 @@ AUTH_USER_MODEL = "base.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

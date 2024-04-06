@@ -155,4 +155,15 @@ python3 manage.py migrate
 ```
 Then Repeat the Step 7 and Step 8.
 
+```bash
+python3 manage.py loaddata data.json
+```
 
+# Static Files (if you aren't use NGINX in Production)
+
+```bash
+python3 manage.py collectstatic
+```
+
+This will push all your Static files in new Folder.\
+Then ```whitenoise``` will take care of all the Static Files.
