@@ -35,6 +35,13 @@ class MainMenu(models.Model):
 
     def __str__(self):
         return self.name
+    
+class BooksCategory(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+    category_attached = models.ForeignKey(Oscar_Category, null=True, blank=True, on_delete=models.CASCADE, )
+
+    def __str__(self):
+        return self.name
 
 class TextbookLanguages(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, unique=True)

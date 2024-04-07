@@ -156,6 +156,7 @@ TEMPLATES = [
                 'base.context_processors.footerdetails',
                 'base.context_processors.homepage_url',
                 'base.context_processors.important_links',
+                'base.context_processors.booksCategories',
             ],
         },
     },
@@ -220,7 +221,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL=getenv('MEDIA_URL')
-MEDIA_ROOT=BASE_DIR / getenv('MEDIA_ROOT')
+
+MEDIA_ROOT= os.path.join(BASE_DIR , getenv('MEDIA_ROOT'))
 
 
 

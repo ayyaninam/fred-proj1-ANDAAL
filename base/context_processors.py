@@ -32,6 +32,14 @@ def cultureCategories(request):
     # Return a dictionary with the data you want to pass to templates
     return {'cultureCategories': cultureCategories}
 
+def booksCategories(request):
+    # Query data from your models or wherever you need
+    # For example, get the latest blog posts or user information
+    booksCategories = BooksCategory.objects.all()
+    # own logic custom class name
+    # Return a dictionary with the data you want to pass to templates
+    return {'booksCategories': booksCategories}
+
 def footerdetails(request):
     # Query data from your models or wherever you need
     # For example, get the latest blog posts or user information

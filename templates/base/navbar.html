@@ -12,17 +12,10 @@
         <div class="w-100 d-flex justify-content-around align-items-center second_under_all_main_menu">
             {% for main_menu in main_menus %}
             <div>
-                {% if main_menu.redirect_to_link %}
                 <a value="main__menu__dropdown__main{{forloop.counter0}}"
-                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}
-                    ↓</a>
-                {% else %}
-                <a href="{{main_menu.category_attached.get_absolute_url}}"
-                    value="main__menu__dropdown__main{{forloop.counter0}}"
-                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}</a>
-
-
-                {% endif %}
+                class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}
+                ↓</a>
+                
                 {% if 'textbook' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in textBookcategories %}
@@ -58,6 +51,8 @@
                         href="{% url 'education' category.id %}">{{category.name}}</a>
                     {% endfor %}
                 </ul>
+
+                
                 {% elif 'culture' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in cultureCategories %}
@@ -65,6 +60,15 @@
                         href="{% url 'culture' category.id %}">{{category.name}}</a>
                     {% endfor %}
                 </ul>
+
+                {% elif 'books' in main_menu.name|cut:" "|lower %}
+                <ul class="main__dropdown__ul{{forloop.counter0}}">
+                    {% for category in booksCategories %}
+                    <a class="text-dark no_underline d-block"
+                        href="{{category.category_attached.get_absolute_url}}">{{category.name}}</a>
+                    {% endfor %}
+                </ul>
+                
                 {% endif %}
             </div>
             {% endfor %}
