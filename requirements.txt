@@ -21,7 +21,9 @@ django-localflavor==3.1
 django-oscar==3.2.2
 -e django-oscar-paypal
 -e django_oscar_stripe_sca
+django-parler==2.3
 django-phonenumber-field==6.4.0
+django-rosetta==0.10.0
 django-tables2==2.3.4
 django-timezone-field==6.1.0
 django-treebeard==4.7
@@ -35,6 +37,7 @@ paypal-checkout-serversdk==1.0.3
 paypalhttp==1.0.1
 phonenumbers==8.13.27
 pillow==10.2.0
+polib==1.2.0
 prompt-toolkit==3.0.43
 psycopg2-binary==2.9.9
 purl==1.6
@@ -58,3 +61,4 @@ tzdata==2024.1
 urllib3==2.1.0
 vine==5.1.0
 wcwidth==0.2.13
+whitenoise==6.6.0

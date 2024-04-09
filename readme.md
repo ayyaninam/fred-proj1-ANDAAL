@@ -177,3 +177,97 @@ whitenoise.middleware.WhiteNoiseMiddleware
 ```
 Currently at: line no: 30 and 102 in settings.py\
 If you want NGINX to take care of Static files.
+
+
+## SQLITE to PSQL
+
+### Install Postgres on your computer.
+
+First install 
+
+```bash
+sudo apt-get install libpq-dev python-dev
+``` 
+which are Postgres dependencies to work with Django perfectly.
+
+Then, enter 
+
+``` bash
+sudo apt-get install postgresql postgresql-contrib
+```
+
+command to install Postgres.
+
+Access to Postgres using 
+
+``` bash
+sudo su - postgres
+```
+
+ command.
+
+Create a new database. 
+
+```bash
+createdb <dbname>
+``` 
+
+
+Create a database user (with password). 
+```bash
+createuser -P <username>
+```
+
+
+Access the shell using psql command.
+
+Grant this new user access to your new database with 
+```bash
+GRANT ALL PRIVILEGES ON DATABASE <dbname> TO <username>
+```
+command.
+
+Dump existing data. Make sure you are connected with your previous Database.
+
+```bash
+python3 manage.py dumpdata > datadump.json
+```
+
+Install Postgres package. 
+```bash
+pip install psycopg2
+```
+
+Change settings.py configuration to the following:
+```bash
+DATABASES = {
+ 'default': {
+     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+     'NAME': '<dbname>',
+     'USER': '<username>',
+     'PASSWORD': '<password>',
+     'HOST': 'localhost',
+     'PORT': '',  
+ }
+}
+```
+
+Make sure you can connect to Postgres DB. 
+```bash
+python3 manage.py migrate --run-syncdb
+```
+
+Run this on Django shell to exclude contentype data.
+```bash
+python3 manage.py shell
+```
+```bash
+>>> from django.contrib.contenttypes.models import ContentType
+>>> ContentType.objects.all().delete()
+>>> quit()
+```
+
+Finally, load your data. 
+```bash
+python3 manage.py loaddata datadump.json
+```
