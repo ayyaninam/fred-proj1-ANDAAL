@@ -15,7 +15,7 @@
 
 
 {% block payment_details_content %}
-<p>Launching Stripe, please wait...</p>
+<p>{% trans "Launching Stripe, please wait..." %}</p>
 {% if anon_checkout_allowed or request.user.is_authenticated %}
 <div class="row">
     <div class="col-xs-12">
@@ -23,7 +23,7 @@
         <script type="text/javascript">
             jQuery(document).ready(function () {
                 setTimeout(function () {
-                    console.log("Redirecting to stripe");
+                    console.log("{% trans "Redirecting to stripe" %}");
                     var stripe = Stripe('{{ stripe_publishable_key }}');
 
                     stripe.redirectToCheckout({

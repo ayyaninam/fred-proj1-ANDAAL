@@ -1,20 +1,21 @@
+{% load i18n %}
 
-  <div class="currency_selector_modal modal" id="currency_selector_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" >
+<div class="currency_selector_modal modal" id="currency_selector_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Select your Currency</h5>
-        </div>
-        <div class="modal-body">
-            <select id="currency_selector_modal_select_input" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                {% for code in all_currencies_avaialble %}
-                <option value={{code}}>{{code}}</option>
-                {% endfor %}
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{% trans "Select your Currency" %}</h5>
+          </div>
+          <div class="modal-body">
+              <select id="currency_selector_modal_select_input" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                  {% for code in all_currencies_avaialble %}
+                  <option value="{{ code }}">{{ code }}</option>
+                  {% endfor %}
               </select>
-        </div>
-        <div class="modal-footer">
-          <button id="currency_selector_modal_submit_btn" type="button" class="btn btn-primary">Save changes</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+              <button id="currency_selector_modal_submit_btn" type="button" class="btn btn-primary">{% trans "Save changes" %}</button>
+          </div>
       </div>
-    </div>
   </div>
+</div>

@@ -22,7 +22,7 @@
                 <a href="{% url 'checkout:shipping-address' %}" class="nav-link">
                     <i class="fas fa-chevron-right"></i>
                     <span>
-                        {% trans "1. Shipping address" %}
+                        {% blocktrans %}1. Shipping address{% endblocktrans %}
                     </span>
                 </a>
             {% else %}
@@ -37,7 +37,7 @@
                 <a href="{% url 'checkout:shipping-method' %}" class="nav-link">
                     <i class="fas fa-chevron-right"></i>
                     <span>
-                        {% trans "2. Shipping method" %}
+                        {% blocktrans %}2. Shipping method{% endblocktrans %}
                     </span>
                 </a>
             {% else %}
@@ -52,7 +52,7 @@
                 <a href="{% url 'checkout:payment-details' %}" class="nav-link">
                     <i class="fas fa-chevron-right"></i>
                     <span>
-                        {% trans "3. Payment" %}
+                        {% blocktrans %}3. Payment{% endblocktrans %}
                     </span>
                 </a>
             {% else %}

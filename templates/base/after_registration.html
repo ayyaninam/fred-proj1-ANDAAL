@@ -1,6 +1,7 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% block content %}
+{% load i18n %}
 
 <div class="main__reg__div w-50 d-flex justify-content-center align-items-center m-auto flex-column">
     <a class=" d-flex justify-content-center align-items-center m-auto">
@@ -8,9 +9,9 @@
     </a>
 
     <div>
-        <h4 class="text-center mb-5">We sent a link on your email - please open the link from email to verify</h4>
+        <h4 class="text-center mb-5">{% trans "We sent a link on your email - please open the link from email to verify" %}</h4>
         <div class="mt-5 d-flex justify-content-around align-items-center">
-            <a href="{% url 'homepage' %}" class="pink__btn text-dark no_underline">OK</a>
+            <a href="{% url 'homepage' %}" class="pink__btn text-dark no_underline">{% trans "OK" %}</a>
         </div>
     </div>
 

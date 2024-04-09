@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from base.models import *
+from base.models import FooterImportantLinks
 from django.conf import settings
 
 class ViewsTestCase(TestCase):

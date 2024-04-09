@@ -5,11 +5,9 @@
 <nav class="{% block nav_classes %}navbar__main__div navbar navbar-expand-lg navbar-dark{% endblock %}">
     {% block navbar_toggler %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    
     {% endblock %}
 
     {% block navbar_basket %}
@@ -34,15 +32,6 @@
   
     {% block navbar_collapse %}
     <div class="collapse navbar-collapse search__and__category__main__nav">
-        {% comment %}
-          
-        <a class="url_no_link" onClick="javascript:history.go(-1);">
-            <button class="btn btn-danger">
-                Back
-            </button>
-        </a>
-        {% endcomment %}
-
         {% category_tree as tree_categories %}
         {% if tree_categories %}
         {% for tree_category in tree_categories %}
@@ -54,25 +43,9 @@
         </a>
 
         {% endcomment %}
-
         {% endif %}
-
         {% endfor %}
-
         {% endif %}
-
-
-
-{% comment %}
-  
-
-        {% block nav_extra %}
-
-        {% include "oscar/partials/search.html" %}
-
-        {% endblock %}
-        {% endcomment %}
-
     </div>
     {% endblock %}
 </nav>

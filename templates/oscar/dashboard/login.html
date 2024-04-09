@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static %}
 {% load widget_tweaks %}
+
 {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/dashboard.css" %}" />
 {% endblock %}
@@ -12,7 +13,7 @@
     <div class="card col-sm-4 mx-auto mt-5">
         <div class="card-body">
         <form method="post" novalidate id="dashboard_login_form">
-            <h1>{{ shop_name }}</h1>
+            <h1>{% trans shop_name %}</h1>
             <hr>
 
             {% if form.errors %}

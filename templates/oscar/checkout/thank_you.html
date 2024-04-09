@@ -18,7 +18,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
 
     <a class="desktop__element__nav " href="{% url 'homepage' %}">
-        <img title="Home Page" style="width: 15rem;" src="{% static 'base/images/Logo_ANDAAL_final.png' %}"
+        <img title="{% trans "Home Page" %}" style="width: 15rem;" src="{% static 'base/images/Logo_ANDAAL_final.png' %}"
             class="d-flex mx-auto cursor-pointer my-2" alt="" >
     </a>
 
@@ -26,7 +26,6 @@
     <div>
     {% blocktrans with number=order.number %}
         Order {{ number }}: confirmation 
-
     {% endblocktrans %}
 </div>
 
@@ -94,24 +93,9 @@
                     <h3>{% trans "Payment" %}</h3>
                     {% for source in order.sources.all %}
                         <p>
-                            {% comment %}
-                              
-                        {% if source.reference %}
                             {% blocktrans with amount=source.amount_allocated|currency:source.currency type=source.source_type.name reference=source.reference %}
-                           Allocation of {{ amount }} from type {{ type }} (reference: {{ reference }}) 
+                                Payment deducted from your type {{ type }}
                             {% endblocktrans %}
-                        {% else %}
-                            {% blocktrans with amount=source.amount_allocated|currency:source.currency type=source.source_type.name %}
-                              Allocation of {{ amount }} from type {{ type }} 
-                            {% endblocktrans %}
-                        {% endif %}
-                        {% endcomment %}
-
-                        
-                        {% blocktrans with amount=source.amount_allocated|currency:source.currency type=source.source_type.name reference=source.reference %}
-                        Payment deducted from your type {{ type }}
-                        {% endblocktrans %}
-
                         </p>
                     {% empty %}
                         <p>

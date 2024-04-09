@@ -1,11 +1,12 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 {% if "education" in request.path %}
-ANDAAL - Education
+{% trans "ANDAAL - Education" %}
 {% elif "culture" in request.path %}
-ANDAAL - Culture
+{% trans "ANDAAL - Culture" %}
 {% endif %}
 {% endblock title %}
 {% block content %}
@@ -14,15 +15,15 @@ ANDAAL - Culture
 <div class="d-flex justify-content-center align-items-center my-5 flex-wrap px-5">
     {% for category in all_categories %}
     {% if category.id == active_category.id %}
-    <button class="text-wrap text-break pink__btn mx-2">{{category.name}}</button>
+    <button class="text-wrap text-break pink__btn mx-2">{{ category.name }}</button>
     {% else %}
     {% if "education" in request.path %}
     <a href="{% url 'education' category.id %}">
-        <button class="yellow__btn mx-2">{{category.name}}</button>
+        <button class="yellow__btn mx-2">{{ category.name }}</button>
     </a>
     {% elif "culture" in request.path %}
     <a href="{% url 'culture' category.id %}">
-        <button class="text-wrap text-break yellow__btn mx-2">{{category.name}}</button>
+        <button class="text-wrap text-break yellow__btn mx-2">{{ category.name }}</button>
     </a>
     {% endif %}
     {% endif %}
@@ -39,13 +40,13 @@ ANDAAL - Culture
 {% if upcomming_post %}
 <div class="left_sidebar sidebar my-5">
     {% if "culture" in request.path %}
-    <h5 class="fw-bold text-wrap">Upcoming Events</h5>
+    <h5 class="fw-bold text-wrap">{% trans "Upcoming Events" %}</h5>
     <hr>
     {% for post in upcomming_post %}
     <a class="text-dark no_underline" href="{% url 'culture_post' post.id %}">
     <div class="text-left single__sidebar__elem">
-    <small>{{post.date}}</small>
-    <h6>{{post.title|truncatechars:50}}</h6>
+    <small>{{ post.date }}</small>
+    <h6>{{ post.title|truncatechars:50 }}</h6>
     </div>
     <hr class="w-25 mx-auto">
 </a>
@@ -67,32 +68,32 @@ ANDAAL - Culture
     href="{% url 'culture_post' post.id %}" {% endif %} class="cursor-pointer mx-2 no_underline card__edu_clu__main__single align-items-center text-center my-3" href="">
         
     {% if post.cover_image %}
-        <img class="w-75 rounded my-4" src="{{post.cover_image.url}}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
+        <img class="w-75 rounded my-4" src="{{ post.cover_image.url }}" style="aspect-ratio: 16/9; object-fit: cover;" alt="">
     {% endif %}
 
-        <h5 class="text-dark">{{post.title|slice:"0:25"}}...</h5>
-        <p class="text-dark text-muted">{{post.short_description|slice:"0:50"}}...</p>
+        <h5 class="text-dark">{{ post.title|slice:"0:25" }}...</h5>
+        <p class="text-dark text-muted">{{ post.short_description|slice:"0:50" }}...</p>
 
         <div class="text-muted h6 d-flex justify-content-around align-items-center flex-row w-100 flex-wrap">
             <div class="d-flex justify-content-center align-items-center">
             <span class="material-symbols-outlined">
                 calendar_month
             </span>
-            {{post.date}}
+            {{ post.date }}
         </div>
         <div class="d-flex justify-content-center align-items-center">
             <i class="far text-dark fa-user mx-2"></i>
-            <small>{{post.owner_or_institution_name}}</small>
+            <small>{{ post.owner_or_institution_name }}</small>
         </div>
         </div>
         
 
-        <button href class="pink__btn my-2">Read more</button>
+        <button href class="pink__btn my-2">{% trans "Read more" %}</button>
     </a>
 
 {% endfor %}
 {% else %}
-<h5 class="d-flex justify-content-center align-items-center main__menu__middle__btns pink__to__top__gradient text-dark">NO POST FOUND!</h5>
+<h5 class="d-flex justify-content-center align-items-center main__menu__middle__btns pink__to__top__gradient text-dark">{% trans "NO POST FOUND!" %}</h5>
 {% endif %}
 </div>
 
@@ -100,13 +101,13 @@ ANDAAL - Culture
 {% if recommended_post %}
 <div class="rigth_sidebar sidebar my-5">
     {% if "culture" in request.path %}
-    <h5 class="fw-bold text-wrap">Recommended Events</h5>
+    <h5 class="fw-bold text-wrap">{% trans "Recommended Events" %}</h5>
     <hr>
     {% for post in recommended_post %}
     <a class="text-dark no_underline" href="{% url 'culture_post' post.id %}">
     <div class="text-left single__sidebar__elem">
-    <small>{{post.date}}</small>
-    <h6>{{post.title|truncatechars:50}}</h6>
+    <small>{{ post.date }}</small>
+    <h6>{{ post.title|truncatechars:50 }}</h6>
     </div>
     <hr class="w-25 mx-auto">
 </a>

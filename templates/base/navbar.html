@@ -1,9 +1,15 @@
 {% load static %}
 {% load newfilters %}
+{% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
 
 <nav class="main__base__navbar d-flex w-100 mb-3">
     <a class="desktop__element__nav" href="{% url 'homepage' %}">
-        <img title="Home Page" style="width: 60px;" src="{% static 'base/images/Logo_ANDAAL Background Removed.png' %}"
+        <img title="{% trans 'Home Page' %}" style="width: 60px;" src="{% static 'base/images/Logo_ANDAAL Background Removed.png' %}"
             class="cursor-pointer" alt="" >
     </a>
     <ul
@@ -12,9 +18,17 @@
         <div class="w-100 d-flex justify-content-around align-items-center second_under_all_main_menu">
             {% for main_menu in main_menus %}
             <div>
+                {% if main_menu.redirect_to_link %}
                 <a value="main__menu__dropdown__main{{forloop.counter0}}"
-                class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{main_menu.name}}
-                ↓</a>
+                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{ main_menu.name }}
+                    ↓</a>
+                {% else %}
+                <a href="{{main_menu.category_attached.get_absolute_url}}"
+                    value="main__menu__dropdown__main{{forloop.counter0}}"
+                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{ main_menu.name }}</a>
+
+
+                {% endif %}
                 
                 {% if 'textbook' in main_menu.name|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
@@ -48,7 +62,7 @@
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in educationCategories %}
                     <a class="text-dark no_underline d-block"
-                        href="{% url 'education' category.id %}">{{category.name}}</a>
+                        href="{% url 'education' category.id %}">{{ category.name }}</a>
                     {% endfor %}
                 </ul>
 
@@ -57,7 +71,7 @@
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in cultureCategories %}
                     <a class="text-dark no_underline d-block"
-                        href="{% url 'culture' category.id %}">{{category.name}}</a>
+                        href="{% url 'culture' category.id %}">{{ category.name }}</a>
                     {% endfor %}
                 </ul>
 
@@ -65,46 +79,67 @@
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in booksCategories %}
                     <a class="text-dark no_underline d-block"
-                        href="{{category.category_attached.get_absolute_url}}">{{category.name}}</a>
+                        href="{{category.category_attached.get_absolute_url}}">{{ category.name }}</a>
                     {% endfor %}
                 </ul>
                 
                 {% endif %}
+
             </div>
             {% endfor %}
+            <div>
+
+
+            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <select class="cursor-pointer form-control rounded-pill form-control-sm" id="exampleFormControlSelect1" name="language" onchange="this.form.submit();">
+                   {% get_current_language as LANGUAGE_CODE %}
+                   {% get_available_languages as LANGUAGES %}
+                   {% get_language_info_list for LANGUAGES as languages %}
+                   {% for language in languages %}
+                     <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                         {{ language.code }}
+                     </option>
+                   {% endfor %}
+                </select>
+            </form>
+            
+            </div>
+
         </div>
     </ul>
+
+
     {% if request.user.is_authenticated %}
     <div
         class=" desktop__element__nav_f account__holder justify-content-between align-items-center text-wrap text-dark m-0 px-2 py-2 cursor-pointer sign_in__btn rounded-pill flex-column ">
 
-        <a title="Profile" class="no_underline text-dark text-wrap badge mb-2" href="{% url 'customer:summary' %}">
-            {{user.get_full_name|default:request.user.email}}
+        <a title="{% trans 'Profile' %}" class="no_underline text-dark text-wrap badge mb-2" href="{% url 'customer:summary' %}">
+            {{ user.get_full_name|default:request.user.email }}
         </a>
         <div>
             {% if num_unread_notifications > 0 %}
             <a href="{% url 'customer:notifications-inbox' %}"
                 class="d-flex sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0 ">
-                <i class="far text-dark fa-user" title="Notfications"></i>
+                <i class="far text-dark fa-user" title="{% trans 'Notfications' %}"></i>
                 <span class="badge badge-warning text-danger">{{ num_unread_notifications }}</span>
             </a>
             {% else %}
             <a href="{% url 'customer:summary' %}"
                 class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
-                <i class="far text-dark fa-user" title="Profile"></i>
+                <i class="far text-dark fa-user" title="{% trans 'Profile' %}"></i>
             </a>
             {% endif %}
 
             {% if user.is_staff or perms.partner.dashboard_access %}
             <a href="{% url 'dashboard:index' %}"
                 class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
-                <i class="fas text-dark fa-list-ul" title="Dashboard"></i>
+                <i class="fas text-dark fa-list-ul" title="{% trans 'Dashboard' %}"></i>
             </a>
             {% endif %}
 
             <a id="logout_link" href="{% url 'customer:logout' %}"
                 class="sided_icon_with__account no_underline rounded-pill mt-2 mt-lg-0">
-                <i class="fas text-dark fa-sign-out-alt" title="Sign Out"></i>
+                <i class="fas text-dark fa-sign-out-alt" title="{% trans 'Sign Out' %}"></i>
             </a>
         </div>
     </div>
@@ -112,8 +147,8 @@
 
     {% else %}
     <a href="{% url 'customer:login' %}"
-        class="desktop__element__nav font-bold font-italic btn bg-light m-0 px-3 py-2 cursor-pointer sign_in__btn">Sign
-        in</a>
+        class="desktop__element__nav font-bold font-italic btn bg-light m-0 px-3 py-2 cursor-pointer sign_in__btn">
+        {% trans 'Sign in' %}</a>
     {% endif %}
 
 

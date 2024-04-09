@@ -1,0 +1,2300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-09 10:03+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/basket/middleware.py:54
+msgid ""
+"We have merged a basket from a previous session. Its contents might have "
+"changed."
+msgstr ""
+"Nous avons fusionné un panier d'une session précédente. Son contenu pourrait "
+"avoir changé."
+
+#: apps/customer/forms.py:20
+msgid "Email address/Phone Number"
+msgstr "Adresse e-mail/Numéro de téléphone"
+
+#: apps/customer/forms.py:31 templates/oscar/customer/profile/profile.html:13
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+#: apps/customer/forms.py:46
+msgid "Please Enter a Phone Number"
+msgstr "Veuillez saisir un numéro de téléphone"
+
+#: apps/customer/forms.py:55
+msgid "A user with same Phone Number already exists"
+msgstr "Un utilisateur avec le même numéro de téléphone existe déjà"
+
+#: apps/customer/forms.py:73
+msgid "A user with that email address already exists"
+msgstr "Un utilisateur avec cette adresse e-mail existe déjà"
+
+#: apps/customer/forms.py:95
+msgid "Email/Phone Number"
+msgstr "Adresse e-mail/Numéro de téléphone"
+
+#: base/models.py:14
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: base/models.py:19
+msgid "username"
+msgstr ""
+
+#: base/models.py:30 base/models.py:41 base/models.py:48 base/models.py:54
+#: base/models.py:61 base/models.py:73 base/models.py:98 base/models.py:125
+#: base/models.py:167
+msgid "name"
+msgstr ""
+
+#: base/models.py:31
+msgid "icons_link"
+msgstr ""
+
+#: base/models.py:32
+msgid "redirect_to_link"
+msgstr ""
+
+#: base/models.py:74 base/models.py:99
+msgid "default"
+msgstr ""
+
+#: base/models.py:80 base/models.py:105
+msgid "owner_or_institution_name"
+msgstr ""
+
+#: base/models.py:81 base/models.py:106
+msgid "title"
+msgstr ""
+
+#: base/models.py:82 base/models.py:107 base/models.py:159
+#, fuzzy
+#| msgid "Product Description"
+msgid "short_description"
+msgstr "Description du produit"
+
+#: base/models.py:83 base/models.py:108
+msgid "cover_image"
+msgstr ""
+
+#: base/models.py:84 base/models.py:109
+#, fuzzy
+#| msgid "Product Description"
+msgid "description"
+msgstr "Description du produit"
+
+#: base/models.py:85 base/models.py:110
+#, fuzzy
+#| msgid "Update"
+msgid "date"
+msgstr "Mettre à jour"
+
+#: base/models.py:86 base/models.py:111
+#, fuzzy
+#| msgid "Action"
+msgid "location"
+msgstr "Action"
+
+#: base/models.py:87 base/models.py:112
+msgid "link_to_orignal"
+msgstr ""
+
+#: base/models.py:126
+msgid "code"
+msgstr ""
+
+#: base/models.py:127
+msgid "charge_excl_tax"
+msgstr ""
+
+#: base/models.py:128
+msgid "charge_incl_tax"
+msgstr ""
+
+#: base/models.py:145
+msgid "base"
+msgstr ""
+
+#: base/models.py:146
+#: templates/paypal/express/dashboard/transaction_detail.html:41
+#: templates/paypal/express/dashboard/transaction_list.html:36
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:44
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:38
+#: templates/paypal/payflow/dashboard/transaction_detail.html:53
+#: templates/paypal/payflow/dashboard/transaction_list.html:40
+msgid "Date"
+msgstr "Date"
+
+#: base/models.py:147
+msgid "xaf_to_euro"
+msgstr ""
+
+#: base/models.py:157
+#, fuzzy
+#| msgid "Email"
+msgid "email"
+msgstr "E-mail"
+
+#: base/models.py:158
+#, fuzzy
+#| msgid "Phone number"
+msgid "phone_number"
+msgstr "Numéro de téléphone"
+
+#: base/models.py:168
+msgid "detail"
+msgstr ""
+
+#: django-oscar-paypal/paypal/base.py:13
+msgid "Response time in milliseconds"
+msgstr "Temps de réponse en millisecondes"
+
+#: django-oscar-paypal/paypal/express/dashboard/apps.py:10
+msgid "Express dashboard"
+msgstr "Tableau de bord Express"
+
+#: django-oscar-paypal/paypal/express/gateway.py:226
+#, python-format
+msgid "Special Offer: %s"
+msgstr "Offre spéciale : %s"
+
+#: django-oscar-paypal/paypal/express/gateway.py:243
+#, python-format
+msgid "Shipping Offer: %s"
+msgstr "Offre de livraison : %s"
+
+#: django-oscar-paypal/paypal/express/views.py:71
+#: django-oscar-paypal/paypal/express_checkout/views.py:64
+msgid "Your basket is empty"
+msgstr "Votre panier est vide"
+
+#: django-oscar-paypal/paypal/express/views.py:75
+#: django-oscar-paypal/paypal/express_checkout/views.py:68
+msgid "A shipping address must be specified"
+msgstr "Une adresse de livraison doit être spécifiée"
+
+#: django-oscar-paypal/paypal/express/views.py:79
+#: django-oscar-paypal/paypal/express_checkout/views.py:72
+msgid "A shipping method must be specified"
+msgstr "Une méthode de livraison doit être spécifiée"
+
+#: django-oscar-paypal/paypal/express/views.py:162
+#: django-oscar-paypal/paypal/express_checkout/views.py:128
+msgid "PayPal transaction cancelled"
+msgstr "Transaction PayPal annulée"
+
+#: django-oscar-paypal/paypal/express/views.py:173
+#: django-oscar-paypal/paypal/express_checkout/views.py:137
+#: django-oscar-paypal/paypal/express_checkout/views.py:167
+msgid "A problem occurred communicating with PayPal - please try again later"
+msgstr ""
+"Un problème est survenu lors de la communication avec PayPal - veuillez "
+"réessayer plus tard"
+
+#: django-oscar-paypal/paypal/express/views.py:191
+#: django-oscar-paypal/paypal/express_checkout/views.py:159
+msgid "Unable to determine PayPal transaction details"
+msgstr "Impossible de déterminer les détails de la transaction PayPal"
+
+#: django-oscar-paypal/paypal/express/views.py:205
+#: django-oscar-paypal/paypal/express_checkout/views.py:175
+msgid "No basket was found that corresponds to your PayPal transaction"
+msgstr "Aucun panier correspondant à votre transaction PayPal n'a été trouvé"
+
+#: django-oscar-paypal/paypal/express_checkout/dashboard/apps.py:10
+msgid "Express Checkout Dashboard"
+msgstr "Tableau de bord Express Checkout"
+
+#: django-oscar-paypal/paypal/express_checkout/facade.py:16
+#, python-format
+msgid "'%s' is not a valid order intent"
+msgstr "'%s' n'est pas un objectif de commande valide"
+
+#: django-oscar-paypal/paypal/express_checkout/gateway.py:41
+#, python-format
+msgid "'%s' is not a valid landing page"
+msgstr "'%s' n'est pas une page d'atterrissage valide"
+
+#: django-oscar-paypal/paypal/express_checkout/views.py:273
+msgid "A problem occurred during payment capturing - please try again later"
+msgstr ""
+"Un problème est survenu lors de la capture du paiement - veuillez réessayer "
+"plus tard"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:10
+msgid "Sale"
+msgstr "Vente"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:11
+msgid "Authorize"
+msgstr "Autoriser"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:12
+#: templates/paypal/payflow/dashboard/transaction_detail.html:63
+msgid "Credit"
+msgstr "Crédit"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:13
+msgid "Delayed capture"
+msgstr "Capture différée"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:14
+#: templates/paypal/payflow/dashboard/transaction_detail.html:62
+msgid "Void"
+msgstr "Annulation"
+
+#: django-oscar-paypal/paypal/payflow/codes.py:15
+msgid "Duplicate transaction"
+msgstr "Transaction en double"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/apps.py:10
+msgid "Payflow dashboard"
+msgstr "Tableau de bord Payflow"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:31
+msgid "Dashboard actions not permitted"
+msgstr "Actions du tableau de bord non autorisées"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:48
+#, python-format
+msgid "Unable to settle transaction - %s"
+msgstr "Impossible de régler la transaction - %s"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:52
+#, python-format
+msgid "Transaction %s settled"
+msgstr "Transaction %s réglée"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:59
+#, python-format
+msgid "Unable to credit transaction - %s"
+msgstr "Impossible de créditer la transaction - %s"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:62
+#, python-format
+msgid "Transaction %s credited"
+msgstr "Transaction %s créditée"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:69
+#, python-format
+msgid "Unable to void transaction - %s"
+msgstr "Impossible d'annuler la transaction - %s"
+
+#: django-oscar-paypal/paypal/payflow/dashboard/views.py:72
+#, python-format
+msgid "Transaction %s voided"
+msgstr "Transaction %s annulée"
+
+#: django-oscar-paypal/paypal/payflow/models.py:14
+msgid "Comment 1"
+msgstr "Commentaire 1"
+
+#: django-oscar-paypal/paypal/payflow/models.py:16
+#: django-oscar-paypal/paypal/payflow/models.py:51
+#: templates/paypal/payflow/dashboard/transaction_detail.html:39
+#: templates/paypal/payflow/dashboard/transaction_list.html:33
+msgid "Transaction type"
+msgstr "Type de transaction"
+
+#: django-oscar-paypal/paypal/payflow/models.py:17
+msgid "Bankcard or PayPal"
+msgstr "Carte bancaire ou PayPal"
+
+#: django-oscar-paypal/paypal/payflow/models.py:23
+msgid "Payflow transaction ID"
+msgstr "ID de transaction Payflow"
+
+#: django-oscar-paypal/paypal/payflow/models.py:25
+#, fuzzy
+#| msgid "Payflow transaction ID"
+msgid "Payment transaction ID"
+msgstr "ID de transaction Payflow"
+
+#: django-oscar-paypal/paypal/payflow/models.py:28
+#: templates/paypal/payflow/dashboard/transaction_detail.html:46
+#: templates/paypal/payflow/dashboard/transaction_list.html:38
+#, fuzzy
+#| msgid "Response params"
+msgid "Response message"
+msgstr "Paramètres de réponse"
+
+#: django-oscar-paypal/paypal/payflow/models.py:29
+#: templates/paypal/payflow/dashboard/transaction_detail.html:42
+#: templates/paypal/payflow/dashboard/transaction_detail.html:44
+#, fuzzy
+#| msgid "Authorize"
+msgid "Auth code"
+msgstr "Autoriser"
+
+#: django-oscar-paypal/paypal/payflow/models.py:33
+msgid "CVV2 check"
+msgstr ""
+
+#: django-oscar-paypal/paypal/payflow/models.py:35
+#, fuzzy
+#| msgid "House number match?"
+msgid "House number check"
+msgstr "Correspondance du numéro de maison ?"
+
+#: django-oscar-paypal/paypal/payflow/models.py:37
+#, fuzzy
+#| msgid "Postcode match?"
+msgid "Zip/Postcode check"
+msgstr "Correspondance du code postal ?"
+
+#: django-oscar-paypal/paypal/payflow/models.py:55
+#: templates/paypal/payflow/dashboard/transaction_detail.html:40
+msgid "Tender"
+msgstr ""
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:7
+#, fuzzy
+#| msgid "PayPal Express transaction"
+msgid "PayPal Express"
+msgstr "Transaction PayPal Express"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:9
+msgid ""
+"Click on the below icon to use Express Checkout but where the shipping "
+"address and method is already chosen on the merchant site."
+msgstr ""
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:10
+msgid "Pay with PayPal"
+msgstr ""
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:15
+#, fuzzy
+#| msgid "PayPal Payflow Pro"
+msgid "PayPal PayFlow Pro"
+msgstr "PayPal Payflow Pro"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:19
+#, fuzzy
+#| msgid "Bankcard or PayPal"
+msgid "Bankcard"
+msgstr "Carte bancaire ou PayPal"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:21
+#: templates/oscar/checkout/thank_you.html:107
+#, fuzzy
+#| msgid "Shipping address"
+msgid "Billing address"
+msgstr "Adresse de livraison"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/payment_details.html:24
+#: templates/oscar/checkout/shipping_address.html:75
+#, fuzzy
+#| msgid "Continue shopping"
+msgid "Continue"
+msgstr "Continuer vos achats"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/preview.html:8
+#: templates/oscar/checkout/checkout.html:90
+#: templates/oscar/checkout/checkout.html:94
+#: templates/oscar/checkout/thank_you.html:90
+#: templates/oscar/checkout/thank_you.html:93
+#: templates/paypal/express/preview.html:14
+#: templates/paypal/express_checkout/preview.html:14
+#, fuzzy
+#| msgid "3. Payment"
+msgid "Payment"
+msgstr "3. Paiement"
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/preview.html:11
+#, python-format
+msgid "<strong>%(amount)s</strong> will be debited from your bankcard."
+msgstr ""
+
+#: django-oscar-paypal/sandbox/apps/checkout/templates/checkout/preview.html:13
+#, fuzzy
+#| msgid "Payment details"
+msgid "Change payment details"
+msgstr "Détails du paiement"
+
+#: django-oscar-paypal/sandbox/settings.py:49
+#, fuzzy
+#| msgid "English"
+msgid "British English"
+msgstr "Anglais"
+
+#: django-oscar-paypal/sandbox/settings.py:50
+msgid "Simplified Chinese"
+msgstr ""
+
+#: django-oscar-paypal/sandbox/settings.py:51
+msgid "Dutch"
+msgstr ""
+
+#: django-oscar-paypal/sandbox/settings.py:52
+msgid "Italian"
+msgstr "Italien"
+
+#: django-oscar-paypal/sandbox/settings.py:53
+msgid "Polish"
+msgstr "Polonais"
+
+#: django-oscar-paypal/sandbox/settings.py:54
+msgid "Russian"
+msgstr "Russe"
+
+#: django-oscar-paypal/sandbox/settings.py:55
+msgid "Slovak"
+msgstr "Slovaque"
+
+#: django-oscar-paypal/sandbox/settings.py:56
+msgid "Brazilian Portuguese"
+msgstr "Portugais brésilien"
+
+#: django-oscar-paypal/sandbox/settings.py:57 proj1/settings.py:225
+msgid "French"
+msgstr "Français"
+
+#: django-oscar-paypal/sandbox/settings.py:58
+msgid "German"
+msgstr "Allemand"
+
+#: django-oscar-paypal/sandbox/settings.py:59
+msgid "Korean"
+msgstr "Coréen"
+
+#: django-oscar-paypal/sandbox/settings.py:60
+msgid "Ukrainian"
+msgstr "Ukrainien"
+
+#: django-oscar-paypal/sandbox/settings.py:61
+msgid "Spanish"
+msgstr "Espagnol"
+
+#: django-oscar-paypal/sandbox/settings.py:62
+msgid "Danish"
+msgstr "Danois"
+
+#: django-oscar-paypal/sandbox/settings.py:63
+msgid "Arabic"
+msgstr "Arabe"
+
+#: django-oscar-paypal/sandbox/settings.py:64
+msgid "Catalan"
+msgstr "Catalan"
+
+#: django-oscar-paypal/sandbox/settings.py:65
+msgid "Czech"
+msgstr "Tchèque"
+
+#: django-oscar-paypal/sandbox/settings.py:66
+msgid "Greek"
+msgstr "Grec"
+
+#: django-oscar-paypal/sandbox/settings.py:286
+#: templates/paypal/express/preview.html:17
+#: templates/paypal/express_checkout/preview.html:17
+msgid "PayPal"
+msgstr "PayPal"
+
+#: django-oscar-paypal/sandbox/settings.py:290
+msgid "PayFlow transactions"
+msgstr "Transactions PayFlow"
+
+#: django-oscar-paypal/sandbox/settings.py:294
+#: templates/paypal/express/dashboard/transaction_detail.html:16
+#: templates/paypal/express/dashboard/transaction_list.html:15
+msgid "Express transactions"
+msgstr "Transactions Express"
+
+#: django-oscar-paypal/sandbox/settings.py:298
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:17
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:16
+msgid "Express Checkout transactions"
+msgstr "Transactions de paiement Express"
+
+#: django-oscar-paypal/sandbox/templates/basket/partials/basket_content.html:11
+#: templates/oscar/basket/partials/basket_content.html:160
+msgid "Proceed to checkout"
+msgstr "Procéder au paiement"
+
+#: django_oscar_stripe_sca/oscar_stripe_sca/templates/oscar_stripe_sca/stripe_payment_details.html:5
+#: stripe_payment_details.html:5
+#: templates/django-oscar-stripe-sca/checkout/stripe_payment_details.html:5
+#: templates/oscar/basket/partials/basket_quick.html:39
+#: templates/oscar/checkout/checkout.html:8
+msgid "Checkout"
+msgstr "Paiement"
+
+#: django_oscar_stripe_sca/oscar_stripe_sca/templates/oscar_stripe_sca/stripe_preview.html:22
+#: django_oscar_stripe_sca/oscar_stripe_sca/templates/oscar_stripe_sca/stripe_preview.html:54
+#: templates/django-oscar-stripe-sca/checkout/stripe_preview.html:31
+#: templates/oscar/checkout/flutterwave_payment_details_view.html:30
+#: templates/paypal/express/preview.html:35
+#: templates/paypal/express_checkout/preview.html:35
+msgid "Place order"
+msgstr "Passer la commande"
+
+#: django_oscar_stripe_sca/oscar_stripe_sca/templates/oscar_stripe_sca/stripe_preview.html:54
+#: templates/django-oscar-stripe-sca/checkout/stripe_preview.html:31
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:26
+#: templates/oscar/checkout/flutterwave_payment_details_view.html:30
+#: templates/oscar/checkout/shipping_methods.html:87
+msgid "Submitting..."
+msgstr "En cours de soumission..."
+
+#: django_oscar_stripe_sca/oscar_stripe_sca/views.py:133
+#: django_oscar_stripe_sca/oscar_stripe_sca/views.py:145
+msgid "No basket was found that corresponds to your Stripe transaction"
+msgstr "Aucun panier correspondant à votre transaction Stripe n'a été trouvé"
+
+#: django_oscar_stripe_sca/oscar_stripe_sca/views.py:165
+msgid "Stripe transaction cancelled"
+msgstr "Transaction Stripe annulée"
+
+#: oscar_with_flutterwave/views.py:138
+msgid "No basket was found that corresponds to your  transaction"
+msgstr "Aucun panier correspondant à votre transaction n'a été trouvé"
+
+#: oscar_with_flutterwave/views.py:152
+msgid ""
+"No basket was found that corresponds to your Francophone mobile money "
+"transaction"
+msgstr ""
+"Aucun panier correspondant à votre transaction mobile francophone n'a été "
+"trouvé"
+
+#: proj1/settings.py:224
+msgid "English"
+msgstr "Anglais"
+
+#: proj1/urls.py:26
+msgid "andaal/admin/"
+msgstr ""
+
+#: templates/base/after_registration.html:11
+msgid ""
+"We sent a link on your email - please open the link from email to verify"
+msgstr ""
+
+#: templates/base/after_registration.html:13
+#: templates/base/verify_my_email.html:38
+msgid "OK"
+msgstr ""
+
+#: templates/base/back_button.html:6
+#: templates/oscar/checkout/shipping_methods.html:128
+msgid "Back"
+msgstr ""
+
+#: templates/base/base.html:21
+msgid "Andaal"
+msgstr ""
+
+#: templates/base/class_categories.html:5
+msgid "ANDAAL - Class Selection"
+msgstr ""
+
+#: templates/base/class_categories.html:52
+msgid "No Class Found!"
+msgstr ""
+
+#: templates/base/currency_selector.html:5
+msgid "Select your Currency"
+msgstr ""
+
+#: templates/base/currency_selector.html:15
+msgid "Save changes"
+msgstr ""
+
+#: templates/base/education.html:6 templates/base/education_post.html:3
+msgid "ANDAAL - Education"
+msgstr ""
+
+#: templates/base/education.html:8
+msgid "ANDAAL - Culture"
+msgstr ""
+
+#: templates/base/education.html:43
+msgid "Upcoming Events"
+msgstr ""
+
+#: templates/base/education.html:91
+msgid "Read more"
+msgstr ""
+
+#: templates/base/education.html:96
+msgid "NO POST FOUND!"
+msgstr ""
+
+#: templates/base/education.html:104
+#, fuzzy
+#| msgid "Recommended items"
+msgid "Recommended Events"
+msgstr "Articles recommandés"
+
+#: templates/base/education_post.html:12
+#, fuzzy
+#| msgid "Response params"
+msgid "Responsive image"
+msgstr "Paramètres de réponse"
+
+#: templates/base/education_post.html:32
+msgid "Click here"
+msgstr ""
+
+#: templates/base/footer.html:13 templates/oscar/checkout/checkout.html:53
+#: templates/oscar/checkout/thank_you.html:66
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:41
+msgid "Email"
+msgstr "E-mail"
+
+#: templates/base/footer.html:19
+msgid "Tel"
+msgstr ""
+
+#: templates/base/footer.html:28
+msgid "Pages"
+msgstr ""
+
+#: templates/base/footer.html:43
+msgid "Important Links"
+msgstr ""
+
+#: templates/base/footer.html:51
+msgid "Copyright © 2023 Andaal all rights reserved"
+msgstr ""
+
+#: templates/base/navbar.html:12 templates/oscar/checkout/thank_you.html:21
+#, fuzzy
+#| msgid "Home"
+msgid "Home Page"
+msgstr "Accueil"
+
+#: templates/base/navbar.html:116 templates/base/navbar.html:129
+#: templates/oscar/customer/partials/standard_tabs.html:5
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Profile"
+msgstr "Modifier le profil"
+
+#: templates/base/navbar.html:123
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notfications"
+msgstr "Notifications"
+
+#: templates/base/navbar.html:136 templates/oscar/dashboard/layout.html:20
+#: templates/oscar/dashboard/layout.html:96
+#: templates/paypal/express/dashboard/transaction_detail.html:12
+#: templates/paypal/express/dashboard/transaction_list.html:12
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:13
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:13
+#: templates/paypal/payflow/dashboard/transaction_detail.html:14
+#: templates/paypal/payflow/dashboard/transaction_list.html:12
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: templates/base/navbar.html:142
+msgid "Sign Out"
+msgstr ""
+
+#: templates/base/navbar.html:151
+msgid "Sign in"
+msgstr ""
+
+#: templates/base/textbook_language_section.html:4
+msgid "ANDAAL - Homepage"
+msgstr ""
+
+#: templates/base/textbook_language_section.html:11
+msgid "Culture For Development"
+msgstr ""
+
+#: templates/base/textbook_language_section.html:12
+msgid "Danger example"
+msgstr ""
+
+#: templates/base/verify_my_email.html:20
+msgid "Your Email has been Verified."
+msgstr ""
+
+#: templates/base/verify_my_email.html:26
+#, fuzzy
+#| msgid "Verify your Email"
+msgid "We can't verify your Email."
+msgstr "Vérifiez votre adresse e-mail"
+
+#: templates/base/verify_my_email.html:31
+#, fuzzy
+#| msgid "Deleting..."
+msgid "Redirecting..."
+msgstr "Suppression en cours..."
+
+#: templates/django-oscar-stripe-sca/checkout/stripe_payment_details.html:18
+msgid "Launching Stripe, please wait..."
+msgstr ""
+
+#: templates/django-oscar-stripe-sca/checkout/stripe_payment_details.html:26
+#, fuzzy
+#| msgid "Return to site"
+msgid "Redirecting to stripe"
+msgstr "Retour au site"
+
+#: templates/oscar/basket/basket.html:5 templates/oscar/basket/basket.html:12
+#: templates/oscar/basket/basket.html:21
+#: templates/oscar/partials/nav_primary.html:17
+msgid "Basket"
+msgstr "Panier"
+
+#: templates/oscar/basket/basket.html:11
+#: templates/oscar/catalogue/category.html:26
+#: templates/oscar/catalogue/detail.html:22
+#: templates/oscar/customer/baseaccountpage.html:15
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:12
+#: templates/oscar/customer/login_registration.html:12
+#: templates/oscar/customer/order/order_list.html:22
+#: templates/oscar/customer/registration.html:13
+#: templates/oscar/customer/wishlists/wishlists_delete.html:8
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:8
+#: templates/oscar/customer/wishlists/wishlists_detail.html:10
+#: templates/oscar/customer/wishlists/wishlists_form.html:8
+#: templates/oscar/registration/password_reset_form.html:10
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/oscar/basket/messages/new_total.html:5
+msgid "Your basket is now empty"
+msgstr "Votre panier est maintenant vide"
+
+#: templates/oscar/basket/messages/new_total.html:8
+#: templates/oscar/basket/messages/new_total.html:12
+#, python-format
+msgid ""
+"\n"
+"Your basket total is now <strong>%(total)s</strong>\n"
+msgstr ""
+"\n"
+"Le total de votre panier est maintenant de <strong>%(total)s</strong>\n"
+
+#: templates/oscar/basket/messages/new_total.html:20
+#: templates/oscar/basket/partials/basket_quick.html:38
+#: templates/oscar/partials/mini_basket.html:14
+msgid "View basket"
+msgstr "Voir le panier"
+
+#: templates/oscar/basket/messages/new_total.html:21
+msgid "Checkout now"
+msgstr "Payer maintenant"
+
+#: templates/oscar/basket/partials/basket_content.html:8
+msgid "Important messages about items in your basket"
+msgstr "Messages importants concernant les articles de votre panier"
+
+#: templates/oscar/basket/partials/basket_content.html:16
+msgid "You could be missing out on offers!"
+msgstr "Vous pourriez manquer des offres !"
+
+#: templates/oscar/basket/partials/basket_content.html:18
+#, python-format
+msgid ""
+"\n"
+"                <div class=\"warning\">%(message)s to qualify for the <a "
+"href=\"%(url)s\">%(offer_name)s</a> special offer</div>\n"
+"            "
+msgstr ""
+"\n"
+"                <div class=\"warning\">%(message)s pour être éligible à "
+"l'offre spéciale <a href=\"%(url)s\">%(offer_name)s</a></div>\n"
+"            "
+
+#: templates/oscar/basket/partials/basket_content.html:29
+msgid "Items to buy now"
+msgstr "Articles à acheter maintenant"
+
+#: templates/oscar/basket/partials/basket_content.html:30
+#: templates/oscar/checkout/checkout.html:124
+#: templates/oscar/checkout/thank_you.html:128
+#: templates/oscar/customer/anon_order.html:59
+#: templates/oscar/customer/wishlists/wishlists_detail.html:34
+msgid "Quantity"
+msgstr "Quantité"
+
+#: templates/oscar/basket/partials/basket_content.html:31
+#: templates/oscar/basket/partials/basket_content.html:92
+#: templates/oscar/basket/partials/basket_content.html:183
+msgid "Price"
+msgstr "Prix"
+
+#: templates/oscar/basket/partials/basket_content.html:32
+#: templates/oscar/basket/partials/basket_content.html:107
+#: templates/oscar/checkout/checkout.html:125
+#: templates/oscar/checkout/thank_you.html:129
+msgid "Total"
+msgstr "Total"
+
+#: templates/oscar/basket/partials/basket_content.html:65
+#: templates/oscar/customer/wishlists/wishlists_detail.html:106
+msgid "Updating..."
+msgstr "Mise à jour en cours..."
+
+#: templates/oscar/basket/partials/basket_content.html:65
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: templates/oscar/basket/partials/basket_content.html:70
+#: templates/oscar/basket/partials/basket_content.html:205
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:34
+#: templates/oscar/customer/wishlists/wishlists_detail.html:85
+msgid "Remove"
+msgstr "Supprimer"
+
+#: templates/oscar/basket/partials/basket_content.html:72
+msgid "Save for later"
+msgstr "Enregistrer pour plus tard"
+
+#: templates/oscar/basket/partials/basket_content.html:129
+msgid "Voucher/promo code"
+msgstr "Code de réduction/promotion"
+
+#: templates/oscar/basket/partials/basket_content.html:131
+msgid "I have a voucher code..."
+msgstr "J'ai un code de réduction..."
+
+#: templates/oscar/basket/partials/basket_content.html:137
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:13
+#: templates/oscar/catalogue/partials/add_to_basket_form_compact.html:12
+#: templates/oscar/catalogue/partials/stock_record.html:41
+msgid "Adding..."
+msgstr "Ajout en cours..."
+
+#: templates/oscar/basket/partials/basket_content.html:137
+msgid "Add voucher"
+msgstr "Ajouter un code de réduction"
+
+#: templates/oscar/basket/partials/basket_content.html:138
+#: templates/oscar/checkout/shipping_address.html:76
+#: templates/oscar/customer/address/address_delete.html:19
+#: templates/oscar/customer/profile/profile_delete.html:18
+#: templates/oscar/customer/registration.html:32
+#: templates/oscar/customer/wishlists/wishlists_delete.html:34
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:34
+#: templates/oscar/customer/wishlists/wishlists_form.html:55
+msgid "or"
+msgstr "ou"
+
+#: templates/oscar/basket/partials/basket_content.html:138
+#: templates/oscar/customer/address/address_delete.html:19
+#: templates/oscar/customer/profile/profile_delete.html:18
+#: templates/oscar/customer/registration.html:32
+#: templates/oscar/customer/wishlists/wishlists_delete.html:34
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:34
+#: templates/oscar/customer/wishlists/wishlists_form.html:55
+msgid "cancel"
+msgstr "annuler"
+
+#: templates/oscar/basket/partials/basket_content.html:148
+#: templates/oscar/checkout/checkout.html:166
+#: templates/oscar/checkout/thank_you.html:171
+#: templates/oscar/customer/anon_order.html:100
+msgid "Totals"
+msgstr "Totals"
+
+#: templates/oscar/basket/partials/basket_content.html:169
+#: templates/oscar/basket/partials/basket_quick.html:42
+msgid "Your basket is empty."
+msgstr "Votre panier est vide."
+
+#: templates/oscar/basket/partials/basket_content.html:170
+#: templates/oscar/checkout/thank_you.html:198
+msgid "Continue shopping"
+msgstr "Continuer vos achats"
+
+#: templates/oscar/basket/partials/basket_content.html:179
+msgid "Items to buy later"
+msgstr "Articles à acheter plus tard"
+
+#: templates/oscar/basket/partials/basket_content.html:182
+msgid "Items"
+msgstr "Articles"
+
+#: templates/oscar/basket/partials/basket_content.html:223
+msgid "Move to basket"
+msgstr "Déplacer dans le panier"
+
+#: templates/oscar/basket/partials/basket_quick.html:33
+#: templates/oscar/basket/partials/basket_quick.html:35
+msgid "Total:"
+msgstr "Total :"
+
+#: templates/oscar/catalogue/browse.html:25
+#, python-format
+msgid ""
+"\n"
+"    <strong>%(num_results)s</strong> result - showing <strong>%(start)s</"
+"strong> to <strong>%(end)s</strong>.\n"
+"    "
+msgid_plural ""
+"\n"
+"    <strong>%(num_results)s</strong> results - showing <strong>%(start)s</"
+"strong> to <strong>%(end)s</strong>.\n"
+"    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/oscar/catalogue/browse.html:31
+#, python-format
+msgid ""
+"\n"
+"    <strong>%(num_results)s</strong> result.\n"
+"    "
+msgid_plural ""
+"\n"
+"    <strong>%(num_results)s</strong> results.\n"
+"    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/oscar/catalogue/browse.html:44
+msgid "<strong>0</strong> results."
+msgstr "<strong>0</strong> résultat."
+
+#: templates/oscar/catalogue/browse.html:61
+msgid "No products found."
+msgstr "Aucun produit trouvé."
+
+#: templates/oscar/catalogue/category.html:17
+msgid "Edit this category"
+msgstr "Modifier cette catégorie"
+
+#: templates/oscar/catalogue/detail.html:66
+msgid "Edit this product"
+msgstr "Modifier ce produit"
+
+#: templates/oscar/catalogue/detail.html:87
+msgid "Variants:"
+msgstr "Variantes :"
+
+#: templates/oscar/catalogue/detail.html:104
+msgid "Product Description"
+msgstr "Description du produit"
+
+#: templates/oscar/catalogue/detail.html:112
+msgid "Product Information"
+msgstr "Informations sur le produit"
+
+#: templates/oscar/catalogue/detail.html:117
+msgid "UPC"
+msgstr "UPC"
+
+#: templates/oscar/catalogue/detail.html:122
+msgid "Product Type"
+msgstr "Type de produit"
+
+#: templates/oscar/catalogue/detail.html:129
+msgid "Price (excl. tax)"
+msgstr "Prix (hors taxes)"
+
+#: templates/oscar/catalogue/detail.html:134
+msgid "Price (incl. tax)"
+msgstr "Prix (TTC)"
+
+#: templates/oscar/catalogue/detail.html:138
+msgid "Tax"
+msgstr "Taxe"
+
+#: templates/oscar/catalogue/detail.html:143
+msgid "Availability"
+msgstr "Disponibilité"
+
+#: templates/oscar/catalogue/detail.html:155
+msgid "Number of reviews"
+msgstr "Nombre d'avis"
+
+#: templates/oscar/catalogue/detail.html:168
+msgid "See all reviews"
+msgstr "Voir tous les avis"
+
+#: templates/oscar/catalogue/detail.html:170
+msgid "Customer Reviews"
+msgstr "Avis des clients"
+
+#: templates/oscar/catalogue/detail.html:177
+#, python-format
+msgid ""
+"This product does not have any reviews yet -\n"
+"            <a href=\"%(add_review_url)s#addreview\">be the first to write "
+"one</a>.\n"
+"            "
+msgstr ""
+
+#: templates/oscar/catalogue/detail.html:181
+msgid "This product does not have any reviews yet"
+msgstr ""
+
+#: templates/oscar/catalogue/detail.html:200
+msgid "Recommended items"
+msgstr "Articles recommandés"
+
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:13
+#: templates/oscar/catalogue/partials/add_to_basket_form_compact.html:13
+#: templates/oscar/catalogue/partials/add_to_basket_form_compact.html:17
+#: templates/oscar/catalogue/partials/stock_record.html:41
+#: templates/oscar/catalogue/partials/stock_record.html:44
+msgid "Add to basket"
+msgstr "Ajouter au panier"
+
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:20
+msgid "You have an active stock alert for this product."
+msgstr "Vous avez une alerte de stock active pour ce produit."
+
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:24
+msgid "You can get an email alert when this product is back in stock."
+msgstr ""
+"Vous pouvez recevoir une alerte e-mail lorsque ce produit sera de nouveau en "
+"stock."
+
+#: templates/oscar/catalogue/partials/add_to_basket_form.html:26
+msgid "Notify me"
+msgstr "Notifier moi"
+
+#: templates/oscar/catalogue/partials/stock_record.html:24
+msgid "Free"
+msgstr "Gratuit"
+
+#: templates/oscar/catalogue/reviews/partials/review_stars.html:13
+#, python-format
+msgid ""
+"\n"
+"                    %(num_reviews)s customer review\n"
+"                "
+msgid_plural ""
+"\n"
+"                    %(num_reviews)s customer reviews\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/oscar/catalogue/reviews/partials/review_stars.html:26
+#: templates/oscar/customer/anon_order.html:82
+#: templates/oscar/customer/order/order_detail.html:47
+msgid "Write a review"
+msgstr "Écrire un avis"
+
+#: templates/oscar/catalogue/reviews/review_detail.html:5
+msgid "Reviews"
+msgstr "Avis"
+
+#: templates/oscar/catalogue/reviews/review_detail.html:10
+#: templates/oscar/catalogue/reviews/review_list.html:11
+msgid "Customer reviews"
+msgstr "Avis des clients"
+
+#: templates/oscar/catalogue/reviews/review_list.html:7
+msgid "All reviews"
+msgstr "Tous les avis"
+
+#: templates/oscar/catalogue/reviews/review_list.html:22
+msgid "Go"
+msgstr "Aller"
+
+#: templates/oscar/catalogue/reviews/review_list.html:33
+msgid "This product does not have any reviews yet."
+msgstr "Ce produit n'a pas encore été évalué."
+
+#: templates/oscar/checkout/checkout.html:31
+#: templates/oscar/checkout/thank_you.html:50
+msgid "Shipping"
+msgstr "Livraison"
+
+#: templates/oscar/checkout/checkout.html:36
+#: templates/oscar/checkout/thank_you.html:53
+#: templates/oscar/customer/address/address_list.html:10
+#: templates/oscar/customer/anon_order.html:25
+#: templates/oscar/customer/order/order_detail.html:164
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:43
+msgid "Address"
+msgstr "Adresse"
+
+#: templates/oscar/checkout/checkout.html:39
+#: templates/oscar/checkout/checkout.html:71
+#: templates/oscar/checkout/checkout.html:96
+msgid "Change"
+msgstr "Modifier"
+
+#: templates/oscar/checkout/checkout.html:49
+#: templates/oscar/checkout/thank_you.html:62
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/oscar/checkout/checkout.html:51
+#: templates/oscar/checkout/thank_you.html:64
+msgid "Phone"
+msgstr "Téléphone"
+
+#: templates/oscar/checkout/checkout.html:59
+#: templates/oscar/checkout/thank_you.html:72
+msgid "Instructions"
+msgstr "Instructions"
+
+#: templates/oscar/checkout/checkout.html:68
+#: templates/oscar/checkout/shipping_methods.html:8
+#: templates/oscar/checkout/shipping_methods.html:15
+#: templates/oscar/checkout/thank_you.html:81
+#: templates/oscar/customer/anon_order.html:48
+msgid "Shipping method"
+msgstr "Mode de livraison"
+
+#: templates/oscar/checkout/checkout.html:99
+msgid "Payment details to go here"
+msgstr "Les détails du paiement vont ici"
+
+#: templates/oscar/checkout/checkout.html:119
+#: templates/oscar/checkout/thank_you.html:122
+#: templates/oscar/customer/anon_order.html:53
+msgid "Order contents"
+msgstr "Contenu de la commande"
+
+#: templates/oscar/checkout/checkout.html:123
+msgid "Item"
+msgstr "Article"
+
+#: templates/oscar/checkout/flutterwave_payment_details_input.html:5
+msgid "Enter Mobile Number:"
+msgstr "Entrer le numéro de téléphone portable :"
+
+#: templates/oscar/checkout/flutterwave_payment_details_input.html:14
+#, fuzzy
+#| msgid "Enter Mobile Number:"
+msgid "Enter Your Mobile Number:"
+msgstr "Entrer le numéro de téléphone portable :"
+
+#: templates/oscar/checkout/flutterwave_payment_details_input.html:15
+msgid "08000000000"
+msgstr ""
+
+#: templates/oscar/checkout/flutterwave_payment_details_input.html:17
+msgid "DONE"
+msgstr ""
+
+#: templates/oscar/checkout/nav.html:25 templates/oscar/checkout/nav.html:30
+msgid "1. Shipping address"
+msgstr "1. Adresse de livraison"
+
+#: templates/oscar/checkout/nav.html:40 templates/oscar/checkout/nav.html:45
+msgid "2. Shipping method"
+msgstr "2. Mode de livraison"
+
+#: templates/oscar/checkout/nav.html:55 templates/oscar/checkout/nav.html:60
+msgid "3. Payment"
+msgstr "3. Paiement"
+
+#: templates/oscar/checkout/nav.html:67
+msgid "4. Preview"
+msgstr "4. Aperçu"
+
+#: templates/oscar/checkout/nav.html:73
+msgid "5. Confirmation"
+msgstr "5. Confirmation"
+
+#: templates/oscar/checkout/payment_details.html:5
+msgid "Payment details"
+msgstr "Détails du paiement"
+
+#: templates/oscar/checkout/payment_details.html:12
+msgid "Select:"
+msgstr "Sélectionner :"
+
+#: templates/oscar/checkout/payment_details.html:34
+msgid "FlutterFlow"
+msgstr ""
+
+#: templates/oscar/checkout/shipping_address.html:5
+#: templates/oscar/checkout/shipping_address.html:12
+#: templates/oscar/customer/anon_order.html:21
+msgid "Shipping address"
+msgstr "Adresse de livraison"
+
+#: templates/oscar/checkout/shipping_address.html:19
+msgid "Where should we ship to?"
+msgstr "Où devons-nous livrer ?"
+
+#: templates/oscar/checkout/shipping_address.html:23
+msgid "An address from your address book?"
+msgstr "Une adresse de votre carnet d'adresses ?"
+
+#: templates/oscar/checkout/shipping_address.html:42
+#: templates/oscar/checkout/shipping_address.html:44
+#: templates/oscar/customer/wishlists/wishlists_form.html:54
+msgid "Saving..."
+msgstr "Enregistrement..."
+
+#: templates/oscar/checkout/shipping_address.html:42
+msgid "Ship to your default shipping address"
+msgstr "Expédier à votre adresse de livraison par défaut"
+
+#: templates/oscar/checkout/shipping_address.html:44
+msgid "Ship to this address"
+msgstr "Expédier à cette adresse"
+
+#: templates/oscar/checkout/shipping_address.html:48
+msgid "Edit address"
+msgstr "Modifier l'adresse"
+
+#: templates/oscar/checkout/shipping_address.html:51
+#: templates/oscar/customer/address/address_delete.html:19
+#: templates/oscar/customer/address/address_list.html:34
+#: templates/oscar/customer/profile/profile_delete.html:17
+#: templates/oscar/customer/wishlists/wishlists_delete.html:34
+#: templates/oscar/customer/wishlists/wishlists_list.html:31
+msgid "Delete"
+msgstr "Supprimer"
+
+#: templates/oscar/checkout/shipping_address.html:64
+msgid "Or a new address?"
+msgstr "Ou une nouvelle adresse ?"
+
+#: templates/oscar/checkout/shipping_address.html:76
+msgid "return to basket"
+msgstr "retourner au panier"
+
+#: templates/oscar/checkout/shipping_methods.html:24
+#: templates/paypal/express/dashboard/transaction_detail.html:32
+#: templates/paypal/express/dashboard/transaction_list.html:30
+msgid "Method"
+msgstr "Méthode"
+
+#: templates/oscar/checkout/shipping_methods.html:25
+msgid "Cost"
+msgstr "Coût"
+
+#: templates/oscar/checkout/shipping_methods.html:68
+#, python-format
+msgid ""
+"\n"
+"                                This includes a discount of "
+"<strong>%(amount)s</strong> as\n"
+"                                your basket qualifies for the "
+"<strong>%(name)s</strong> offer.\n"
+"                            "
+msgstr ""
+
+#: templates/oscar/checkout/shipping_methods.html:87
+msgid "Select option"
+msgstr "Sélectionner une option"
+
+#: templates/oscar/checkout/shipping_methods.html:124
+msgid "Sorry! The Shipping isn't available for your country."
+msgstr ""
+
+#: templates/oscar/checkout/shipping_methods.html:127
+#, fuzzy
+#| msgid "Availability"
+msgid "Not Available"
+msgstr "Disponibilité"
+
+#: templates/oscar/checkout/thank_you.html:8
+#, python-format
+msgid ""
+"\n"
+"        Order %(number)s: confirmation\n"
+"    "
+msgstr ""
+"\n"
+"        Commande %(number)s : confirmation\n"
+"    "
+
+#: templates/oscar/checkout/thank_you.html:27
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "        Order %(number)s: confirmation \n"
+#| "\n"
+#| "    "
+msgid ""
+"\n"
+"        Order %(number)s: confirmation \n"
+"    "
+msgstr ""
+"\n"
+"        Commande %(number)s : confirmation \n"
+"\n"
+"    "
+
+#: templates/oscar/checkout/thank_you.html:39
+#, python-format
+msgid ""
+"\n"
+"        Your order has been placed and a confirmation email has been sent - "
+"your order number is\n"
+"        <strong>%(number)s</strong>.\n"
+"        "
+msgstr ""
+"\n"
+"        Votre commande a été passée et un e-mail de confirmation a été "
+"envoyé - votre numéro de commande est\n"
+"        <strong>%(number)s</strong>.\n"
+"        "
+
+#: templates/oscar/checkout/thank_you.html:43
+msgid ""
+"Please make a note of this reference or print this page and quote it in any "
+"communication with us regarding your order."
+msgstr ""
+"Veuillez noter cette référence ou imprimer cette page et la citer dans toute "
+"communication avec nous concernant votre commande."
+
+#: templates/oscar/checkout/thank_you.html:76
+msgid "No shipping address required."
+msgstr "Aucune adresse de livraison requise."
+
+#: templates/oscar/checkout/thank_you.html:96
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                        Payment deducted from your type %(type)s\n"
+#| "                        "
+msgid ""
+"\n"
+"                                Payment deducted from your type %(type)s\n"
+"                            "
+msgstr ""
+"\n"
+"                        Paiement déduit de votre type %(type)s\n"
+"                        "
+
+#: templates/oscar/checkout/thank_you.html:102
+msgid "No payment was required for this order."
+msgstr "Aucun paiement n'était requis pour cette commande."
+
+#: templates/oscar/checkout/thank_you.html:127
+msgid "Items purchased"
+msgstr "Articles achetés"
+
+#: templates/oscar/checkout/thank_you.html:183
+msgid "Tracking your order"
+msgstr "Suivi de votre commande"
+
+#: templates/oscar/checkout/thank_you.html:185
+msgid "You can track the status of your order"
+msgstr "Vous pouvez suivre le statut de votre commande"
+
+#: templates/oscar/checkout/thank_you.html:186
+msgid "View order status"
+msgstr "Voir le statut de la commande"
+
+#: templates/oscar/checkout/thank_you.html:195
+msgid "Print this page"
+msgstr "Imprimer cette page"
+
+#: templates/oscar/communication/emails/commtype_registration_subject.txt:1
+msgid "Verify your Email"
+msgstr "Vérifiez votre adresse e-mail"
+
+#: templates/oscar/customer/address/address_delete.html:7
+#: templates/oscar/customer/address/address_form.html:7
+msgid "Address book"
+msgstr "Carnet d'adresses"
+
+#: templates/oscar/customer/address/address_delete.html:14
+msgid "Are you sure you want to delete this address?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette adresse ?"
+
+#: templates/oscar/customer/address/address_delete.html:19
+#: templates/oscar/customer/profile/profile_delete.html:17
+#: templates/oscar/customer/wishlists/wishlists_delete.html:34
+msgid "Deleting..."
+msgstr "Suppression en cours..."
+
+#: templates/oscar/customer/address/address_list.html:17
+msgid "Default shipping address"
+msgstr "Adresse de livraison par défaut"
+
+#: templates/oscar/customer/address/address_list.html:20
+msgid "Default billing address"
+msgstr "Adresse de facturation par défaut"
+
+#: templates/oscar/customer/address/address_list.html:30
+msgid "Edit"
+msgstr "Modifier"
+
+#: templates/oscar/customer/address/address_list.html:38
+msgid "Set as default shipping address"
+msgstr "Définir comme adresse de livraison par défaut"
+
+#: templates/oscar/customer/address/address_list.html:43
+msgid "Set as default billing address"
+msgstr "Définir comme adresse de facturation par défaut"
+
+#: templates/oscar/customer/address/address_list.html:55
+msgid "There are no addresses in your address book."
+msgstr "Il n'y a aucune adresse dans votre carnet d'adresses."
+
+#: templates/oscar/customer/address/address_list.html:58
+msgid "Add a new address"
+msgstr "Ajouter une nouvelle adresse"
+
+#: templates/oscar/customer/alerts/alert_list.html:6
+msgid "You do not have any active alerts for out-of-stock products."
+msgstr ""
+"Vous n'avez aucune alerte active pour les produits en rupture de stock."
+
+#: templates/oscar/customer/alerts/alert_list.html:12
+#: templates/oscar/customer/anon_order.html:57
+#: templates/oscar/customer/order/order_detail.html:23
+#: templates/oscar/customer/wishlists/wishlists_detail.html:33
+msgid "Product"
+msgstr "Produit"
+
+#: templates/oscar/customer/alerts/alert_list.html:13
+#: templates/oscar/customer/anon_order.html:14
+#: templates/oscar/customer/anon_order.html:58
+#: templates/oscar/customer/order/order_detail.html:15
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:38
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:36
+msgid "Status"
+msgstr "Statut"
+
+#: templates/oscar/customer/alerts/alert_list.html:14
+msgid "Date created"
+msgstr "Date de création"
+
+#: templates/oscar/customer/alerts/alert_list.html:33
+msgid "Cancel"
+msgstr "Annuler"
+
+#: templates/oscar/customer/alerts/message.html:2
+#, python-format
+msgid ""
+"\n"
+"<a href=\"%(url)s\">%(title)s</a> is back in stock\n"
+msgstr ""
+"\n"
+"<a href=\"%(url)s\">%(title)s</a> est de nouveau en stock\n"
+
+#: templates/oscar/customer/alerts/message_subject.html:2
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "<a href=\"%(url)s\">%(title)s</a> is back in stock\n"
+msgid ""
+"\n"
+"%(title)s is back in stock\n"
+msgstr ""
+"\n"
+"<a href=\"%(url)s\">%(title)s</a> est de nouveau en stock\n"
+
+#: templates/oscar/customer/anon_order.html:8
+#, python-format
+msgid "Order #%(number)s"
+msgstr ""
+
+#: templates/oscar/customer/anon_order.html:34
+#, fuzzy
+#| msgid "Phone number"
+msgid "Contact number"
+msgstr "Numéro de téléphone"
+
+#: templates/oscar/customer/anon_order.html:40
+msgid "Notes"
+msgstr ""
+
+#: templates/oscar/customer/anon_order.html:60
+#: templates/oscar/customer/order/order_detail.html:25
+#, fuzzy
+#| msgid "Price (excl. tax)"
+msgid "Line price excl. tax"
+msgstr "Prix (hors taxes)"
+
+#: templates/oscar/customer/anon_order.html:61
+#: templates/oscar/customer/order/order_detail.html:26
+#, fuzzy
+#| msgid "Price (incl. tax)"
+msgid "Line price incl. tax"
+msgstr "Prix (TTC)"
+
+#: templates/oscar/customer/anon_order.html:102
+#, fuzzy
+#| msgid "Basket total:"
+msgid "Basket total (inc. tax)"
+msgstr "Total du panier :"
+
+#: templates/oscar/customer/anon_order.html:106
+#, fuzzy
+#| msgid "Price (incl. tax)"
+msgid "Shipping charge (inc. tax)"
+msgstr "Prix (TTC)"
+
+#: templates/oscar/customer/anon_order.html:110
+#: templates/oscar/customer/order/order_detail.html:137
+#, fuzzy
+#| msgid "Order contents"
+msgid "Order total"
+msgstr "Contenu de la commande"
+
+#: templates/oscar/customer/baseaccountpage.html:6
+#: templates/oscar/customer/baseaccountpage.html:18
+#: templates/oscar/customer/order/order_list.html:25
+#: templates/oscar/customer/wishlists/wishlists_delete.html:11
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:11
+#: templates/oscar/customer/wishlists/wishlists_detail.html:13
+#: templates/oscar/customer/wishlists/wishlists_form.html:11
+#: templates/oscar/dashboard/layout.html:45
+#, fuzzy
+#| msgid "Amount"
+msgid "Account"
+msgstr "Montant"
+
+#: templates/oscar/customer/history/recently_viewed_products.html:7
+msgid "Products you recently viewed"
+msgstr ""
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:5
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:14
+#: templates/oscar/customer/login_registration.html:5
+#: templates/oscar/customer/login_registration.html:14
+msgid "Login or register"
+msgstr ""
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:26
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:30
+#: templates/oscar/customer/login_registration.html:26
+#: templates/oscar/customer/login_registration.html:30
+#, fuzzy
+#| msgid "Log out"
+msgid "Log In"
+msgstr "Déconnexion"
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:29
+#: templates/oscar/customer/login_registration.html:29
+#: templates/oscar/dashboard/login.html:36
+msgid "I've forgotten my password"
+msgstr ""
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:30
+#: templates/oscar/customer/login_registration.html:30
+msgid "Logging in..."
+msgstr ""
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:35
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:38
+#: templates/oscar/customer/login_registration.html:35
+#: templates/oscar/customer/login_registration.html:39
+#: templates/oscar/customer/registration.html:6
+#: templates/oscar/customer/registration.html:15
+#: templates/oscar/customer/registration.html:21
+#: templates/oscar/customer/registration.html:30
+#, fuzzy
+#| msgid "Date registered"
+msgid "Register"
+msgstr "Date d'inscription"
+
+#: ⁨templates/oscar/customer/login_registration copy.html⁩:38
+#: templates/oscar/customer/login_registration.html:39
+#: templates/oscar/customer/registration.html:30
+#, fuzzy
+#| msgid "Deleting..."
+msgid "Registering..."
+msgstr "Suppression en cours..."
+
+#: templates/oscar/customer/login_registration.html:38
+msgid "Password Should be 8 characters long!"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:9
+#: templates/oscar/customer/order/order_list.html:27
+msgid "Order history"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:24
+msgid "Qty"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:64
+#: templates/oscar/customer/order/order_detail.html:149
+#, fuzzy
+#| msgid "Removing..."
+msgctxt "Buy again"
+msgid "Re-ordering..."
+msgstr "Suppression en cours..."
+
+#: templates/oscar/customer/order/order_detail.html:64
+#, fuzzy
+#| msgid "Place order"
+msgctxt "Buy again"
+msgid "Re-order"
+msgstr "Passer la commande"
+
+#: templates/oscar/customer/order/order_detail.html:67
+#: templates/oscar/customer/wishlists/wishlists_detail.html:59
+msgid "Not available anymore"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:78
+msgid "Basket total (excl. discounts)"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:84
+#: templates/oscar/customer/order/order_detail.html:117
+msgid "Discount"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:96
+msgid "Basket total (inc. discounts)"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:101
+#, fuzzy
+#| msgid "Basket total:"
+msgid "Basket total"
+msgstr "Total du panier :"
+
+#: templates/oscar/customer/order/order_detail.html:111
+msgid "Shipping total (excl. discounts)"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:124
+msgid "Shipping total (inc. discounts)"
+msgstr ""
+
+#: templates/oscar/customer/order/order_detail.html:129
+#, fuzzy
+#| msgid "Shipping method"
+msgid "Shipping total"
+msgstr "Mode de livraison"
+
+#: templates/oscar/customer/order/order_detail.html:149
+#, fuzzy
+#| msgid "Recommended items"
+msgctxt "Buy again"
+msgid "Re-order all items"
+msgstr "Articles recommandés"
+
+#: templates/oscar/customer/order/order_detail.html:155
+#, fuzzy
+#| msgid "Shipping method"
+msgid "Shipping Method"
+msgstr "Mode de livraison"
+
+#: templates/oscar/customer/order/order_detail.html:160
+#, fuzzy
+#| msgid "Shipping address"
+msgid "Shipping Address"
+msgstr "Adresse de livraison"
+
+#: templates/oscar/customer/order/order_detail.html:165
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact Number"
+msgstr "Contact"
+
+#: templates/oscar/customer/order/order_detail.html:166
+#, fuzzy
+#| msgid "Shipping address"
+msgid "Shipping Notes"
+msgstr "Adresse de livraison"
+
+#: templates/oscar/customer/order/order_list.html:36
+msgid "Filter"
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:41
+#, fuzzy
+#| msgid "Deleting..."
+msgid "Filtering..."
+msgstr "Suppression en cours..."
+
+#: templates/oscar/customer/order/order_list.html:41
+msgid "Filter results"
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:42
+msgid "Reset"
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:53
+#: templates/paypal/payflow/dashboard/transaction_detail.html:38
+#: templates/paypal/payflow/dashboard/transaction_list.html:32
+#, fuzzy
+#| msgid "Phone number"
+msgid "Order number"
+msgstr "Numéro de téléphone"
+
+#: templates/oscar/customer/order/order_list.html:54
+msgid "Num items"
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:55
+msgid "Total inc tax"
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:56
+#, fuzzy
+#| msgid "Date registered"
+msgid "Date submitted"
+msgstr "Date d'inscription"
+
+#: templates/oscar/customer/order/order_list.html:70
+msgid "No orders match your search."
+msgstr ""
+
+#: templates/oscar/customer/order/order_list.html:72
+msgid "You haven't placed any orders."
+msgstr ""
+
+#: templates/oscar/customer/partials/standard_tabs.html:8
+#, fuzzy
+#| msgid "Email History"
+msgid "Order History"
+msgstr "Historique des e-mails"
+
+#: templates/oscar/customer/partials/standard_tabs.html:11
+msgid "Address Book"
+msgstr "Carnet d'adresses"
+
+#: templates/oscar/customer/partials/standard_tabs.html:14
+msgid "Email History"
+msgstr "Historique des e-mails"
+
+#: templates/oscar/customer/partials/standard_tabs.html:17
+msgid "Product Alerts"
+msgstr "Alertes produit"
+
+#: templates/oscar/customer/partials/standard_tabs.html:20
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/oscar/customer/partials/standard_tabs.html:24
+#: templates/oscar/customer/wishlists/wishlists_delete.html:14
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:14
+#: templates/oscar/customer/wishlists/wishlists_detail.html:16
+#: templates/oscar/customer/wishlists/wishlists_form.html:14
+msgid "Wish Lists"
+msgstr "Listes de souhaits"
+
+#: templates/oscar/customer/profile/profile.html:9
+#: templates/oscar/customer/wishlists/wishlists_list.html:9
+msgid "Name"
+msgstr "Nom"
+
+#: templates/oscar/customer/profile/profile.html:25
+msgid "Date registered"
+msgstr "Date d'inscription"
+
+#: templates/oscar/customer/profile/profile.html:31
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: templates/oscar/customer/profile/profile.html:32
+msgid "Edit profile"
+msgstr "Modifier le profil"
+
+#: templates/oscar/customer/profile/profile.html:33
+msgid "Delete profile"
+msgstr "Supprimer le profil"
+
+#: templates/oscar/customer/profile/profile_delete.html:5
+msgid "Please confirm your password to delete your profile."
+msgstr "Veuillez confirmer votre mot de passe pour supprimer votre profil."
+
+#: templates/oscar/customer/profile/profile_delete.html:10
+msgid "Warning"
+msgstr "Avertissement"
+
+#: templates/oscar/customer/profile/profile_delete.html:11
+msgid ""
+"\n"
+"                This will delete all information about you from the site.  "
+"Deleting your profile cannot be\n"
+"                undone.\n"
+"            "
+msgstr ""
+"\n"
+"                Cela supprimera toutes les informations vous concernant du "
+"site. La suppression de votre profil ne pourra pas être annulée.\n"
+"            "
+
+#: templates/oscar/customer/wishlists/wishlists_delete.html:19
+msgid "Delete?"
+msgstr "Supprimer ?"
+
+#: templates/oscar/customer/wishlists/wishlists_delete.html:28
+#, python-format
+msgid ""
+"\n"
+"                Are you sure you want to delete %(name)s?\n"
+"            "
+msgstr ""
+"\n"
+"                Êtes-vous sûr de vouloir supprimer %(name)s ?\n"
+"            "
+
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:19
+msgid "Remove product"
+msgstr "Supprimer le produit"
+
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:28
+#, python-format
+msgid ""
+"\n"
+"                Are you sure you want to delete %(product_name)s from wish "
+"list %(wishlist_name)s?\n"
+"            "
+msgstr ""
+"\n"
+"                Êtes-vous sûr de vouloir supprimer %(product_name)s de la "
+"liste de souhaits %(wishlist_name)s ?\n"
+"            "
+
+#: templates/oscar/customer/wishlists/wishlists_delete_product.html:34
+msgid "Removing..."
+msgstr "Suppression en cours..."
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:35
+#: templates/oscar/customer/wishlists/wishlists_list.html:11
+msgid "Action"
+msgstr "Action"
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:75
+msgid "View product"
+msgstr "Voir le produit"
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:79
+#: templates/paypal/payflow/dashboard/transaction_detail.html:58
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:91
+#, python-format
+msgid ""
+"\n"
+"                                                            Move to "
+"'%(name)s' wish list\n"
+"                                                        "
+msgstr ""
+"\n"
+"                                                            Déplacer vers la "
+"liste de souhaits '%(name)s'\n"
+"                                                        "
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:106
+msgid "Update quantities"
+msgstr "Mettre à jour les quantités"
+
+#: templates/oscar/customer/wishlists/wishlists_detail.html:115
+msgid "Your wish list is empty."
+msgstr "Votre liste de souhaits est vide."
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:20
+msgid "Create"
+msgstr "Créer"
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:33
+msgid "What should your new wish list be called?"
+msgstr "Comment devrait s'appeler votre nouvelle liste de souhaits ?"
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:38
+#, python-format
+msgid ""
+"\n"
+"                    After your wishlist is created, <strong>%(title)s</"
+"strong> will be added.\n"
+"                "
+msgstr ""
+"\n"
+"                    Une fois votre liste de souhaits créée, "
+"<strong>%(title)s</strong> sera ajoutée.\n"
+"                "
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:45
+msgid "Share wishlist"
+msgstr "Partager la liste de souhaits"
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:47
+msgid ""
+"If you want to share your wishlist with others, you can add their email "
+"addresses below. The visibility must be set to shared in order for this to "
+"work."
+msgstr ""
+"Si vous souhaitez partager votre liste de souhaits avec d'autres personnes, "
+"vous pouvez ajouter leurs adresses e-mail ci-dessous. La visibilité doit "
+"être définie sur partagée pour que cela fonctionne."
+
+#: templates/oscar/customer/wishlists/wishlists_form.html:54
+msgid "Save"
+msgstr "Enregistrer"
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:10
+msgid "Number of products"
+msgstr "Nombre de produits"
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:19
+#: templates/paypal/payflow/dashboard/transaction_list.html:57
+msgid "View"
+msgstr "Voir"
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:23
+msgid "Wish list settings"
+msgstr "Paramètres de la liste de souhaits"
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:27
+msgid "Copy sharing link"
+msgstr "Copier le lien de partage"
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:43
+msgid "You don't have any wish lists yet."
+msgstr "Vous n'avez pas encore de listes de souhaits."
+
+#: templates/oscar/customer/wishlists/wishlists_list.html:48
+msgid "Create a new wish list"
+msgstr "Créer une nouvelle liste de souhaits"
+
+#: templates/oscar/dashboard/layout.html:38
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: templates/oscar/dashboard/layout.html:42
+msgid "Return to site"
+msgstr "Retour au site"
+
+#: templates/oscar/dashboard/layout.html:48
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: templates/oscar/dashboard/login.html:21
+msgid ""
+"Please enter a correct username and password. Note that both fields may be "
+"case-sensitive."
+msgstr ""
+"Veuillez saisir un nom d'utilisateur et un mot de passe corrects. Notez que "
+"les deux champs peuvent être sensibles à la casse."
+
+#: templates/oscar/dashboard/login.html:34
+msgid "Login"
+msgstr "Connexion"
+
+#: templates/oscar/partials/mini_basket.html:5
+msgid "Basket total:"
+msgstr "Total du panier :"
+
+#: templates/oscar/partials/mini_basket.html:16
+msgid "Toggle Dropdown"
+msgstr ""
+
+#: templates/oscar/partials/nav_primary.html:8
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/oscar/partials/nav_primary.html:20
+#: templates/oscar/partials/nav_primary.html:24
+#, python-format
+msgid ""
+"\n"
+"        Total: %(total)s\n"
+"        "
+msgstr ""
+"\n"
+"        Total : %(total)s\n"
+"        "
+
+#: templates/oscar/partials/search.html:5
+#: templates/oscar/partials/search.html:7
+#: templates/oscar/partials/search.html:9
+msgid "Search"
+msgstr "Rechercher"
+
+#: templates/oscar/registration/password_reset_form.html:4
+#: templates/oscar/registration/password_reset_form.html:12
+#: templates/oscar/registration/password_reset_form.html:17
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
+
+#: templates/oscar/registration/password_reset_form.html:23
+msgid ""
+"Forgotten your password? Enter your e-mail address or phone number below, "
+"and we'll e-mail/message instructions for setting a new one."
+msgstr ""
+"Mot de passe oublié ? Saisissez votre adresse e-mail ou votre numéro de "
+"téléphone ci-dessous et nous vous enverrons par e-mail/message des "
+"instructions pour en définir un nouveau."
+
+#: templates/oscar/registration/password_reset_form.html:26
+msgid "Sending..."
+msgstr "Envoi en cours..."
+
+#: templates/oscar/registration/password_reset_form.html:26
+msgid "Send reset email/message"
+msgstr "Envoyer l'e-mail/message de réinitialisation"
+
+#: templates/oscar/search/results.html:21
+#, python-format
+msgid ""
+"\n"
+"    Found <strong>%(num_results)s</strong> results, showing "
+"<strong>%(start)s</strong> to <strong>%(end)s</strong>.\n"
+"    "
+msgstr ""
+
+#: templates/oscar/search/results.html:25
+#, python-format
+msgid ""
+"\n"
+"    Found <strong>%(num_results)s</strong> result.\n"
+"    "
+msgid_plural ""
+"\n"
+"    Found <strong>%(num_results)s</strong> results.\n"
+"    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/oscar/search/results.html:36
+msgid "Found <strong>0</strong> results."
+msgstr "Aucun résultat trouvé."
+
+#: templates/oscar/search/results.html:39
+#, python-format
+msgid ""
+"\n"
+"        Did you mean <a href=\"%(search_url)s?"
+"q=%(suggestion)s\">\"%(suggestion)s\"</a>?\n"
+"        "
+msgstr ""
+
+#: templates/paypal/express/dashboard/transaction_detail.html:6
+msgid "PayPal Express transaction"
+msgstr "Transaction PayPal Express"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:23
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:25
+#, python-format
+msgid ""
+"\n"
+"        Transaction %(id)s\n"
+"    "
+msgstr ""
+
+#: templates/paypal/express/dashboard/transaction_detail.html:31
+#: templates/paypal/express/dashboard/transaction_list.html:29
+msgid "Correlation ID"
+msgstr "ID de corrélation"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:33
+#: templates/paypal/express/dashboard/transaction_list.html:32
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:37
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:35
+#: templates/paypal/payflow/dashboard/transaction_detail.html:41
+#: templates/paypal/payflow/dashboard/transaction_list.html:34
+msgid "Amount"
+msgstr "Montant"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:34
+msgid "Currency"
+msgstr "Devise"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:35
+#: templates/paypal/express/dashboard/transaction_list.html:31
+#: templates/paypal/payflow/dashboard/transaction_detail.html:45
+msgid "Result"
+msgstr "Résultat"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:36
+#: templates/paypal/express/dashboard/transaction_list.html:33
+msgid "Token"
+msgstr "Jeton"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:37
+#: templates/paypal/express/dashboard/transaction_list.html:34
+msgid "Error code"
+msgstr "Code d'erreur"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:38
+#: templates/paypal/express/dashboard/transaction_list.html:35
+msgid "Error message"
+msgstr "Message d'erreur"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:39
+msgid "Request params"
+msgstr "Paramètres de la demande"
+
+#: templates/paypal/express/dashboard/transaction_detail.html:40
+msgid "Response params"
+msgstr "Paramètres de réponse"
+
+#: templates/paypal/express/dashboard/transaction_list.html:6
+#: templates/paypal/express/dashboard/transaction_list.html:20
+msgid "PayPal Express transactions"
+msgstr "Transactions PayPal Express"
+
+#: templates/paypal/express/dashboard/transaction_list.html:56
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:58
+#: templates/paypal/payflow/dashboard/transaction_list.html:65
+msgid "No transactions have been made yet."
+msgstr "Aucune transaction n'a encore été effectuée."
+
+#: templates/paypal/express/preview.html:19
+#, python-format
+msgid ""
+"\n"
+"                    Payment will be deducted from your PayPal account, "
+"registered\n"
+"                    to email: %(email)s.\n"
+"                "
+msgstr ""
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:6
+msgid "PayPal Express Checkout transaction"
+msgstr "Transaction de paiement PayPal Express Checkout"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:33
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:31
+msgid "Order ID"
+msgstr "ID de commande"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:34
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:32
+msgid "Capture ID"
+msgstr "ID de capture"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:35
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:33
+msgid "Refund ID"
+msgstr "ID de remboursement"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:36
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:34
+msgid "Authorization ID"
+msgstr "ID d'autorisation"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:39
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:37
+msgid "Intent"
+msgstr "Intention"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:40
+msgid "Payer ID"
+msgstr "ID du payeur"
+
+#: templates/paypal/express_checkout/dashboard/transaction_detail.html:42
+msgid "Address full name"
+msgstr "Nom complet de l'adresse"
+
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:6
+#: templates/paypal/express_checkout/dashboard/transaction_list.html:22
+msgid "PayPal Express Checkout transactions"
+msgstr "Transactions de paiement PayPal Express Checkout"
+
+#: templates/paypal/express_checkout/preview.html:19
+#, python-format
+msgid ""
+"\n"
+"                    %(amt)s will be deducted from your PayPal account, "
+"registered\n"
+"                    to email: %(email)s.\n"
+"                "
+msgstr ""
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:6
+#, python-format
+msgid ""
+"\n"
+"        PayPal Payflow transaction %(pnref)s\n"
+"    "
+msgstr ""
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:18
+msgid "PayPal Payflow"
+msgstr "PayPal Payflow"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:21
+#, python-format
+msgid ""
+"\n"
+"                Transaction %(pnref)s\n"
+"            "
+msgstr ""
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:29
+#, python-format
+msgid ""
+"\n"
+"        Transaction %(pnref)s\n"
+"    "
+msgstr ""
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:37
+msgid "Payflow transaction ID (PNREF)"
+msgstr "ID de transaction Payflow (PNREF)"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:43
+msgid "Payment ID (PPREF)"
+msgstr "ID de paiement (PPREF)"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:47
+msgid "Is approved?"
+msgstr "Est approuvé ?"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:48
+msgid "Security code match?"
+msgstr "Correspondance du code de sécurité ?"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:49
+msgid "House number match?"
+msgstr "Correspondance du numéro de maison ?"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:50
+msgid "Postcode match?"
+msgstr "Correspondance du code postal ?"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:51
+msgid "Raw request"
+msgstr "Requête brute"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:52
+msgid "Raw response"
+msgstr "Réponse brute"
+
+#: templates/paypal/payflow/dashboard/transaction_detail.html:61
+msgid "Capture"
+msgstr "Capture"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:6
+#: templates/paypal/payflow/dashboard/transaction_list.html:23
+msgid "PayPal Payflow transactions"
+msgstr "Transactions PayPal Payflow"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:16
+msgid "PayPal Payflow Pro"
+msgstr "PayPal Payflow Pro"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:18
+msgid "Transactions"
+msgstr "Transactions"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:35
+msgid "PN reference"
+msgstr "Référence PN"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:36
+msgid "PP reference"
+msgstr "Référence PP"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:37
+msgid "Response code"
+msgstr "Code de réponse"
+
+#: templates/paypal/payflow/dashboard/transaction_list.html:39
+msgid "Response time (ms)"
+msgstr "Temps de réponse (ms)"

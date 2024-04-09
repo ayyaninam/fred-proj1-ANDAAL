@@ -3,12 +3,14 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from oscar.defaults import *
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 
 if DEBUG:
+    # dotenv_path = '.env_prod'
     dotenv_path = '.env_dev'
 else:
     dotenv_path = '.env_prod'
@@ -91,15 +93,18 @@ INSTALLED_APPS = [
     'oscar_with_flutterwave',
     'django_oscar_stripe_sca',
     'base.apps.BaseConfig',
+    'rosetta',
+    'parler',
 ] 
 
 SITE_ID = 1
 AUTH_USER_MODEL = "base.User"
-
+ROSETTA_SHOW_AT_ADMIN_PANEL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -202,13 +207,38 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+# Languages Editing 
+
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
+
+USE_L10N = True
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
+PARLER_DEFAULT_LANGUAGE_CODE = 'en'
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'en',}, # English
+        {'code': 'fr',}, # French
+    ),
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
 
 
 STATIC_URL = getenv('STATIC_URL')

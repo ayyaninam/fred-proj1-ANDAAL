@@ -7,7 +7,7 @@
 {% if basket_warnings %}
     <h5>{% trans "Important messages about items in your basket" %}</h5>
     {% for warning in basket_warnings %}
-        <div class="alert alert-warning">{{ warning }}</div>
+        <div class="alert alert-warning">{% trans warning %}</div>
     {% endfor %}
 {% endif %}
 
@@ -77,7 +77,7 @@
                                         </div>
                                         {% for field_errors in form.errors.values %}
                                             {% for error in field_errors %}
-                                                <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
+                                                <span class="error-block"><i class="fas fa-exclamation"></i> {% trans error %}</span>
                                             {% endfor %}
 
                                         {% endfor %}

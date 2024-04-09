@@ -1,8 +1,10 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% load category_tags %}
+{% load i18n %}
 
-{% block title %}ANDAAL - Class Selection{% endblock title %}
+
+{% block title %}{% trans "ANDAAL - Class Selection" %}{% endblock title %}
 {% block content %}
 
 {% comment %}{% include "base/back_button.html" %}{% endcomment %}
@@ -19,22 +21,6 @@
         class="d-flex justify-content-center align-items-center yellow__to__bottom__gradient main__menu__middle__btns  text-dark" data-bs-toggle="modal" data-bs-target="#modalof{{category.name}}">
         {{category.name}}</h5>
     {% endif %}
-
-
-
-<!-- <div class="all__classes__names__pack">
-    {% if category.child_classes.all %}
-    {% for class in category.child_classes.all %}
-    <a class="class__link__and__name" href="{{class.products_category.get_absolute_url}}">
-        <button class="btn btn-warning mx-4">{{class.name}}</button>
-    </a>
-    {% endfor %}
-    {% else %}
-    <button class="btn btn-sm btn-danger">No Class Found!</button>
-    {% endif %}
-</div> -->
-
-
 
 <div class="mt-5">
 
@@ -64,7 +50,7 @@
                 {% else %}
                 <h5
                 class="d-flex justify-content-center align-items-center pink__to__bottom__gradient  text-dark h-10rem w-10rem mx-2 my-2 rounded cursor-pointer">
-                No Class Found!</h5>
+                {% trans "No Class Found!" %}</h5>
                 {% endif %}
             </div>
         </div>
@@ -77,8 +63,5 @@
 {% endif %}
 
 </div>
-
-
-
 
 {% endblock content %}

@@ -58,7 +58,7 @@
         <div class="basket-items basket-items0">
             <div class="row d-flex justify-content-between align-items-center">
                 <div class="">
-                    <h4>{{ method.name }}</h4>
+                    <h4>{% trans method.name %}</h4>
                     {% if method.description %}
                         <p>{{ method.description|safe }}</p>
                     {% endif %}
@@ -121,11 +121,11 @@
 {% else %}
 
 <div class="basket-items1">
-    <p class="text-center text-danger my-3">Sorry! The Shipping isn't available for your country.</p>
+    <p class="text-center text-danger my-3">{% trans "Sorry! The Shipping isn't available for your country." %}</p>
     <div class="row d-flex justify-content-between align-items-center">
         <button onclick="window.history.back();" class="not_available__shipping font-italic font-bold py-2 px-5 yellow__to__top__gradient border-0 rounded  mx-auto d-flex align-items-center justify-content-center my-3">
-            ← <span class="under__text font-italic font-bold mx-2">Not Available</span>
-            <span class="under__text2 font-italic font-bold mx-2">Back</span>
+            ← <span class="under__text font-italic font-bold mx-2">{% trans "Not Available" %}</span>
+            <span class="under__text2 font-italic font-bold mx-2">{% trans "Back" %}</span>
         </button>
     </a>
     </div>

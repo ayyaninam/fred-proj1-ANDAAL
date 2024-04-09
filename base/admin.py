@@ -1,5 +1,6 @@
 from django.contrib import admin
 from base.models import *
+from parler.admin import TranslatableAdmin
 # Register your models here.
 from django.contrib import admin
 
@@ -25,16 +26,16 @@ class FooterImportantLinksAdmin(admin.ModelAdmin):
         js = [ media_url+'/tinyMceIntegration.js', ]
 
 
-admin.site.register(MainMenu)
-admin.site.register(TextbookClasses)
-admin.site.register(TextbookLanguages)
-admin.site.register(TextbooksCategories)
-admin.site.register(EducationCategory)
-admin.site.register(BooksCategory)
-admin.site.register(CultureCategory)
-admin.site.register(Culture)
-admin.site.register(ShippingMethod)
-admin.site.register(User)
-admin.site.register(RateOfEuro)
-admin.site.register(FooterDetail)
+admin.site.register(MainMenu, TranslatableAdmin)
+admin.site.register(TextbookClasses, TranslatableAdmin)
+admin.site.register(TextbookLanguages, TranslatableAdmin)
+admin.site.register(TextbooksCategories, TranslatableAdmin)
+admin.site.register(EducationCategory, TranslatableAdmin)
+admin.site.register(BooksCategory, TranslatableAdmin)
+admin.site.register(CultureCategory, TranslatableAdmin)
+admin.site.register(Culture, TranslatableAdmin)
+admin.site.register(ShippingMethod, TranslatableAdmin)
+admin.site.register(User, TranslatableAdmin)
+admin.site.register(RateOfEuro, TranslatableAdmin)
+admin.site.register(FooterDetail, TranslatableAdmin)
 admin.site.register(FooterImportantLinks, FooterImportantLinksAdmin)

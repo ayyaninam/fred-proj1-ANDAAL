@@ -1,15 +1,16 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}ANDAAL - Homepage{% endblock title %}
+{% block title %}{% trans "ANDAAL - Homepage" %}{% endblock title %}
 {% block content %}
 <div class="main__div__hp">
     <!-- <div class="upper__section__hp">
         <a class="url_no_link" href="{% url 'homepage'%}">
             <img class="andaal__logo" src="{% static 'base/images/Logo_ANDAAL_final.png' %}" alt="">
         </a>
-        <h6 class="cfd">Culture For Development</h6>
-        <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="Danger example"
+        <h6 class="cfd">{% trans "Culture For Development" %}</h6>
+        <div class="progress" role="progressbar" style="background-color: transparent;" aria-label="{% trans 'Danger example' %}"
             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar bg-danger" style="width: 100%"></div>
         </div>
@@ -19,9 +20,9 @@
     <div class="all__block__middle__main__menu lower__section__all__parts__hp d-flex justify-content-center align-items-center flex-wrap list-unstyled ">
         {% for language in all_languages %}
         {% if forloop.counter0|divisibleby:2 %}
-        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center pink__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{{language.name}}</a>
+        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center pink__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{% trans language.name %}</a>
         {% else %}
-        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center yellow__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{{language.name}}</a>
+        <a href="{% url 'class_categories' language.name %}" class="d-flex justify-content-center align-items-center yellow__to__bottom__gradient main__menu__middle__btns {{class_name}} text-dark">{% trans language.name %}</a>
         {% endif %}
         {% endfor %}
 

@@ -2,13 +2,14 @@
 {% load static %}
 {% load newfilters %}
 {% block content %}
+{% load i18n %}
 
 <ul class="all__block__middle__main__menu d-flex justify-content-center align-items-center flex-wrap list-unstyled">
     {% for main_menu, class_name in main_menus_wc %}
     {% if main_menu.redirect_to_link %}
-    <a href="{{main_menu.redirect_to_link}}" class="d-flex justify-content-center align-items-center main__menu__middle__btns {{class_name}} text-dark flex-column">
+    <a href="{{ main_menu.redirect_to_link }}" class="d-flex justify-content-center align-items-center main__menu__middle__btns {{ class_name }} text-dark flex-column">
         
-        {{main_menu.name}}
+        {% trans main_menu.name %}
         {% autoescape off %}
         {{ main_menu.icons_link }}
         {% endautoescape %}
@@ -16,8 +17,8 @@
     
 
     {% else %}
-    <a href="{{main_menu.category_attached.get_absolute_url}}" class="d-flex justify-content-center align-items-center main__menu__middle__btns {{class_name}} text-dark flex-column">
-        {{main_menu.name}}
+    <a href="{{ main_menu.category_attached.get_absolute_url }}" class="d-flex justify-content-center align-items-center main__menu__middle__btns {{ class_name }} text-dark flex-column">
+        {% trans main_menu.name %}
         {% autoescape off %}
         {{ main_menu.icons_link }}
         {% endautoescape %}
