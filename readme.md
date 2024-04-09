@@ -179,7 +179,7 @@ Currently at: line no: 30 and 102 in settings.py\
 If you want NGINX to take care of Static files.
 
 
-## SQLITE to PSQL
+# SQLITE to PSQL
 
 ### Install Postgres on your computer.
 
