@@ -37,8 +37,17 @@
     {% basket_form request product 'single' as basket_form %}
     <form action="{% url 'basket:add' pk=product.pk %}" method="post">
         {% csrf_token %}
+        {% comment %}
+          
         {{ basket_form.as_p }}
+        {% endcomment %}
+        {% if basket_form.visible_fields %}
+    <a href="{{ product.get_absolute_url }}">
+        <button type="button" class="btn yellow__to__top__gradient rounded-pill border-0 btn-block" data-loading-text="{% trans 'Opening...' %}">{% trans "Open" %}</button>
+    </a>
+        {% else %}
         <button type="submit" class="btn yellow__to__top__gradient rounded-pill border-0 btn-block" data-loading-text="{% trans 'Adding...' %}">{% trans "Add to basket" %}</button>
+        {% endif %}
     </form>
 {% else %}
     <span class="btn yellow__to__top__gradient rounded-pill border-0 btn-block disabled">{% trans "Add to basket" %}</span>

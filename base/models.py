@@ -160,8 +160,6 @@ class FooterDetail(models.Model):
     email = models.EmailField(_("email"), null=True, blank=True)
     phone_number = models.CharField(_("phone_number"), max_length=200, null=True, blank=True)
     short_description = models.TextField(_("short_description"), null=True, blank=True)
-
-
     
     def __str__(self) -> str:
         return f"{self.email} - {self.phone_number}"
