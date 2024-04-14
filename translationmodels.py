@@ -4,7 +4,7 @@ from oscar.apps.customer.abstract_models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 from oscar.apps.address.models import Country as AddressCountry
-from parler.models import TranslatableModel, TranslatedFields
+# from parler.models import TranslatableModel, TranslatedFields
 
 import datetime
 # Oscar_Category = get_model('catalogue', 'Category')

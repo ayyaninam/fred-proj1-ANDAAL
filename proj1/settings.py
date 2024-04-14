@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'django_oscar_stripe_sca',
     'base.apps.BaseConfig',
     'rosetta',
-    'parler',
+    # 'parler',
 ] 
 
 SITE_ID = 1
