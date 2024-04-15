@@ -16,6 +16,7 @@
         class=" desktop__element__nav_f all_main__menu__upper__display list-unstyled  align-items-center w-75 my-0 flex-column">
         <div class="all_main_m__upper__form">{% include "oscar/partials/search.html" with show=1 %}</div>
         <div class="w-100 d-flex justify-content-around align-items-center second_under_all_main_menu">
+            {% if main_menus %}
             {% for main_menu in main_menus %}
             <div>
                 {% if main_menu.redirect_to_link %}
@@ -59,23 +60,31 @@
                 </ul>
 
                 {% elif 'education' in main_menu.name|cut:" "|lower %}
+                {% if educationCategories %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in educationCategories %}
                     <a class="text-dark no_underline d-block"
                         href="{% url 'education' category.id %}">{{ category.name }}</a>
                     {% endfor %}
                 </ul>
+                {% endif %}
+
 
                 
                 {% elif 'culture' in main_menu.name|cut:" "|lower %}
+                {% if cultureCategories %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in cultureCategories %}
                     <a class="text-dark no_underline d-block"
                         href="{% url 'culture' category.id %}">{{ category.name }}</a>
                     {% endfor %}
                 </ul>
+                {% endif %}
+
 
                 {% elif 'books' in main_menu.name|cut:" "|lower %}
+                {% if booksCategories %}
+                  
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in booksCategories %}
                     <a class="text-dark no_underline d-block"
@@ -84,9 +93,12 @@
                 </ul>
                 
                 {% endif %}
+            {% endif %}
+
 
             </div>
             {% endfor %}
+            {% endif %}
             <div>
 
 
