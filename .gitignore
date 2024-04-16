@@ -4,8 +4,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-media/cache
-cache
+media/cache/
+cache/
 # C extensions
 *.so
 
