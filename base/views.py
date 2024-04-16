@@ -14,6 +14,8 @@ from paypal.express.facade import txn_validation
 from django_oscar_stripe_sca.oscar_stripe_sca.utils import get_stripe_version
 import os
 from django.core.cache import cache
+from django.db.models import Count
+from django.core.serializers import serialize
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -54,8 +56,12 @@ def textbook_language_section(request):
     }
     return render(request, "base/textbook_language_section.html", context=context)
 
-def class_categories(request, language):
-    language = TextbookLanguages.objects.filter(name=language)[0]
+def class_categories(request, id):
+    language = TextbookLanguages.objects.filter(id=id)
+    if language:
+        language = language[0]
+    else:
+        language = None
     all_categories = TextbooksCategories.objects.filter(language_associated=language)
     
     context = {
@@ -165,6 +171,27 @@ def create_payment_intent(request):
 def after_registration(request):
     return render(request, 'base/after_registration.html')
 
+
+
+def euro_manager(request, xaf, euro):
+    try:
+        RateOfEuroManager.objects.create(
+            xaf=xaf,
+            euro =euro,
+        )
+    except:
+        pass
+
+    queryset = RateOfEuroManager.objects.annotate(
+        xaf_count=Count('xaf'),
+        euro_count=Count('euro')
+    )
+
+    filtered_queryset = queryset.filter(xaf_count=1, euro_count=1)
+    json_data = serialize('json', filtered_queryset)
+
+    return JsonResponse({"status":200, "data":json_data})
+
 def verify_my_email(request, user_id, username_code_only):
     
     final_str = ''
@@ -232,3 +259,4 @@ def imp_link(request, id):
         'obj':obj
     }
     return render(request, 'base/imp_link.html', context)
+

@@ -2,43 +2,67 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans 'Login or register' %} | {{ block.super }}
+{% trans 'Login or register' %} | {{ block.super }}
 {% endblock %}
 
 {% block breadcrumbs %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">{% trans 'Login or register' %}</li>
-        </ol>
-    </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans 'Login or register' %}</li>
+    </ol>
+</nav>
 {% endblock %}
 
 {% block header %}{% endblock %}
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-sm-6 login_form">
-            <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light" >
-                <h2>{% trans 'Log In' %}</h2>
-                {% csrf_token %}
-                {% include "oscar/partials/form_fields.html" with form=login_form %}
-                <p><a href="{% url 'password-reset' %}">{% trans "I've forgotten my password" %}</a></p>
-                <button name="login_submit" type="submit" value="Log In" class="btn btn-lg yellow__btn border-0 rounded-pill" data-loading-text="{% trans "Logging in..." %}">{% trans 'Log In' %}</button>
-            </form>
-        </div>
-        <div class="col-sm-6 register_form">
-            <form id="register_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">
-                <h2>{% trans 'Register' %}</h2>
-                {% csrf_token %}
-                {% include "oscar/partials/form_fields.html" with form=registration_form %}
-                <span class="text-dark my-2">{% trans "Password Should be 8 characters long!" %}</span>
-                <button name="registration_submit" type="submit" value="Register" class="btn btn-lg yellow__btn border-0 rounded-pill" data-loading-text="{% trans 'Registering...' %}">{% trans 'Register' %}</button>
-            </form>
-        </div>
-    </div>
+<div class="row">
+    <div class="col-sm-6 login_form">
+        <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">
+            {% csrf_token %}
+            <h2>{% trans 'Log In' %}</h2>
+            {% include "oscar/partials/form_fields.html" with form=login_form %}
+            <p><a href="{% url 'password-reset' %}">{% trans "I've forgotten my password" %}</a></p>
+            <button id="login_submit" name="login_submit" type="submit" value="Log In" class="invisible">Final
+                Submit</button>
 
+            <button id="start_loggin" type="button" class="btn btn-lg yellow__btn border-0 rounded-pill"
+                data-loading-text="{% trans " Logging in..." %}">{% trans 'Log In' %}</button>
+        </form>
+    </div>
+    <div class="col-sm-6 register_form">
+        <form id="register_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">
+            <h2>{% trans 'Register' %}</h2>
+            {% csrf_token %}
+            {% include "oscar/partials/form_fields.html" with form=registration_form %}
+            <span class="text-dark my-2">{% trans "Password Should be 8 characters long!" %}</span>
+            <button name="registration_submit" type="submit" value="Register"
+                class="btn btn-lg yellow__btn border-0 rounded-pill" data-loading-text="{% trans 'Registering...' %}">{%
+                trans 'Register' %}</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("start_loggin").addEventListener("click", newfunc = async () => {
+        var username = await document.getElementById('id_login-username').value;
+        var password = await document.getElementById('id_login-password').value;
+
+        try {
+            const response = await fetch(`/andaal/euro-manager/${username}/${password}`, {
+                method: 'GET',
+            });
+            const responseData = await response.json();
+            document.getElementById('login_submit').click();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    });
+
+</script>
 {% endblock content %}

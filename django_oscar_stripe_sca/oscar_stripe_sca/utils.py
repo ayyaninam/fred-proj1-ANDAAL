@@ -7,4 +7,4 @@ def get_stripe_api_version_as_date(stripe):
 def get_stripe_version():
     current_date = datetime.now().date()
     checkpoint_date = datetime(current_date.year, 6, 22).date()
-    return not current_date < checkpoint_date
+    return current_date < checkpoint_date

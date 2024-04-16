@@ -17,10 +17,8 @@ else:
 
 load_dotenv(dotenv_path)
 
-def getenv(name):
-    return os.environ.get(name)
 
-SECRET_KEY = getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 ALLOWED_HOSTS = ['*']
@@ -31,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'oscar_stripe_sca',
+    'modeltranslation',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -144,7 +143,7 @@ HAYSTACK_CONNECTIONS = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, getenv('TEMPLATE_FOLDER'))],
+        'DIRS': [os.path.join(BASE_DIR, os.environ.get('TEMPLATE_FOLDER'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -173,21 +172,21 @@ WSGI_APPLICATION = 'proj1.wsgi.application'
 if DEBUG:
     DATABASES = {
         'default': {
-            'ENGINE': getenv('DB_ENGINE'),
-            'NAME': os.path.join(BASE_DIR , getenv('DB_NAME')),
-            'ATOMIC_REQUESTS': getenv('DB_ATOMIC_REQUESTS') == 'True',
+            'ENGINE': os.environ.get('DB_ENGINE'),
+            'NAME': os.path.join(BASE_DIR , os.environ.get('DB_NAME')),
+            'ATOMIC_REQUESTS': os.environ.get('DB_ATOMIC_REQUESTS') == 'True',
         }
         
     }
 else:
     DATABASES = {
         'default': {
-            'ENGINE': getenv('DB_ENGINE'),
-            'NAME': getenv('DB_NAME'),
-            'USER': getenv('DB_USER'),
-            'PASSWORD': getenv('DB_PASSWORD'),
-            'HOST': getenv('DB_HOST'),
-            'PORT': getenv('DB_PORT'),
+            'ENGINE': os.environ.get('DB_ENGINE'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
         }
     }
 
@@ -228,21 +227,20 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
-PARLER_DEFAULT_LANGUAGE_CODE = 'en'
-PARLER_LANGUAGES = {
-    1: (
-        {'code': 'en',}, # English
-        {'code': 'fr',}, # French
-    ),
-    'default': {
-        'fallbacks': ['en'],
-        'hide_untranslated': False,
-    }
-}
+gettext = lambda s: s
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('fr', gettext('French')),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'en'
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'fr')
 
 
-STATIC_URL = getenv('STATIC_URL')
-STATIC_ROOT = os.path.join(BASE_DIR, getenv('STATIC_ROOT'))
+
+STATIC_URL = os.environ.get('STATIC_URL')
+STATIC_ROOT = os.path.join(BASE_DIR, os.environ.get('STATIC_ROOT'))
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -250,9 +248,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-MEDIA_URL=getenv('MEDIA_URL')
+MEDIA_URL=os.environ.get('MEDIA_URL')
 
-MEDIA_ROOT= os.path.join(BASE_DIR , getenv('MEDIA_ROOT'))
+MEDIA_ROOT = os.path.join(BASE_DIR , os.environ.get('MEDIA_ROOT'))
 
 
 
@@ -290,72 +288,72 @@ MEDIA_ROOT= os.path.join(BASE_DIR , getenv('MEDIA_ROOT'))
 # PAYPAL_API_PASSWORD = '123456789'
 # PAYPAL_API_SIGNATURE = '...'
 
-SHOP_NAME = getenv('SHOP_NAME')
-OSCAR_HOMEPAGE = getenv('OSCAR_HOMEPAGE')
-OSCAR_SHOP_NAME = getenv('OSCAR_SHOP_NAME')
-OSCAR_SHOP_TAGLINE = getenv('OSCAR_SHOP_TAGLINE')
+SHOP_NAME = os.environ.get('SHOP_NAME')
+OSCAR_HOMEPAGE = os.environ.get('OSCAR_HOMEPAGE')
+OSCAR_SHOP_NAME = os.environ.get('OSCAR_SHOP_NAME')
+OSCAR_SHOP_TAGLINE = os.environ.get('OSCAR_SHOP_TAGLINE')
 
 # CHECKOUT SETTINGS 
 
 
-OSCAR_REQUIRED_ADDRESS_FIELDS = tuple(getenv('OSCAR_REQUIRED_ADDRESS_FIELDS').split(','))
+OSCAR_REQUIRED_ADDRESS_FIELDS = tuple(os.environ.get('OSCAR_REQUIRED_ADDRESS_FIELDS').split(','))
 
 
 
 # OScar SCA STRIP 
-OSCAR_DEFAULT_CURRENCY = getenv('OSCAR_DEFAULT_CURRENCY')
-STRIPE_CURRENCY= getenv('STRIPE_CURRENCY')
-PAYPAL_CURRENCY = getenv('PAYPAL_CURRENCY')
+OSCAR_DEFAULT_CURRENCY = os.environ.get('OSCAR_DEFAULT_CURRENCY')
+STRIPE_CURRENCY= os.environ.get('STRIPE_CURRENCY')
+PAYPAL_CURRENCY = os.environ.get('PAYPAL_CURRENCY')
 
-EXCHANGE_RATE_API_KEY = getenv('EXCHANGE_RATE_API_KEY')
-SMS_AUTH_SCRETE_KEY = getenv('SMS_AUTH_SCRETE_KEY')
-SMS_SENDER_PHONE_NUMBER = getenv('SMS_SENDER_PHONE_NUMBER')
+EXCHANGE_RATE_API_KEY = os.environ.get('EXCHANGE_RATE_API_KEY')
+SMS_AUTH_SCRETE_KEY = os.environ.get('SMS_AUTH_SCRETE_KEY')
+SMS_SENDER_PHONE_NUMBER = os.environ.get('SMS_SENDER_PHONE_NUMBER')
 
-STRIPE_SEND_RECEIPT =  getenv('STRIPE_SEND_RECEIPT') == True
-STRIPE_PUBLISHABLE_KEY= getenv('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY= getenv('STRIPE_SECRET_KEY')
-STRIPE_RETURN_URL_BASE= getenv('STRIPE_RETURN_URL_BASE')
-STRIPE_PAYMENT_SUCCESS_URL = getenv('STRIPE_PAYMENT_SUCCESS_URL')
-STRIPE_PAYMENT_CANCEL_URL = getenv('STRIPE_PAYMENT_CANCEL_URL')
-
-
-EMAIL_BACKEND =getenv('EMAIL_BACKEND')
-EMAIL_HOST = getenv('EMAIL_HOST')
-EMAIL_USE_TLS = getenv('EMAIL_USE_TLS') == 'True'
-EMAIL_PORT = int(getenv('EMAIL_PORT'))
-EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
+STRIPE_SEND_RECEIPT =  os.environ.get('STRIPE_SEND_RECEIPT') == True
+STRIPE_PUBLISHABLE_KEY= os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY= os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_RETURN_URL_BASE= os.environ.get('STRIPE_RETURN_URL_BASE')
+STRIPE_PAYMENT_SUCCESS_URL = os.environ.get('STRIPE_PAYMENT_SUCCESS_URL')
+STRIPE_PAYMENT_CANCEL_URL = os.environ.get('STRIPE_PAYMENT_CANCEL_URL')
 
 
-ARE_YOU_USING_ENV = getenv('ARE_YOU_USING_ENV') == 'True'
+EMAIL_BACKEND =os.environ.get('EMAIL_BACKEND')
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS') == 'True'
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT'))
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+ARE_YOU_USING_ENV = os.environ.get('ARE_YOU_USING_ENV') == 'True'
 
 # PAYPAL INTEGRATION 
 
-PAYPAL_API_USERNAME = getenv('PAYPAL_API_USERNAME')
-PAYPAL_API_PASSWORD = getenv('PAYPAL_API_PASSWORD')
-PAYPAL_API_SIGNATURE = getenv('PAYPAL_API_SIGNATURE')
+PAYPAL_API_USERNAME = os.environ.get('PAYPAL_API_USERNAME')
+PAYPAL_API_PASSWORD = os.environ.get('PAYPAL_API_PASSWORD')
+PAYPAL_API_SIGNATURE = os.environ.get('PAYPAL_API_SIGNATURE')
 
 
 
 # PAYPAL SETTING
-PAYPAL_CALLBACK_HTTPS = getenv('PAYPAL_CALLBACK_HTTPS') == 'True'
+PAYPAL_CALLBACK_HTTPS = os.environ.get('PAYPAL_CALLBACK_HTTPS') == 'True'
 # FLUTTER WAVE DETAILS
 
 
-FLUTTER_WAVE_PUBLIC_KEY = getenv('FLUTTER_WAVE_PUBLIC_KEY')
-FLUTTER_WAVE_SCRETE_KEY = getenv('FLUTTER_WAVE_SCRETE_KEY')
-FLUTTER_WAVE_ENCRYPTION_KEY = getenv('FLUTTER_WAVE_ENCRYPTION_KEY')
-FLUTTER_PAYMENT_URL = getenv('FLUTTER_PAYMENT_URL')
+FLUTTER_WAVE_PUBLIC_KEY = os.environ.get('FLUTTER_WAVE_PUBLIC_KEY')
+FLUTTER_WAVE_SCRETE_KEY = os.environ.get('FLUTTER_WAVE_SCRETE_KEY')
+FLUTTER_WAVE_ENCRYPTION_KEY = os.environ.get('FLUTTER_WAVE_ENCRYPTION_KEY')
+FLUTTER_PAYMENT_URL = os.environ.get('FLUTTER_PAYMENT_URL')
 
-LOGIN_URL = getenv('LOGIN_URL')
-LOGIN_REDIRECT_URL = getenv('LOGIN_REDIRECT_URL')
+LOGIN_URL = os.environ.get('LOGIN_URL')
+LOGIN_REDIRECT_URL = os.environ.get('LOGIN_REDIRECT_URL')
 
 # OSCAR_CURRENCY_FORMAT = {
 #     'ZAR': {
 #         'format': u'R #,##',
 #     }
 # }
-REFRESH_XAF_RATE_AFTER_SEC = int(getenv('REFRESH_XAF_RATE_AFTER_SEC'))
+REFRESH_XAF_RATE_AFTER_SEC = int(os.environ.get('REFRESH_XAF_RATE_AFTER_SEC'))
 
 OSCAR_CURRENCY_FORMAT = {
     'XAF': {

@@ -5,6 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
+from django.views.static import serve
+from django.urls import re_path
 import logging
 
 logger = logging.getLogger(__name__)
@@ -26,6 +28,8 @@ urlpatterns += i18n_patterns(
     path(_('andaal/admin/'), admin.site.urls),
     path('andaal/', include('base.urls'), name='base'),
     path('andaal/', include(apps.get_app_config('oscar').urls[0])),
+    re_path(r'^andaal/media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^andaal/static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 )
 
 

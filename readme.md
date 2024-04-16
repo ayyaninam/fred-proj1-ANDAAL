@@ -271,3 +271,9 @@ Finally, load your data.
 ```bash
 python3 manage.py loaddata datadump.json
 ```
+
+# Migrate To Internalization (Personal Note!)
+
+```bash
+python manage.py update_translation_fields APP_NAME MODEL_NAME
+```

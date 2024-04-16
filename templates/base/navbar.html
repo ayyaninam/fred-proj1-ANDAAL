@@ -19,19 +19,25 @@
             {% if main_menus %}
             {% for main_menu in main_menus %}
             <div>
+                
+                {% comment %}
                 {% if main_menu.redirect_to_link %}
                 <a value="main__menu__dropdown__main{{forloop.counter0}}"
                     class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{ main_menu.name }}
                     ↓</a>
+                      
                 {% else %}
                 <a href="{{main_menu.category_attached.get_absolute_url}}"
                     value="main__menu__dropdown__main{{forloop.counter0}}"
                     class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{ main_menu.name }}</a>
+                    {% endif %}
+                {% endcomment %}
 
-
-                {% endif %}
-                
-                {% if 'textbook' in main_menu.name|cut:" "|lower %}
+                <a value="main__menu__dropdown__main{{forloop.counter0}}"
+                    class="main__menu__dropdown__main my-3 cursor-pointer font-bold font-italic no_underline text-dark">{{ main_menu.name }}
+                    ↓</a>
+                    
+                {% if 'furnitures' in main_menu.name_en|cut:" "|lower %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in textBookcategories %}
                     {% with previousLang=textBookcategories|previous:forloop.counter0 %}
@@ -59,7 +65,7 @@
                     {% endfor %}
                 </ul>
 
-                {% elif 'education' in main_menu.name|cut:" "|lower %}
+                {% elif 'education' in main_menu.name_en|cut:" "|lower %}
                 {% if educationCategories %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in educationCategories %}
@@ -71,7 +77,7 @@
 
 
                 
-                {% elif 'culture' in main_menu.name|cut:" "|lower %}
+                {% elif 'culture' in main_menu.name_en|cut:" "|lower %}
                 {% if cultureCategories %}
                 <ul class="main__dropdown__ul{{forloop.counter0}}">
                     {% for category in cultureCategories %}
@@ -82,7 +88,7 @@
                 {% endif %}
 
 
-                {% elif 'books' in main_menu.name|cut:" "|lower %}
+                {% elif 'books' in main_menu.name_en|cut:" "|lower %}
                 {% if booksCategories %}
                   
                 <ul class="main__dropdown__ul{{forloop.counter0}}">

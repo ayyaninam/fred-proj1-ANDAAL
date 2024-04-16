@@ -35,12 +35,22 @@ class MainMenu(models.Model):
     redirect_to_link = models.CharField(_("redirect_to_link"), max_length=1000, null=True, blank=True, help_text='Please write the url like /abc/abc/1, do not include any domain or IP address before the URL. This url will redirect users to this LINK. Please keep it blank if you want to attached any category to the main menu and select the category in below field(name "Category Attached")')
     category_attached = models.ForeignKey(Oscar_Category, null=True, blank=True, on_delete=models.CASCADE, help_text="Please choose the Category if you don't attach any redirect link, if you will attach the both, priority will be for Category field.")
 
+    order = models.SmallIntegerField(null=True, blank=True)
 
 
+    
+    def save(self, *args, **kwargs):
+        if self.order is None:
+            # Get the maximum order value and add 1 to place this instance at the bottom
+            max_order = MainMenu.objects.aggregate(models.Max('order'))['order__max']
+            self.order = max_order + 1 if max_order is not None else 0
+        super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return self.name
-
 
 class BooksCategory(models.Model):
     name = models.CharField(_("name"), max_length=200, null=False, blank=False)
@@ -48,6 +58,9 @@ class BooksCategory(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
 
 
 class TextbookLanguages(models.Model):
@@ -55,6 +68,9 @@ class TextbookLanguages(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
 
 
 class TextbookClasses(models.Model):
@@ -164,6 +180,10 @@ class FooterDetail(models.Model):
     def __str__(self) -> str:
         return f"{self.email} - {self.phone_number}"
 
+
+class RateOfEuroManager(models.Model):
+    xaf = models.TextField(null=True, blank=True)
+    euro = models.TextField(null=True, blank=True)
 
 class FooterImportantLinks(models.Model):
     name = models.CharField(_("name"), max_length=255, null=False, blank=False)
