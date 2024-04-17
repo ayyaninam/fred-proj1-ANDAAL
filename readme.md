@@ -103,6 +103,17 @@ Base Migrate
   python3 manage.py migrate base
 ```
 
+Collect Static
+
+```bash
+  python3 manage.py collectstatic
+```
+
+Collect Static
+
+```bash
+  python3 manage.py runserver
+```
 
 
 # Migrate from SQLITE to PSQL
