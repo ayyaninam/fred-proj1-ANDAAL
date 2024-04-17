@@ -69,7 +69,7 @@ Windows:
 Install dependencies
 
 ```bash
-  pip install -r requirements.txt --no-deps
+  pip install -r requirements.txt
 ```
 
 Clear the Media Cache (For New Generation)
