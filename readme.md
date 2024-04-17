@@ -72,6 +72,12 @@ Install dependencies
   pip install -r requirements.txt --no-deps
 ```
 
+Clear the Media Cache (For New Generation)
+
+```bash
+  python manage.py thumbnail clear_delete_referenced
+```
+
 Make Migrations
 
 ```bash
