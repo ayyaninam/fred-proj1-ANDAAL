@@ -28,6 +28,8 @@ urlpatterns += i18n_patterns(
     path(_('andaal/admin/'), admin.site.urls),
     path('andaal/', include('base.urls'), name='base'),
     path('andaal/', include(apps.get_app_config('oscar').urls[0])),
+
+    # Media PATHS No NEED FOR NGINX 
     re_path(r'^andaal/media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^andaal/static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 )
