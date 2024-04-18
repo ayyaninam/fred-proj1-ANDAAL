@@ -41,8 +41,7 @@
             {% include "oscar/partials/form_fields.html" with form=registration_form %}
             <span class="text-dark my-2">{% trans "Password Should be 8 characters long!" %}</span>
             <button name="registration_submit" type="submit" value="Register"
-                class="btn btn-lg yellow__btn border-0 rounded-pill" data-loading-text="{% trans 'Registering...' %}">{%
-                trans 'Register' %}</button>
+                class="btn btn-lg yellow__btn border-0 rounded-pill" data-loading-text="{% trans 'Registering...' %}">{% trans 'Register' %}</button>
         </form>
     </div>
 </div>
