@@ -50,7 +50,7 @@ class EmailUserCreationForm(ParentEmailUserCreationForm):
             if (email == ""):
                 self.add_error("email", "Please Provide us an Email, if you aren't use Cameroon +237 Phone Number")
       
-        if User._default_manager.filter(phone_number__iexact=phone_number).exists(): 
+        if User._default_manager.filter(phone_number__iexact=str(phone_number)).exists(): 
             raise forms.ValidationError(
                 _("A user with same Phone Number already exists")
             )
