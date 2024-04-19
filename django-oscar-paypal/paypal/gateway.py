@@ -21,9 +21,12 @@ def post(url, params, encode=True):
         payload = params
 
     start_time = time.time()
-    response = requests.post(
-        url, payload,
-        headers={'content-type': 'text/namevalue; charset=utf-8'})
+    try:
+        response = requests.post(
+            url, payload,
+            headers={'content-type': 'text/namevalue; charset=utf-8'})
+    except:
+        raise exceptions.PayPalError("Unable to communicate with PayPal")
     if response.status_code != requests.codes.ok:
         raise exceptions.PayPalError("Unable to communicate with PayPal")
 

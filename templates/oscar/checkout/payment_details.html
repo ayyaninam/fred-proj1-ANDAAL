@@ -22,8 +22,11 @@
 
 
         <a href="{% url 'checkout:stripe_payment_details_view' %}" class=" pink__to__bottom__gradient border-0 payment__int__btns">
-            <img style="width: 65px;" src="{% static 'payment/stripe_btn.png' %}">
+            <img style="width: 65px;" src="{% static 'payment/credit-card.png' %}">
         </a>
+        <!-- <a href="{% url 'checkout:stripe_payment_details_view' %}" class=" pink__to__bottom__gradient border-0 payment__int__btns">
+            <img style="width: 65px;" src="{% static 'payment/stripe_btn.png' %}">
+        </a> -->
 
 
         <a class=" pink__to__bottom__gradient border-0 payment__int__btns" href="{% url 'paypal-redirect' %}">
