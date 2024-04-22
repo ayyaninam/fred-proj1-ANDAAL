@@ -46,9 +46,12 @@
                 {% for link in important_links %}
                 <a href="{% url 'imp_link' link.id %}" class="mb-2 cursor-pointer text-muted font-italic no_underline text-dark">{{ link.name }} →</a>
                 {% endfor %}
+                <h5 class="fw-bold my-5">{% trans "Accepted Payment Methods" %}</h5>
+                <img class="w-100 rounded shadow-sm" src="{% static 'payment/footerimage.png' %}" alt="">
             </ul>
         </div>
         {% endif %}
+
     </div>
     <p class="my-0 mt-5 text-center">{% trans "Copyright © 2023 Andaal all rights reserved" %}</p>
 </footer>
