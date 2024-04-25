@@ -368,3 +368,5 @@ CACHES = {
         "LOCATION": os.path.join(BASE_DIR, 'cache'),
     }
 }
+
+OSCAR_MISSING_IMAGE_URL = os.path.join(MEDIA_ROOT, 'image_not_found.jpg')
