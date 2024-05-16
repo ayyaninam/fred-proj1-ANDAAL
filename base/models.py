@@ -156,7 +156,7 @@ class ShippingMethod(models.Model):
             self.code = None
             self.charge_excl_tax = None
             self.charge_incl_tax = None
-            self.countries.clear()
+            # self.countries.clear()
 
     def __str__(self):
         return self.name

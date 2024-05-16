@@ -21,7 +21,6 @@ from paypal.express.exceptions import (
 from paypal.express.facade import confirm_transaction, fetch_transaction_details, get_paypal_url
 from paypal.express.gateway import buyer_pays_on_paypal
 from base.views import get_cached_euro_rate
-from django_oscar_stripe_sca.oscar_stripe_sca.utils import get_stripe_version
 # Load views dynamically
 PaymentDetailsView = get_class('checkout.views', 'PaymentDetailsView')
 CheckoutSessionMixin = get_class('checkout.session', 'CheckoutSessionMixin')
@@ -56,7 +55,7 @@ class RedirectView(CheckoutSessionMixin, RedirectView):
 
     def get_redirect_url(self, **kwargs):
         try:
-            basket = self.build_submission()['basket'] if get_stripe_version() else None
+            basket = self.build_submission()['basket'] 
             url = self._get_redirect_url(basket, **kwargs)
         except PayPalError as ppe:
             messages.error(self.request, str(ppe))
@@ -103,7 +102,7 @@ class RedirectView(CheckoutSessionMixin, RedirectView):
             'basket': basket,
             'shipping_methods': []          # setup a default empty list
         }                                   # to support no_shipping
-        params['rate_of_xaf_to_eur'] = D(rate_of_xaf_to_eur) if get_stripe_version() else None
+        params['rate_of_xaf_to_eur'] = D(rate_of_xaf_to_eur) 
         user = self.request.user
         if basket.is_shipping_required():
             # Only check for shipping details if required.
@@ -161,7 +160,7 @@ class CancelResponseView(RedirectView):
 # things to self so they are accessible in a later method).
 class SuccessResponseView(PaymentDetailsView):
     template_name_preview = 'paypal/express/preview.html'
-    preview = True if get_stripe_version() else None
+    preview = True 
 
     error_message = _("A problem occurred communicating with PayPal - please try again later")
 

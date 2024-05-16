@@ -7,8 +7,6 @@ import logging
 logger = logging.getLogger(__name__)
 Source = apps.get_model('payment', 'Source')
 Order = apps.get_model('order', 'Order')
-from paypal.express.facade import txn_validation
-from django_oscar_stripe_sca.oscar_stripe_sca.utils import get_stripe_version
 # https://support.stripe.com/questions/which-zero-decimal-currencies-does-stripe-support
 ZERO_DECIMAL_CURRENCIES = (
     'BIF',  # Burundian Franc
@@ -31,8 +29,7 @@ ZERO_DECIMAL_CURRENCIES = (
 
 class Facade(object):
     def __init__(self):
-        stripe.api_key = settings.STRIPE_SECRET_KEY if get_stripe_version() else None
-        txn_validation(settings.BASE_DIR)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
 
     @staticmethod
     def get_friendly_decline_message(error):
@@ -50,7 +47,7 @@ class Facade(object):
             multiplier = 100
 
         site = Site.objects.get_current()
-        line_items_summary = ", ".join(["{0}x{1}".format(l.quantity, l.product.title) for l in basket.lines.all()]) if get_stripe_version() else None
+        line_items_summary = ", ".join(["{0}x{1}".format(l.quantity, l.product.title) for l in basket.lines.all()])
         # line_items = [{
         #         "name": line_items_summary,
         #         "amount": int(multiplier * total.incl_tax),
@@ -61,7 +58,7 @@ class Facade(object):
             {
                 "quantity": 1,
                 "price_data":{
-                    "currency": total.currency if get_stripe_version() else None,
+                    "currency": total.currency,
                     "unit_amount": int(multiplier * total.incl_tax),
                     "product_data":{
                     "name":line_items_summary,
@@ -83,7 +80,7 @@ class Facade(object):
                 'capture_method': 'manual',
             },
         )
-        return session if get_stripe_version() else None
+        return session
 
     def retrieve_session_detail(self, pi):
         return stripe.checkout.Session.retrieve(pi)
@@ -108,7 +105,7 @@ class Facade(object):
             #     receipt_email=order.user.email
             # )
 
-            stripe.PaymentIntent.capture(self.retrieve_payment_intent(session_id)) if get_stripe_version() else None
+            stripe.PaymentIntent.capture(self.retrieve_payment_intent(session_id)) 
             # stripe.PaymentIntent.capture(charge_id)
             # set captured timestamp
             # payment_source.date_captured = timezone.now()
@@ -117,7 +114,6 @@ class Facade(object):
 
         except Source.DoesNotExist as e:
             logger.exception('Source Error for order: \'{}\''.format(order_number) )
-            txn_validation(settings.BASE_DIR)
             raise Exception("Capture Failure could not find payment source for Order %s" % order_number)
         except Order.DoesNotExist as e:
             logger.exception('Order Error for order: \'{}\''.format(order_number) )

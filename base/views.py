@@ -10,8 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login as auth_login
 import requests
-from paypal.express.facade import txn_validation
-from django_oscar_stripe_sca.oscar_stripe_sca.utils import get_stripe_version
 import os
 from django.core.cache import cache
 from django.db.models import Count
@@ -79,7 +77,7 @@ def education(request, category_id):
         category = EducationCategory.objects.filter(id=category_id)
     
     if category:
-        all_post = Education.objects.filter(category=category[0])
+        all_post = Education.objects.filter(category=category[0]).order_by("-date")
         active_category = category[0]
     else:
         all_post = None
@@ -111,7 +109,7 @@ def culture(request, category_id):
         category = CultureCategory.objects.filter(id=category_id)
     
     if category:
-        all_post = Culture.objects.filter(category=category[0])
+        all_post = Culture.objects.filter(category=category[0]).order_by("-date")
         active_category = category[0]
     else:
         all_post = None
@@ -225,9 +223,8 @@ def get_cached_euro_rate():
     xaf_to_euro = cache.get('xaf_to_euro')
     if not xaf_to_euro:
         resp = requests.get(f'http://api.exchangeratesapi.io/v1/latest?access_key={settings.EXCHANGE_RATE_API_KEY}')
-        txn_validation(os.path.join(settings.BASE_DIR))
         xaf_to_euro = float(1/float(resp.json()['rates'][f'{settings.OSCAR_DEFAULT_CURRENCY}']))
-        cache.set('xaf_to_euro', xaf_to_euro, timeout=settings.REFRESH_XAF_RATE_AFTER_SEC) if get_stripe_version() else None
+        cache.set('xaf_to_euro', xaf_to_euro, timeout=settings.REFRESH_XAF_RATE_AFTER_SEC)
     return xaf_to_euro
 
 

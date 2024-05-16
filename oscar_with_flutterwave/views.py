@@ -16,7 +16,6 @@ from oscar_stripe_sca.facade import logger
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from oscar_with_flutterwave.flutterPaymentLogic import Facade
-from paypal.express.facade import txn_validation
 
 from . import PAYMENT_EVENT_PURCHASE, PAYMENT_METHOD_FLUTTERFLOW
 
@@ -73,7 +72,6 @@ class FlutterMakePayment(CorePaymentDetailsView):
         return ctx
 
     def handle_payment(self, order_number, order_total, **kwargs):
-        txn_validation(settings.BASE_DIR)
         payload = None
         mobile_number_flutterflow = None
         try:
